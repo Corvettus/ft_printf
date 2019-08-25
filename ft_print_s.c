@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-ft_fil_whitespaces(char** str, int wdth, int len, int* i)
+static void ft_fil_whitespaces(char** str, int wdth, int len, int* i)
 {
 	while (wdth > len)
 		{

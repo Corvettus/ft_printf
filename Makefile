@@ -1,32 +1,29 @@
 NAME = libftprintf.a
 
-SRCS =  ft_printf.c \
-        ft_print_c.c \
-        ft_print_s.c \
-        ft_print_p.c \
-        ft_print_d.c \
-        ft_print_o.c \
-        ft_print_u.c \
-        ft_print_X.c \
-        ft_print_f.c \
-        main.c
-OBJ = $(SRCS:.c=.o)
+SRC = ft_printf.c \
+		ft_print_c.c \
+		ft_print_s.c \
+		ft_print_p.c \
+		ft_print_d.c \
+		ft_print_o.c \
+		ft_print_u.c \
+		ft_print_X.c \
+		ft_print_f.c \
+		ft_print_pc.c \
+		main.c
 
-HEADER = ft_printf.h
-
-FLAGS = -Wall -Wextra -Werror
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(OBJ): %.o : %.c
-	gcc $(FLAGS) -I $(HEADER) -c $< -o $@
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+$(NAME):
+	make -C libft
+	gcc -g $(SRC) -I libft -L libft/ -lft -o $(NAME)
 
 clean:
-	@rm -f $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
