@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void ft_fil_whitespaces(char** str, int wdth, int* i)
 {

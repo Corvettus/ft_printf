@@ -4,6 +4,6 @@
 int main(void)
 {
 	//printf("|%0c%0s|\n\n", 'k', "1234");
-	ft_printf("test 43%cEW%c", "A", "B");
+	ft_printf("%c %c", "A", "B");
 	return (0);
 }
