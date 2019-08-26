@@ -18,7 +18,7 @@ char    *ft_print_c(var *s)
 	wdth = s->width;
 	if (!wdth)
 		++wdth;
-	if (!ft_strnew(wdth))
+	if (!(str = ft_strnew(wdth)))
 		return (0);
 	i = 0;
 	if (s->sign != '-')

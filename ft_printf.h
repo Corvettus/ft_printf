@@ -39,5 +39,6 @@ char    *ft_print_u(var *s);
 char    *ft_print_X(var *s);
 char    *ft_print_f(var *s);
 char    *ft_print_pc(var *s);
+char    *ft_controller(var *tmp);
 
 #endif
