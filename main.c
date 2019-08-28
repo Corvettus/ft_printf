@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	//printf("test %10.2s # %c\n", "flex12", 'A');
-	ft_printf("test %+10.*s # %c", "flex12", "A");
+	printf("start %10s\n", "flex");
+	ft_printf("start %10s", "flex");
 	return (0);
 }

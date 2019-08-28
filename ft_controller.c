@@ -5,16 +5,12 @@ char			*ft_controller(var *tmp)
 {
 	char *res;
 
-	tmp->width = 0;
 	if (tmp->type == '%')
 		res = ft_print_pc(tmp);
 	else if (tmp->type == 'c')
 		res = ft_print_c(tmp);
 	else if (tmp->type == 's')
-		{   //ft_putstr("S :");
-            //printf("%s", tmp->data);
             res = ft_print_s(tmp);
-        }
 	else if (tmp->type == 'p')
 		res = ft_print_p(tmp);
 	else if (tmp->type == 'd' || tmp->type == 'i')

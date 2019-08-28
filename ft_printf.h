@@ -41,4 +41,6 @@ char	*ft_print_f(var *s);
 char	*ft_print_pc(var *s);
 char	*ft_controller(var *tmp);
 
+int		ft_check_flags(char format);
+char	*ft_strjoin_char(char *str, char end);
 #endif

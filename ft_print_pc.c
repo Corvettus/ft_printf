@@ -2,6 +2,5 @@
 
 char    *ft_print_pc(var *s)
 {
-	char*   str;
-	return (str);
+	return (s->data);
 }

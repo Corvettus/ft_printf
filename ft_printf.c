@@ -56,6 +56,7 @@ char			*ft_create_list_var(const char *mas, int i,
 	tmp = (var*)malloc(sizeof(var));
 	tmp->precision = ft_strnew(0);
 	tmp->width = 0;
+	tmp->data = 0;
 	if (mas[i] == '-' || mas[i] == '+' || mas[i] == ' ' 
 		|| mas[i] == '#' || mas[i] == '0')
 		tmp->flag = mas[i++];
@@ -81,7 +82,14 @@ char			*ft_create_list_var(const char *mas, int i,
 	if (!ft_check_flags(mas[i]) && mas[i] != '\0')
 		exit(0); 
 	tmp->type = mas[i];
-	tmp->data = str1;
+	if (mas[i] == '%')
+	{
+		tmp->data = ft_strnew(0);
+		tmp->data = ft_strjoin_char(tmp->data, mas[i]);
+		return (ft_controller(tmp));
+	}
+	if (!(tmp->data))
+		tmp->data = str1;
 	return (ft_controller(tmp));
 }
 
