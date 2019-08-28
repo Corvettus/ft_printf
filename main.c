@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	printf("start %10s\n", "flex");
-	ft_printf("start %10s", "flex");
+	printf("start %10.6s\n", "flexyiyiyiyi");
+	ft_printf("start %10.6s", "flexyiyiyiyi");
 	return (0);
 }

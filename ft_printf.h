@@ -13,10 +13,9 @@
 typedef struct var
 {
 	char*                   origin_data;
-//    char                    sign;
 	char					flag;
 	int						width;
-	char*                   precision;
+	int                   	precision;
 	char                    type;
 	char*                   data;
 	struct var*             next;

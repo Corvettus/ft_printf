@@ -54,7 +54,7 @@ char			*ft_create_list_var(const char *mas, int i,
 
 	str1 = va_arg(str, char*);
 	tmp = (var*)malloc(sizeof(var));
-	tmp->precision = ft_strnew(0);
+	tmp->precision = 0;
 	tmp->width = 0;
 	tmp->data = 0;
 	if (mas[i] == '-' || mas[i] == '+' || mas[i] == ' ' 
@@ -71,9 +71,9 @@ char			*ft_create_list_var(const char *mas, int i,
 	{
 		if ((mas[++i] > '0' && mas[i] <= '9'))
 			while (mas[i] > '0' && mas[i] <= '9')
-				tmp->precision = ft_strjoin_char(tmp->precision, mas[i++]);
+				tmp->precision = tmp->precision * 10 + mas[i++] - '0';
 		else if (mas[i] == '*')
-			tmp->precision = ft_strjoin_char(tmp->precision, mas[i++]);
+			tmp->precision = -1;
 		else if (ft_check_flags(mas[i++]))
 			tmp->precision = 0;
 		else
