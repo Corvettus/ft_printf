@@ -1,4 +1,8 @@
 {
 	"liveshare.allowGuestDebugControl": true,
-	"liveshare.allowGuestTaskControl": true
+	"liveshare.allowGuestTaskControl": true,
+	"files.associations": {
+		"libft.h": "c",
+		"stdio.h": "c"
+	}
 }

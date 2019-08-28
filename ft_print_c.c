@@ -21,10 +21,10 @@ char    *ft_print_c(var *s)
 	if (!(str = ft_strnew(wdth)))
 		return (0);
 	i = 0;
-	if (s->sign != '-')
+	if (s->flag != '-')
 		ft_fil_whitespaces(&str, wdth, &i);
 	str[i++] = (char)*s->data;
-	if (s->sign == '-')
+	if (s->flag == '-')
 		ft_fil_whitespaces(&str, wdth, &i);
 	return (str);
 }

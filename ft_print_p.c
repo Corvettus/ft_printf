@@ -1,5 +1,10 @@
 #include "ft_printf.h"
 
+char    *ft_print_p(var *s)
+{
+	return (0);
+}
+/*
 void	ft_supzerox(t_spec *s, t_ran *ran)
 {
 	str[i++] = '0';
@@ -7,13 +12,15 @@ void	ft_supzerox(t_spec *s, t_ran *ran)
 	if (s->precision > s->width)
 		while (s->precision-- > ft_strlen(s))
 			str[i++] = '0';
-	ft_strjcpy(ran->buf, s, &ran->j);
+	//??ft_strjcpy??;
 }
 
 char    *ft_print_p(var *s)
 {
-	char*   str;
-	
+	char*           str;
+	unsigned long   p;
+
+	i = 0;
 	num = va_arg(*vl, unsigned long);
 	if (num == 0)
 	{
@@ -84,7 +91,7 @@ char    *ft_print_p(var *s)
 	return (str);
 }
 
-/*
+
 void	ft_supoctalsminus(t_spec *s, t_ran *ran)
 {
 	if (s->minus == 0 && s->precision == 0)
