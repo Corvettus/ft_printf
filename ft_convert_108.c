@@ -24,3 +24,9 @@ int     ft_convert108(int nmb)
     nmb = nmb * 10 + tmp;
     return (nmb);
 }
+/*
+unsigned long long int ft_converter()
+{
+
+}
+*/

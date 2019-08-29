@@ -57,14 +57,14 @@ char			*ft_create_arg_string(char* str1, char flag, va_list str, var *list)
 
 	if (flag == 'c' || flag == 's' || flag == 'p' || flag == '%')
 		str1 = va_arg(str, char*);
-	if (flag == 'd' || flag == 'i')
+	else if (flag == 'd' || flag == 'i')
 	{
 		if ((nb = va_arg(str, int)) < 0)
 			list->arg_sign = -1;
 		list->data = ft_ullitoa(-nb);
 		str1 = ft_print_d(list);
 	}
-	if (flag == 'o')
+	else if (flag == 'o')
 		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
 	return (str1);
 }
