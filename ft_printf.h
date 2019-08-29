@@ -12,7 +12,6 @@
 
 typedef struct var
 {
-	char*       origin_data;
 	char        flag;
 	int         width;
 	int         precision;

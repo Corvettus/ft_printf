@@ -1,17 +1,17 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-char 	*ft_fil_whitespaces(char *str, int wdth, int len, int crop)
+char    *ft_fil_whitespaces(char *str, int wdth, int len, int crop)
 {
 	int		i;
 
 	i = 0;
 	while (wdth - len > i++ + crop)
-			str = ft_strjoin_char(str, ' ');
+		str = ft_strjoin_char(str, ' ');
 	return (str);
 }
 
-char	*ft_crop_str(char *str, int len, int crop)
+char    *ft_crop_str(char *str, int len, int crop)
 {
 	char	*tmp;
 
@@ -27,7 +27,7 @@ char	*ft_crop_str(char *str, int len, int crop)
 
 char    *ft_print_s(var *s)
 {
-	char	*str;
+	char    *str;
 	int     wdth;
 	int     len;
 	int     i;
@@ -42,10 +42,10 @@ char    *ft_print_s(var *s)
 	if  (s->precision >= len)
 		s->precision = 0;
 	if (s->precision > 0)
-		{
-			s->data = ft_crop_str(s->data, len, s->precision);
-			len = (len > s->precision) ? s->precision : len;
-		}
+	{
+		s->data = ft_crop_str(s->data, len, s->precision);
+		len = (len > s->precision) ? s->precision : len;
+	}
 	if (s->flag == '-')
 		wdth = 0;
 	if (s->width)
