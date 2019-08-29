@@ -8,17 +8,22 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
-int				ft_check_flags(char format)
+int				ft_check_flags(char type)
 {
-	if (format == 'c' || format == 'd' || format == 'i' ||
-		format == 'e' || format == 'E' || format == 'f' ||
-		format == 'g' || format == 'G' || format == 'o' ||
-		format == 's' || format == 'u' || format == 'x' ||
-		format == 'X' || format == 'p' || format == 'n' ||
-		format == '%')
+	if (type == 'c' || type == 'd' || type == 'i' ||
+		type == 'e' || type == 'E' || type == 'f' ||
+		type == 'g' || type == 'G' || type == 'o' ||
+		type == 's' || type == 'u' || type == 'x' ||
+		type == 'X' || type == 'p' || type == 'n' ||
+		type == '%')
 		return (1);
 	return (0);
 }
+
+/*int				ft_check_flags_numbs(char flag)
+{
+	if (flag == 'i' || flag == 'd')
+}*/
 
 char			*ft_strjoin_char(char *str, char end)
 {
@@ -46,13 +51,21 @@ void			ft_print_result_list(result_list *res)
 	}
 }
 
+char			*ft_create_arg_string(char* str1, char flag, va_list str)
+{
+	if (flag == 'c' || flag == 's' || flag == 'p' || flag == '%')
+		str1 = va_arg(str, char*);
+	if (flag == 'd' || flag == 'i')
+		str1 = ft_itoa(va_arg(str, int));
+	return(str1);
+}
+
 char			*ft_create_list_var(const char *mas, int i,
 					va_list str, var *list)
 {
 	char	*str1;
 	var		*tmp;
-
-	str1 = va_arg(str, char*);
+//	write(1, "OK\n", 3);
 	tmp = (var*)malloc(sizeof(var));
 	tmp->precision = 0;
 	tmp->width = 0;
@@ -88,6 +101,8 @@ char			*ft_create_list_var(const char *mas, int i,
 		tmp->data = ft_strjoin_char(tmp->data, mas[i]);
 		return (ft_controller(tmp));
 	}
+	//str1 = va_arg(str, char*);
+	str1 = ft_create_arg_string(str1, tmp->type, str);
 	if (!(tmp->data))
 		tmp->data = str1;
 	return (ft_controller(tmp));
