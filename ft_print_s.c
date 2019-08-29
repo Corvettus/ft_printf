@@ -30,11 +30,8 @@ char    *ft_print_s(var *s)
 	char	*str;
 	int     wdth;
 	int     len;
-	int     i;
-	int     j;
 
 	len  = 0;
-	i = 0;
 	wdth = (s->width) ? s->width : 0;
 	len = ft_strlen(s->data);
 	if (!(str = ft_strnew(wdth)))
