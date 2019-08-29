@@ -51,12 +51,19 @@ void			ft_print_result_list(result_list *res)
 	}
 }
 
-char			*ft_create_arg_string(char* str1, char flag, va_list str)
+char			*ft_create_arg_string(char* str1, char flag, va_list str, var *list)
 {
+	long long int   nb;
+
 	if (flag == 'c' || flag == 's' || flag == 'p' || flag == '%')
 		str1 = va_arg(str, char*);
 	if (flag == 'd' || flag == 'i')
-		str1 = ft_itoa(va_arg(str, int));
+	{
+		if ((nb = va_arg(str, int)) < 0)
+			list->arg_sign = -1;
+		list->data = ft_ullitoa(-nb);
+		str1 = ft_print_d(list);
+	}
 	return(str1);
 }
 
@@ -102,7 +109,7 @@ char			*ft_create_list_var(const char *mas, int i,
 		return (ft_controller(tmp));
 	}
 	//str1 = va_arg(str, char*);
-	str1 = ft_create_arg_string(str1, tmp->type, str);
+	str1 = ft_create_arg_string(str1, tmp->type, str, list);
 	if (!(tmp->data))
 		tmp->data = str1;
 	return (ft_controller(tmp));

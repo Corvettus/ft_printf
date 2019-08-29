@@ -11,6 +11,7 @@ SRC = ft_printf.c \
 		ft_print_f.c \
 		ft_print_pc.c \
 		ft_controller.c \
+		ft_toa.c \
 		main.c
 
 OBJ = $(SRC:.c=.o)
