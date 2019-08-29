@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
-int				ft_check_flags(char type)
+int				ft_check_type(char type)
 {
 	if (type == 'c' || type == 'd' || type == 'i' ||
 		type == 'e' || type == 'E' || type == 'f' ||
@@ -64,7 +64,9 @@ char			*ft_create_arg_string(char* str1, char flag, va_list str, var *list)
 		list->data = ft_ullitoa(-nb);
 		str1 = ft_print_d(list);
 	}
-	return(str1);
+	if (flag == 'o')
+		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
+	return (str1);
 }
 
 char			*ft_create_list_var(const char *mas, int i,
@@ -94,12 +96,12 @@ char			*ft_create_list_var(const char *mas, int i,
 				tmp->precision = tmp->precision * 10 + mas[i++] - '0';
 		else if (mas[i] == '*')
 			tmp->precision = -1;
-		else if (ft_check_flags(mas[i++]))
+		else if (ft_check_type(mas[i++]))
 			tmp->precision = 0;
 		else
 			exit(0);
 	}
-	if (!ft_check_flags(mas[i]) && mas[i] != '\0')
+	if (!ft_check_type(mas[i]) && mas[i] != '\0')
 		exit(0); 
 	tmp->type = mas[i];
 	if (mas[i] == '%')
@@ -134,15 +136,15 @@ int				ft_printf(const char *format, ...)
 	result_list	*res_str;
 	result_list	*res_head;
 	result_list	*res_tmp;
-	var			*var_str;
-	var			*var_head;
+	//var			*var_str;
+	//var			*var_head;
 	var			*var_tmp;
 
 	i = 0;
-	var_str = (var*)malloc(sizeof(var));
+	//var_str = (var*)malloc(sizeof(var));
 	res_str = (result_list*)malloc(sizeof(result_list));
 	res_head = res_str;
-	var_head = var_str;
+	//var_head = var_str;
 	va_start(str, format);
 	while (format[i] != '\0')
 	{
@@ -162,9 +164,10 @@ int				ft_printf(const char *format, ...)
 			res_tmp = (result_list*)malloc(sizeof(res_str));
 			res_str->next = res_tmp;
 			res_str = res_tmp;
-			var_tmp = (var*)malloc(sizeof(var_tmp));
+			if(!(var_tmp = (var*)malloc(sizeof(var_tmp))))
+				return (0);
 			var_tmp->data = ft_create_list_var(format, ++i, str, var_tmp);
-			while (!ft_check_flags(format[i]) && format[i] != '\0')
+			while (!ft_check_type(format[i]) && format[i] != '\0')
 				i++;
 			res_str->data = var_tmp->data;
 			//free_var(var_tmp)

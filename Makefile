@@ -11,7 +11,11 @@ SRC = ft_printf.c \
 		ft_print_f.c \
 		ft_print_pc.c \
 		ft_controller.c \
+<<<<<<< HEAD
 		ft_toa.c \
+=======
+		ft_convert_108.c \
+>>>>>>> d69bc320921e1797cd9b8ff457388dc7fc99f539
 		main.c
 
 OBJ = $(SRC:.c=.o)

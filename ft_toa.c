@@ -2,13 +2,10 @@
 
 static void	puting_ulli_to_a(unsigned long long int n, char **res, size_t buf)
 {
-	unsigned int	k;
-
-	k = (n < 0 ? -n : n);
-	while (k)
+	while (n)
 	{
-		(*res)[--buf] = (char)(k % 10 + '0');
-		k /= 10;
+		(*res)[--buf] = (char)(n % 10 + '0');
+		n /= 10;
 	}
 }
 
@@ -30,8 +27,6 @@ char		*ft_ullitoa(unsigned long long int n)
 	if (!(res = (char*)malloc(buf * sizeof(char))))
 		return (0);
 	res[--buf] = 0;
-	if (n < 0)
-		*res = '-';
-	puting_i_to_a(n, &res, buf);
+	puting_ulli_to_a(n, &res, buf);
 	return (res);
 }

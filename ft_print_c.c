@@ -3,17 +3,17 @@
 static void ft_fil_whitespaces(char** str, int wdth, int* i)
 {
 	while (wdth > 1)
-		{
-			*str[*i++] = ' ';
-			--wdth;
-		}
+	{
+		*str[*i++] = ' ';
+		--wdth;
+	}
 }
 
 char    *ft_print_c(var *s)
 {
-	char*   str;
-	int     wdth;
-	int     i;
+	char*    str;
+	int      wdth;
+	int      i;
 
 	wdth = s->width;
 	if (!wdth)

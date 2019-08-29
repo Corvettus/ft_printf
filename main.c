@@ -3,10 +3,12 @@
 
 int main(void)
 {
-	int i = 12332;
+	int i = 1234324;
 //	char s[4];
 //	printf("start %10.6s\n", "flexyiyiyiyi");
 //	ft_printf("start %10.6s", "flexyiyiyiyi");
-	ft_printf("start %d", i);
+//	printf("start %d\n", i);
+	ft_printf("start %o\n", i);
+	printf("start %o\n", i);
 	return (0);
 }

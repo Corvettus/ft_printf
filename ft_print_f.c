@@ -2,6 +2,6 @@
 
 char    *ft_print_f(var *s)
 {
-	char*   str;
+	char*    str;
 	return (str);
 }
