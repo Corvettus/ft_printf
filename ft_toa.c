@@ -11,8 +11,8 @@ static void	puting_ulli_to_a(unsigned long long int n, char **res, size_t buf)
 
 char		*ft_ullitoa(unsigned long long int n)
 {
-	char	*res;
-	int		k;
+	char					*res;
+	unsigned long long int	k;
 	size_t	buf;
 
 	if (!n)

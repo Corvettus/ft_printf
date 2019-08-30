@@ -66,6 +66,8 @@ char			*ft_create_arg_string(char* str1, char flag, va_list str, var *list)
 	}
 	else if (flag == 'o')
 		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
+	else if (flag == 'f')
+		str1 = ft_ftoa(va_arg(str, double));
 	return (str1);
 }
 

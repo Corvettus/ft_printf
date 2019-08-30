@@ -24,7 +24,7 @@ char    *ft_crop_str(char *str, int len, int crop)
 	str = tmp;
 	return (str);
 }
-
+//нужно сделать поддержку "*" , "-" и фришки.
 char    *ft_print_s(var *s)
 {
 	char    *str;
