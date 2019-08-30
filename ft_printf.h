@@ -27,6 +27,15 @@ typedef struct result_list
 	struct result_list*		next;
 } result_list;
 
+typedef struct float_struct
+{
+	int			mantisa;
+
+	long			sign;
+	int				power;
+
+} float_struct;
+
 int     ft_printf(const char *format, ...);
 
 char    *ft_print_c(var *s);
@@ -56,5 +65,5 @@ char	*ft_controller(var *tmp);
 int		ft_check_flags(char format);
 char	*ft_strjoin_char(char *str, char end);
 int		ft_convert108(int nmb);
-char	*ft_ftoa(double n);
+char	*ft_create_double(double n);
 #endif

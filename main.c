@@ -12,9 +12,9 @@ int main(void)
 //	printf("start %d\n", i);
 //	ft_printf("start %o\n", i);
 //	printf("start %o\n", i);
-	double f = 1.23456;
-	printf( "%.3f\n", f );
-	ft_printf( "%.3f\n", f );
+	double f = 1.23439;
+	printf( "%f\n", f );
+	ft_printf( "%f", f );
 	//printf("*%d*\n", PAGES);
 	//printf("*%2d*\n", PAGES);
 	//printf("*%10d*\n", PAGES);
