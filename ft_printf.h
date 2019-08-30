@@ -29,10 +29,11 @@ typedef struct result_list
 
 typedef struct float_struct
 {
-	int			mantisa;
-
+	float			mantisa;
+	int				mantisa_len;
 	long			sign;
 	int				power;
+	char			*res;
 
 } float_struct;
 
