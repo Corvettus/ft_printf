@@ -28,7 +28,10 @@ char			*ft_controller(var *tmp)
 	else if (tmp->type == 'd' || tmp->type == 'i')
 		res = ft_print_d(tmp);
 	else if (tmp->type == 'o')
-		res = ft_print_o(tmp);
+	{
+		tmp->precision = 0;
+		res = ft_print_s(tmp);
+	}
 	else if (tmp->type == 'u' || tmp->type == 'U')
 		res = ft_print_u(tmp);
 	else if (tmp->type == 'x' || tmp->type == 'X')

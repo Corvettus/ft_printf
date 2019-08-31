@@ -13,13 +13,30 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-char	*ft_fil_whitespaces(char *str, int wdth, int len, int crop)
+char	*ft_fil_whitespaces(char *str, int wdth, int len)
 {
 	int		i;
 
 	i = 0;
-	while (wdth - len > i++ + crop)
-		str = ft_strjoin_char(str, ' ');
+	while (wdth - len > i++)
+		str = ft_strjoin(" ", str);
+	return (str);
+}
+
+char	*ft_end_whitespaces(char *str, int wdth, int len)
+{
+	int		i;
+	char	*str1;
+	int		lenn;
+
+	i = 0;
+	lenn = ft_strlen(str);
+	while (wdth - len > i++ )
+		str = ft_strjoin(str, " ");
+/*	i = -1;
+	str1 = ft_strnew(lenn);
+	while (str[++i] != '\0')
+		str1[lenn - i] = str[i];*/
 	return (str);
 }
 
@@ -55,10 +72,15 @@ char	*ft_print_s(var *s)
 		s->data = ft_crop_str(s->data, len, s->precision);
 		len = (len > s->precision) ? s->precision : len;
 	}
-	if (s->flag == '-')
-		wdth = 0;
+/*	if (s->flag == '-')
+		wdth = 0;*/
 	if (s->width)
-		str = ft_fil_whitespaces(str, wdth + s->precision, len, s->precision);
+	{
+		if (s->flag != '-')
+			str = ft_fil_whitespaces(str, wdth + 0, len);
+		else if (s->flag == '-')
+			str = ft_end_whitespaces(str, wdth + 0, len);
+	}
 	str = ft_strjoin(str, s->data);
 	return (str);
 }

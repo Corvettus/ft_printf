@@ -58,8 +58,8 @@ char			*ft_start_double(long double n)
 
 	wdth = (tmp.mantisa_len) ? (tmp.mantisa_len) : 0;
 	tmp = ft_create_double(n);
-	if (n < 0)
-		tmp.res = ft_strjoin("-", tmp.res);
+//	if (n < 0)
+//		tmp.res = ft_strjoin("-", tmp.res);
 	tmp.res = ft_strjoin(tmp.res, ft_itoa((int)tmp.num));
 	if (tmp.mantisa != 0)
 	{

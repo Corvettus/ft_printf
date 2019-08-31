@@ -32,13 +32,13 @@ char	*ft_print_f(var *s)
 		s->precision = 0;
 	if (s->precision > 0)
 	{
-		s->data = ft_crop_str(s->data, len, s->precision + i + 1);
-		len = (len > s->precision) ? s->precision : len;
+		s->data = ft_crop_str(s->data, len , s->precision + i + 1);
+		len = (len > s->precision) ? s->precision + i : len;
 	}
-	if (s->flag == '-')
-		wdth = 0;
+	if (s->precision)
+		len++;
 	if (s->width)
-		str = ft_fil_whitespaces(str, wdth + s->precision, len + i + 1, s->precision);
+		str = ft_fil_whitespaces(str, wdth , len);
 	str = ft_strjoin(str, s->data);
 	//printf("Len :%d\n", len);
 	//printf("Precicion :%d\n", s->precision);

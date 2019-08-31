@@ -68,7 +68,7 @@ int		ft_check_flags(char format);
 char	*ft_strjoin_char(char *str, char end);
 int		ft_convert108(int nmb);
 char	*ft_start_double(long double n);
-char	*ft_fil_whitespaces(char *str, int wdth, int len, int crop);
+char	*ft_fil_whitespaces(char *str, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
 
 #endif
