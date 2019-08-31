@@ -32,7 +32,7 @@ char	*ft_end_whitespaces(char *str, int wdth, int len)
 	i = 0;
 	lenn = ft_strlen(str);
 	while (wdth - len > i++ )
-		str = ft_strjoin(str, " ");
+		str = ft_strjoin(str, "!");
 /*	i = -1;
 	str1 = ft_strnew(lenn);
 	while (str[++i] != '\0')
@@ -62,6 +62,8 @@ char	*ft_print_s(var *s)
 
 	len = 0;
 	wdth = (s->width) ? s->width : 0;
+	if (!(s->data))
+		s->data = "(null)";
 	len = ft_strlen(s->data);
 	if (!(str = ft_strnew(wdth)))
 		return (0);

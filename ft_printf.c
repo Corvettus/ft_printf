@@ -68,7 +68,8 @@ char			*ft_create_arg_string(char *str1, char flag, va_list str, var *list)
 	{
 		if ((nb = va_arg(str, int)) < 0)
 			list->arg_sign = -1;
-		list->data = ft_ullitoa(-nb);
+		list->data = ft_ullitoa(list->arg_sign * nb);
+		ft_putstr(list->data);
 		str1 = ft_print_d(list);
 	}
 	else if (flag == 'o')
@@ -88,6 +89,7 @@ char			*ft_create_list_var(const char *mas, int i,
 	tmp->precision = 0;
 	tmp->width = 0;
 	tmp->data = 0;
+	tmp->arg_sign = 1;
 	if (mas[i] == '-' || mas[i] == '+' || mas[i] == ' '
 		|| mas[i] == '#' || mas[i] == '0')
 		tmp->flag = mas[i++];

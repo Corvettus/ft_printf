@@ -19,7 +19,7 @@ char	*ft_print_f(var *s)
 	int		wdth;
 	int		len;
 	int		i;
-
+// Нужно обработать исключение, когда мантисса = 0 или близка к 0.
 	i = 0;
 	len = 0;
 	wdth = (s->width) ? s->width : 0;
