@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/31 16:35:51 by rpoetess          #+#    #+#             */
+/*   Updated: 2019/08/31 16:35:53 by rpoetess         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 #include <stdarg.h>
 #include <unistd.h>
@@ -19,11 +31,6 @@ int				ft_check_type(char type)
 		return (1);
 	return (0);
 }
-
-/*int				ft_check_flags_numbs(char flag)
-{
-	if (flag == 'i' || flag == 'd')
-}*/
 
 char			*ft_strjoin_char(char *str, char end)
 {
@@ -51,9 +58,9 @@ void			ft_print_result_list(result_list *res)
 	}
 }
 
-char			*ft_create_arg_string(char* str1, char flag, va_list str, var *list)
+char			*ft_create_arg_string(char *str1, char flag, va_list str, var *list)
 {
-	long long int   nb;
+	long long int	nb;
 
 	if (flag == 'c' || flag == 's' || flag == 'p' || flag == '%')
 		str1 = va_arg(str, char*);
@@ -67,7 +74,7 @@ char			*ft_create_arg_string(char* str1, char flag, va_list str, var *list)
 	else if (flag == 'o')
 		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
 	else if (flag == 'f')
-		str1 = ft_create_double(va_arg(str, double));
+		str1 = ft_start_double(va_arg(str, double));
 	return (str1);
 }
 
@@ -81,12 +88,12 @@ char			*ft_create_list_var(const char *mas, int i,
 	tmp->precision = 0;
 	tmp->width = 0;
 	tmp->data = 0;
-	if (mas[i] == '-' || mas[i] == '+' || mas[i] == ' ' 
+	if (mas[i] == '-' || mas[i] == '+' || mas[i] == ' '
 		|| mas[i] == '#' || mas[i] == '0')
 		tmp->flag = mas[i++];
 	if (mas[i] > '0' && mas[i] <= '9')
 	{
-		while(mas[i] >= '0' && mas[i] <= '9')
+		while (mas[i] >= '0' && mas[i] <= '9')
 			tmp->width = tmp->width * 10 + mas[i++] - '0';
 	}
 		else if (mas[i] == '*')
@@ -104,7 +111,7 @@ char			*ft_create_list_var(const char *mas, int i,
 			exit(0);
 	}
 	if (!ft_check_type(mas[i]) && mas[i] != '\0')
-		exit(0); 
+		exit(0);
 	tmp->type = mas[i];
 	if (mas[i] == '%')
 	{
@@ -153,7 +160,7 @@ int				ft_printf(const char *format, ...)
 		if (format[i] != '%' && format[i] != '\0')
 		{
 			if (!(res_tmp = (result_list*)malloc(sizeof(res_str))))
-				return(0);
+				return (0);
 			res_str->next = res_tmp;
 			res_str = res_tmp;
 			res_str->data = ft_strnew(0);
@@ -166,7 +173,7 @@ int				ft_printf(const char *format, ...)
 			res_tmp = (result_list*)malloc(sizeof(res_str));
 			res_str->next = res_tmp;
 			res_str = res_tmp;
-			if(!(var_tmp = (var*)malloc(sizeof(var_tmp))))
+			if (!(var_tmp = (var*)malloc(sizeof(var_tmp))))
 				return (0);
 			var_tmp->data = ft_create_list_var(format, ++i, str, var_tmp);
 			while (!ft_check_type(format[i]) && format[i] != '\0')
@@ -177,7 +184,6 @@ int				ft_printf(const char *format, ...)
 		}
 		res_str->next = 0;
 	}
-
 	ft_print_result_list(res_head->next);
 	va_end(str);
 	return (i + 1);

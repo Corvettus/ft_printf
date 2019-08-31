@@ -13,7 +13,7 @@ SRC = ft_printf.c \
 		ft_controller.c \
 		ft_toa.c \
 		ft_convert_108.c \
-		ft_ftoa.c \
+		ft_start_double.c \
 		main.c
 
 OBJ = $(SRC:.c=.o)
