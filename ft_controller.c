@@ -17,6 +17,7 @@ char			*ft_controller(var *tmp)
 {
 	char *res;
 
+	//res = ft_strnew(0);
 	if (tmp->type == '%')
 		res = ft_print_pc(tmp);
 	else if (tmp->type == 'c')
@@ -29,7 +30,15 @@ char			*ft_controller(var *tmp)
 		res = ft_print_d(tmp);
 	else if (tmp->type == 'o')
 	{
-		tmp->precision = 0;
+		//if (tmp->flag == '+' || tmp->flag == '-' || tmp->flag == ' ')
+		if (tmp->flag != '0' || (tmp->flag == '0' && ft_strlen(tmp->data) > tmp->precision) ||
+			((tmp->flag == '?') && ft_strlen(tmp->data) > tmp->precision))
+			tmp->precision = 0;
+		if ((tmp->flag == '0' || tmp->flag == '?') && ft_strlen(tmp->data) < tmp->precision)
+			tmp->width = tmp->precision;
+		
+		//printf("width  :%d\n", tmp->width);
+		//printf("precision  :%d\n", tmp->precision);
 		res = ft_print_s(tmp);
 	}
 	else if (tmp->type == 'u' || tmp->type == 'U')

@@ -62,15 +62,21 @@ char			*ft_create_arg_string(char *str1, char flag, va_list str, var *list)
 {
 	long long int	nb;
 
-	if (flag == 'c' || flag == 's' || flag == 'p' || flag == '%')
+	if (flag == 'c' || flag == '%')
+	{
+		char *f;
+		ft_putstr("OK");
+		f = va_arg(str, char*);
+		ft_putstr(f);
+	}
+	else if (flag == 's' || flag == 'p')
 		str1 = va_arg(str, char*);
 	else if (flag == 'd' || flag == 'i')
 	{
-		if ((nb = va_arg(str, int)) < 0)
-			list->arg_sign = -1;
+		nb = va_arg(str, int);
+		list->arg_sign = (nb) ? 1 : -1;
 		list->data = ft_ullitoa(list->arg_sign * nb);
-		ft_putstr(list->data);
-		str1 = ft_print_d(list);
+		str1 = list->data;
 	}
 	else if (flag == 'o')
 		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
@@ -90,6 +96,7 @@ char			*ft_create_list_var(const char *mas, int i,
 	tmp->width = 0;
 	tmp->data = 0;
 	tmp->arg_sign = 1;
+	tmp->flag = '?';
 	if (mas[i] == '-' || mas[i] == '+' || mas[i] == ' '
 		|| mas[i] == '#' || mas[i] == '0')
 		tmp->flag = mas[i++];
@@ -103,7 +110,7 @@ char			*ft_create_list_var(const char *mas, int i,
 	if (mas[i] == '.')
 	{
 		if ((mas[++i] > '0' && mas[i] <= '9'))
-			while (mas[i] > '0' && mas[i] <= '9')
+			while (mas[i] >= '0' && mas[i] <= '9')
 				tmp->precision = tmp->precision * 10 + mas[i++] - '0';
 		else if (mas[i] == '*')
 			tmp->precision = -1;
@@ -117,11 +124,11 @@ char			*ft_create_list_var(const char *mas, int i,
 	tmp->type = mas[i];
 	if (mas[i] == '%')
 	{
-		tmp->data = ft_strnew(0);
+		tmp->data = ft_strnew(1);
 		tmp->data = ft_strjoin_char(tmp->data, mas[i]);
 		return (ft_controller(tmp));
 	}
-	//str1 = va_arg(str, char*);
+	ft_putstr(str1);
 	str1 = ft_create_arg_string(str1, tmp->type, str, list);
 	if (!(tmp->data))
 		tmp->data = str1;
@@ -182,6 +189,8 @@ int				ft_printf(const char *format, ...)
 				i++;
 			res_str->data = var_tmp->data;
 			//free_var(var_tmp)
+			//ft_putchar('\n');
+			//ft_putstr(res_str->data);
 			i++;
 		}
 		res_str->next = 0;

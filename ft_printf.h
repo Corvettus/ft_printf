@@ -12,13 +12,12 @@
 
 typedef struct var
 {
-	char					flag;
 	int						width;
 	int						precision;
-	char					type;
 	int						arg_sign;
+	char					flag;
+	char					type;
 	char*					data;
-	struct var*				next;
 } var;
 
 typedef struct result_list
@@ -31,9 +30,9 @@ typedef struct float_struct
 {
 	float					num;
 	float					mantisa;
+	long					sign;
 	int						mantisa_len;
 	int						base;
-	long					sign;
 	int						power;
 	char					*res;
 } float_struct;
@@ -68,7 +67,8 @@ int		ft_check_flags(char format);
 char	*ft_strjoin_char(char *str, char end);
 int		ft_convert108(int nmb);
 char	*ft_start_double(long double n);
-char	*ft_fil_whitespaces(char *str, int wdth, int len);
+char	*ft_fil_whitespaces(char *str, int wdth, int len, char space);
+char	*ft_end_whitespaces(char *str, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
 
 #endif
