@@ -33,10 +33,12 @@ char	*ft_fil_whitespaces(char *str, int wdth, int len, char space)
 char	*ft_end_whitespaces(char *str, int wdth, int len)
 {
 	int		i;
+	char	*new;
 
+	new = ft_strnew(0);
 	i = 0;
 	while (wdth - len > i++)
-		str = ft_strjoin_char(str,033);
+		str = ft_strjoin(str, " ");
 	return (str);
 }
 
@@ -70,7 +72,6 @@ char	*ft_print_s(var *s)
 	printf("precision  :%d\n", s->precision);
 	printf("len  :%d\n", len);*/
 
-
 	if (s->precision >= len && s->flag != '0')
 		s->precision = 0;
 	if (s->flag == '0')
@@ -86,10 +87,10 @@ char	*ft_print_s(var *s)
 	if (s->width)
 	{
 		if (s->flag != '-')
-			str = ft_fil_whitespaces(str, wdth, len, s->flag);
+			s->data = ft_fil_whitespaces(s->data, wdth, len, s->flag);
 		else if (s->flag == '-')
 		{
-			str = ft_end_whitespaces(str, wdth, len);
+			s->data = ft_end_whitespaces(s->data, wdth, len);
 			//str = ft_rev_str(str);
 		}
 	}

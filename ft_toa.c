@@ -9,7 +9,7 @@ static void	puting_ulli_to_a(unsigned long long int n, char **res, size_t buf)
 	}
 }
 
-char		*ft_ullitoa(unsigned long long int n)
+char		*ft_ullitoa(unsigned long long int n, int arg_sign)
 {
 	char					*res;
 	unsigned long long int	k;
@@ -34,5 +34,7 @@ char		*ft_ullitoa(unsigned long long int n)
 		return (0);
 	res[--buf] = 0;
 	puting_ulli_to_a(n, &res, buf);
+	if (arg_sign == -1)
+		res = ft_strjoin("-", res);
 	return (res);
 }

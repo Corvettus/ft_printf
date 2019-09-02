@@ -18,8 +18,6 @@ char	*ft_print_d(var *s)
 
 	//str = ft_strnew(0);
 	str = s->data;
-	if (s->arg_sign == -1)
-		str = ft_strjoin("-", str);
 	//ft_putstr(str);
 	return (str);
 }

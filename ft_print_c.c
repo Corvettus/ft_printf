@@ -33,12 +33,10 @@ char		*ft_print_c(var *s)
 	if (!(str = ft_strnew(wdth)))
 		return (0);
 	i = 0;
-	ft_putstr(s->data);
 	if (s->flag != '-')
 		ft_fil_whitespaces1(&str, wdth, &i);
 	str[i++] = (char)*s->data;
 	if (s->flag == '-')
 		ft_fil_whitespaces1(&str, wdth, &i);
-	write(1, &str, 1);
 	return (str);
 }

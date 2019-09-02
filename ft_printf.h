@@ -22,8 +22,8 @@ typedef struct var
 
 typedef struct result_list
 {
-	char*					data;
 	struct result_list*		next;
+	char*					data;
 } result_list;
 
 typedef struct float_struct
@@ -47,7 +47,7 @@ char    *ft_print_p(var *s);
 
 char	*ft_print_pc(var *s);
 
-char    *ft_ullitoa(unsigned long long int n);
+char    *ft_ullitoa(unsigned long long int n, int arg_sign);
 
 char	*ft_print_d(var *s);
 

@@ -6,44 +6,47 @@ int main(void)
 {
 
 
-	// STRING
-	printf("   |%5s|\n", "this is a test");
-	ft_printf("My |%5s|\n\n", "this is a test");
+/*	// STRING
+	printf("   5s|%5s|\n", "this is a test");
+	ft_printf("My 5s|%5s|\n\n", "this is a test");
 
-	printf("   |%25s|\n", "this is a test");
-	ft_printf("My |%25s|\n\n", "this is a test");
+	printf("   25s|%25s|\n", "this is a test");
+	ft_printf("My 25s|%25s|\n\n", "this is a test");
 
-	printf("   |%-20s|\n", "this is a test");
-	ft_printf("My |%-20s|\n\n", "this is a test");
+	printf("   -20s|%-20s|\n", "this is a test");
+	ft_printf("My -20s|%-20s|\n\n", "this is a test");
 
-	printf("   |%-5s|\n", "this is a test");
-	ft_printf("My |%-5s|\n\n", "this is a test");
+	printf("   -5s|%-5s|\n", "this is a test");
+	ft_printf("My -5s|%-5s|\n\n", "this is a test");
 
-	printf("   |%25.6s|\n", "this is a test");
-	ft_printf("My |%25.6s|\n\n", "this is a test");
+	printf("   25.6s|%25.6s|\n", "this is a test");
+	ft_printf("My 25.6s|%25.6s|\n\n", "this is a test");
 
-	printf("   |%-20.6s|\n", "this is a test");
-	ft_printf("My |%-20.6s|\n\n", "this is a test");
+	printf("   -20.6s|%-20.6s|\n", "this is a test");
+	ft_printf("My -20.6s|%-20.6s|\n\n", "this is a test");
 
-	printf("   |%5.6s|\n", "this is a test");
-	ft_printf("My |%5.6s|\n\n", "this is a test");
+	printf("   5.6s|%5.6s|\n", "this is a test");
+	ft_printf("My 5.6s|%5.6s|\n\n", "this is a test");
 
-	printf("   |%-5.6s|\n", "this is a test");
-	ft_printf("My |%-5.6s|\n\n", "this is a test");
+	printf("   -5.6s|%-5.6s|\n", "this is a test");
+	ft_printf("My -5.6s|%-5.6s|\n\n", "this is a test");
 
-	printf("   |%-5.2s|\n", NULL);
-	ft_printf("My |%-5.2s|\n\n", NULL);
+	printf("   -5.2s|%-5.2s|\n", NULL);
+	ft_printf("My -5.2s|%-5.2s|\n\n", NULL);
 
-	printf("   |%-5.6s|\n", NULL);
-	ft_printf("My |%-5.6s|\n\n", NULL);
+	printf("   -5.6s|%-5.6s|\n", NULL);
+	ft_printf("My -5.6s|%-5.6s|\n\n", NULL);
 
-
+*/
 	// 8 
 	int i = 1234324;
 	printf("     |%d|\n\n", i);
 
 	printf("   o:|%o|\n", i);
 	ft_printf("My o:|%o|\n\n", i);
+
+	printf("   -o:|%o|\n", -i);
+	ft_printf("My -o:|%o|\n\n", -i);
 
 	printf("   0.3o:|%0.3o|\n", i);
 	ft_printf("My 0.3o:|%0.3o|\n\n", i);
@@ -53,6 +56,9 @@ int main(void)
 
 	printf("   0.14o:|%0.14o|\n", i);
 	ft_printf("My 0.14o:|%0.14o|\n\n", i);
+
+	printf("   0.14-o:|%0.14o|\n", -i);
+	ft_printf("My 0.14-o:|%0.14o|\n\n", -i);
 
 	printf("   2.14o:|%2.14o|\n", i);
 	ft_printf("My 2.14o:|%2.14o|\n\n", i);
@@ -78,13 +84,19 @@ int main(void)
 	printf("   10.5o:|%10.5o|\n", i);
 	ft_printf("My 10.5o:|%10.5o|\n\n", i);
 
-	// DOUBLE
-	double f = 10.0;
+/*	// DOUBLE
+	double f = 10.12457;
 	printf("\n   f:|%f|\n", f);
 	ft_printf("My f:|%f|\n\n", f);
 
+	printf("\n   -f:|%f|\n", -f);
+	ft_printf("My -f:|%f|\n\n", -f);
+
 	printf("   5f:|%5f|\n", f);
 	ft_printf("My 5f:|%5f|\n\n", f);
+
+	printf("   5-f:|%5f|\n", -f);
+	ft_printf("My 5-f:|%5f|\n\n", -f);
 
 	printf("   10f:|%10f|\n", f);
 	ft_printf("My 10f:|%10f|\n\n", f);
@@ -97,20 +109,37 @@ int main(void)
 
 	printf("    10.3f:|%10.3f|\n", f);
 	ft_printf("My  10.3f:|%10.3f|\n\n", f);
-
+*/
 	// INT ??
-	int num = 65426;
-	printf("   d:|%d|\n", num);
-	ft_printf("My d:|%d|\n\n", num);
+/*	int num1 = 65426;
 
-	printf("   2d:|%2d|\n", num);
-	ft_printf("My 2d:|%2d|\n\n", num);
+	printf("   d:|%d|\n", num1);
+	ft_printf("My d:|%d|\n\n", num1);
 
-	printf("   10d:|%10d|\n", num);
-	ft_printf("My 10d:|%10d|\n\n", num);
+	printf("   -d:|%d|\n", -num1);
+	ft_printf("My -d:|%d|\n\n", -num1);
 
-	printf("    -10d|%-10d|\n", num);
-	ft_printf(" My -10d|%-10d|\n\n", num);
+	printf("   2d:|%2d|\n", num1);
+	ft_printf("My 2d:|%2d|\n\n", num1);
+
+	printf("   10d:|%10d|\n", num1);
+	ft_printf("My 10d:|%10d|\n\n", num1);
+
+	printf("   10d:|%10.3d|\n", num1);
+	ft_printf("My 10d:|%10.3d|\n\n", num1);
+
+	printf("    -10d|%-10d|\n", num1);
+	ft_printf(" My -10d|%-10d|\n\n", num1);
+
+	// PERCENT
+	printf("   %%:|%%|\n");
+	ft_printf("My %%:|%%|\n\n");
+	printf("   10%%:|%10%|\n");
+	ft_printf("My 10%%:|%10%|\n\n");
+	printf("   10.2%%:|%10.2%|\n");
+	ft_printf("My 10.2%%:|%10.2%|\n\n");
+	printf("   -10%%:|%-10%|\n");
+	ft_printf("My -10%%:|%-10%|\n\n");
 
 	// CHAR
 	int c = 'A';
@@ -126,5 +155,24 @@ int main(void)
 	printf("    -10c|%-10c|\n", c);
 	ft_printf(" My -10c|%-10c|\n\n", c);
 
-}
+	// Unsigned INT ??
+	int num = 65426355;
+	printf("   u:|%u|\n", num);
+	ft_printf("My u:|%u|\n\n", num);
 
+	printf("   -u:|%u|\n", -num);
+	ft_printf("My -u:|%u|\n\n", -num);
+
+	printf("   2u:|%2u|\n", num);
+	ft_printf("My 2u:|%2u|\n\n", num);
+
+	printf("   10u:|%10u|\n", num);
+	ft_printf("My 10u:|%10u|\n\n", num);
+
+	printf("   10.5u:|%10.5u|\n", num);
+	ft_printf("My 10.5u:|%10.5u|\n\n", num);
+
+	printf("    -10u|%-10u|\n", num);
+	ft_printf(" My -10u|%-10u|\n\n", num);
+*/
+}

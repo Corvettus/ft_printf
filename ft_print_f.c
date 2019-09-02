@@ -38,10 +38,15 @@ char	*ft_print_f(var *s)
 	if (s->precision)
 		len++;
 	if (s->width)
-		str = ft_fil_whitespaces(str, wdth , len, s->flag);
-	str = ft_strjoin(str, s->data);
+	{
+		if (s->flag != '-')
+			s->data = ft_fil_whitespaces(s->data, wdth , len, s->flag);
+		else
+			s->data = ft_end_whitespaces(s->data, wdth , len);
+	}
+	//s->data = ft_strjoin(s->data, s->data);
 	//printf("Len :%d\n", len);
 	//printf("Precicion :%d\n", s->precision);
 	//printf("Precicion :%d\n");
-	return (str);
+	return (s->data);
 }

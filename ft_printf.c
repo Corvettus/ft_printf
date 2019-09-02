@@ -58,29 +58,33 @@ void			ft_print_result_list(result_list *res)
 	}
 }
 
-char			*ft_create_arg_string(char *str1, char flag, va_list str, var *list)
+char			*ft_create_arg_string(char *str1, char type, va_list str, var *list)
 {
 	long long int	nb;
 
-	if (flag == 'c' || flag == '%')
+	if (type == 'c' || type == '%')
 	{
-		char *f;
-		ft_putstr("OK");
-		f = va_arg(str, char*);
-		ft_putstr(f);
+		str1 = ft_strnew(1);
+		str1[0] = (char)va_arg(str, int);
+		str1[1] = '\0';
 	}
-	else if (flag == 's' || flag == 'p')
+	else if (type == 's' || type == 'p')
 		str1 = va_arg(str, char*);
-	else if (flag == 'd' || flag == 'i')
+	else if (type == 'd' || type == 'i')
 	{
 		nb = va_arg(str, int);
-		list->arg_sign = (nb) ? 1 : -1;
-		list->data = ft_ullitoa(list->arg_sign * nb);
-		str1 = list->data;
+		list->arg_sign = (nb > 0) ? 1 : -1;
+		nb = (nb > 0) ? nb : nb * (-1);
+		str1 = ft_ullitoa(nb, list->arg_sign);
 	}
-	else if (flag == 'o')
+	else if (type == 'u')
+	{
+		nb = va_arg(str, unsigned int);
+		str1 = ft_itoa(nb);
+	}
+	else if (type == 'o')
 		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
-	else if (flag == 'f')
+	else if (type == 'f')
 		str1 = ft_start_double(va_arg(str, double));
 	return (str1);
 }
@@ -90,7 +94,6 @@ char			*ft_create_list_var(const char *mas, int i,
 {
 	char	*str1;
 	var		*tmp;
-//	write(1, "OK\n", 3);
 	tmp = (var*)malloc(sizeof(var));
 	tmp->precision = 0;
 	tmp->width = 0;
@@ -128,7 +131,6 @@ char			*ft_create_list_var(const char *mas, int i,
 		tmp->data = ft_strjoin_char(tmp->data, mas[i]);
 		return (ft_controller(tmp));
 	}
-	ft_putstr(str1);
 	str1 = ft_create_arg_string(str1, tmp->type, str, list);
 	if (!(tmp->data))
 		tmp->data = str1;
@@ -188,7 +190,7 @@ int				ft_printf(const char *format, ...)
 			while (!ft_check_type(format[i]) && format[i] != '\0')
 				i++;
 			res_str->data = var_tmp->data;
-			//free_var(var_tmp)
+			free(var_tmp);
 			//ft_putchar('\n');
 			//ft_putstr(res_str->data);
 			i++;

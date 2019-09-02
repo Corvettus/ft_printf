@@ -21,7 +21,8 @@ float_struct	ft_create_double(long double n)
 //	printf("Num :%f\n", num);
 //	printf("Base :%d\n", tmp.base);
 //	printf("Mantisa :%f\n", tmp.mantisa);
-	tmp.mantisa += 0.0000005;
+	//if ((int)tmp.mantisa < tmp.mantisa)
+		tmp.mantisa += 0.0000005;
 	while(((tmp.mantisa) != (long int)(tmp.mantisa)) && tmp.mantisa_len < 6)
 		{
 			tmp.mantisa_len++;
@@ -59,8 +60,6 @@ char			*ft_start_double(long double n)
 
 	wdth = (tmp.mantisa_len) ? (tmp.mantisa_len) : 0;
 	tmp = ft_create_double(n);
-//	if (n < 0)
-//		tmp.res = ft_strjoin("-", tmp.res);
 	tmp.res = ft_strjoin(tmp.res, ft_itoa((int)tmp.num));
 	if (tmp.mantisa != 0)
 	{
