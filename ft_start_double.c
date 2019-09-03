@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_start_double.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 17:17:18 by rpoetess          #+#    #+#             */
+/*   Updated: 2019/09/03 17:17:20 by rpoetess         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <stdio.h>
 
 float_struct	ft_create_double(long double n)
 {
 	float_struct	tmp;
-	double				num;
+	double			num;
 
 	num = n;
 	tmp.power = 0;
 	tmp.mantisa = 0;
 	tmp.mantisa_len = 0;
 	tmp.res = ft_strnew(0);
-	while(num > 10)
+	while (num > 10)
 	{
 		num = num / 10;
 		tmp.power++;
@@ -26,7 +38,7 @@ float_struct	ft_create_double(long double n)
 	while(((tmp.mantisa) != (long int)(tmp.mantisa)) && tmp.mantisa_len < 6)
 		{
 			tmp.mantisa_len++;
-			tmp.mantisa *= 10;	
+			tmp.mantisa *= 10;
 //			printf("%f\n", tmp.mantisa);
 		}
 //	printf("Mantisa Len :%d\n", tmp.mantisa_len);
@@ -39,18 +51,6 @@ float_struct	ft_create_double(long double n)
 	}
 	return (tmp);
 }
-
-/*char			*ft_ftoa(float_struct tmp)
-{
-	char			*res;
-	size_t			buf;
-	int				i;
-
-	i = 0;
-	res = ft_strnew(0);
-	//res = ft_strjoin(res, tmp.power);
-	return (res);
-}*/
 
 char			*ft_start_double(long double n)
 {
@@ -66,9 +66,8 @@ char			*ft_start_double(long double n)
 		tmp.res = ft_strjoin(tmp.res, ".");
 		if (ft_strlen(ft_itoa((int)tmp.mantisa)) < tmp.mantisa_len)
 			while (ft_strlen(ft_itoa((int)tmp.mantisa)) < tmp.mantisa_len--)
-					tmp.res = ft_strjoin(tmp.res, "0");
+				tmp.res = ft_strjoin(tmp.res, "0");
 		tmp.res = ft_strjoin(tmp.res, ft_itoa((int)tmp.mantisa));
 	}
-	//ft_putstr(tmp.res);
 	return (tmp.res);
 }

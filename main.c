@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
-
-int main(void)
+int	main(void)
 {
 
 
-/*	// STRING
+	// STRING
 	printf("   5s|%5s|\n", "this is a test");
 	ft_printf("My 5s|%5s|\n\n", "this is a test");
 
@@ -37,7 +36,7 @@ int main(void)
 	printf("   -5.6s|%-5.6s|\n", NULL);
 	ft_printf("My -5.6s|%-5.6s|\n\n", NULL);
 
-*/
+
 	// 8 
 	int i = 1234324;
 	printf("     |%d|\n\n", i);
@@ -84,7 +83,7 @@ int main(void)
 	printf("   10.5o:|%10.5o|\n", i);
 	ft_printf("My 10.5o:|%10.5o|\n\n", i);
 
-/*	// DOUBLE
+	// DOUBLE
 	double f = 10.12457;
 	printf("\n   f:|%f|\n", f);
 	ft_printf("My f:|%f|\n\n", f);
@@ -109,9 +108,9 @@ int main(void)
 
 	printf("    10.3f:|%10.3f|\n", f);
 	ft_printf("My  10.3f:|%10.3f|\n\n", f);
-*/
+
 	// INT ??
-/*	int num1 = 65426;
+	int num1 = 65426;
 
 	printf("   d:|%d|\n", num1);
 	ft_printf("My d:|%d|\n\n", num1);
@@ -174,5 +173,12 @@ int main(void)
 
 	printf("    -10u|%-10u|\n", num);
 	ft_printf(" My -10u|%-10u|\n\n", num);
-*/
+/*
+	long int num = 65426355;
+	printf("   u:|%li|\n", num);
+	ft_printf("My u:|%Li|\n\n", num);
+
+	printf("   -u:|%ld|\n", -num);
+	ft_printf("My -u:|%ld|\n\n", -num);
+	*/
 }

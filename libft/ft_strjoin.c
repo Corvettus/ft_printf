@@ -25,28 +25,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!(res = (char*)malloc(buf * sizeof(char))))
 		return (0);
 	i = 0;
-	//write(1, "zdes'", 5);
-	//ft_putstr(s1);
 	while (s1[i] != '\0')
 	{
 		res[i] = s1[i];
-		//ft_putchar(s1[i]);
 		i++;
 	}
-	//ft_putchar('\n');
-	//ft_putstr(res);
-	//ft_putchar('!');
 	j = 0;
 	while (s2[j] != '\0')
-	{
-		res[i] = s2[j];
-		//ft_putchar(s2[i]);
-		i++;
-		j++;
-	}
+		res[i++] = s2[j++];
 	res[i] = 0;
-	//ft_putchar('\n');
-	//ft_putstr(res);
-	//ft_putchar('\n');
 	return (res);
 }

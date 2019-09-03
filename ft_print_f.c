@@ -19,7 +19,7 @@ char	*ft_print_f(var *s)
 	int		wdth;
 	int		len;
 	int		i;
-// Нужно обработать исключение, когда мантисса = 0 или близка к 0.
+
 	i = 0;
 	len = 0;
 	wdth = (s->width) ? s->width : 0;
@@ -32,7 +32,7 @@ char	*ft_print_f(var *s)
 		s->precision = 0;
 	if (s->precision > 0)
 	{
-		s->data = ft_crop_str(s->data, len , s->precision + i + 1);
+		s->data = ft_crop_str(s->data, len, s->precision + i + 1);
 		len = (len > s->precision) ? s->precision + i : len;
 	}
 	if (s->precision)
@@ -40,13 +40,9 @@ char	*ft_print_f(var *s)
 	if (s->width)
 	{
 		if (s->flag != '-')
-			s->data = ft_fil_whitespaces(s->data, wdth , len, s->flag);
+			s->data = ft_fil_whitespaces(s->data, wdth, len, s->flag);
 		else
-			s->data = ft_end_whitespaces(s->data, wdth , len);
+			s->data = ft_end_whitespaces(s->data, wdth, len);
 	}
-	//s->data = ft_strjoin(s->data, s->data);
-	//printf("Len :%d\n", len);
-	//printf("Precicion :%d\n", s->precision);
-	//printf("Precicion :%d\n");
 	return (s->data);
 }

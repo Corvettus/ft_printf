@@ -17,20 +17,7 @@
 #include <stdio.h>  //del
 #include <string.h> //del
 */
-#include <stdio.h>
 #include "ft_printf.h"
-
-int				ft_check_type(char type)
-{
-	if (type == 'c' || type == 'd' || type == 'i' ||
-		type == 'e' || type == 'E' || type == 'f' ||
-		type == 'g' || type == 'G' || type == 'o' ||
-		type == 's' || type == 'u' || type == 'x' ||
-		type == 'X' || type == 'p' || type == 'n' ||
-		type == '%')
-		return (1);
-	return (0);
-}
 
 char			*ft_strjoin_char(char *str, char end)
 {
@@ -72,69 +59,18 @@ char			*ft_create_arg_string(char *str1, char type, va_list str, var *list)
 		str1 = va_arg(str, char*);
 	else if (type == 'd' || type == 'i')
 	{
-		nb = va_arg(str, int);
+		nb = va_arg(str, unsigned long long int);
 		list->arg_sign = (nb > 0) ? 1 : -1;
 		nb = (nb > 0) ? nb : nb * (-1);
 		str1 = ft_ullitoa(nb, list->arg_sign);
 	}
 	else if (type == 'u')
-	{
-		nb = va_arg(str, unsigned int);
-		str1 = ft_itoa(nb);
-	}
+		str1 = ft_itoa(va_arg(str, unsigned int));
 	else if (type == 'o')
 		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
 	else if (type == 'f')
 		str1 = ft_start_double(va_arg(str, double));
 	return (str1);
-}
-
-char			*ft_create_list_var(const char *mas, int i,
-					va_list str, var *list)
-{
-	char	*str1;
-	var		*tmp;
-	tmp = (var*)malloc(sizeof(var));
-	tmp->precision = 0;
-	tmp->width = 0;
-	tmp->data = 0;
-	tmp->arg_sign = 1;
-	tmp->flag = '?';
-	if (mas[i] == '-' || mas[i] == '+' || mas[i] == ' '
-		|| mas[i] == '#' || mas[i] == '0')
-		tmp->flag = mas[i++];
-	if (mas[i] > '0' && mas[i] <= '9')
-	{
-		while (mas[i] >= '0' && mas[i] <= '9')
-			tmp->width = tmp->width * 10 + mas[i++] - '0';
-	}
-		else if (mas[i] == '*')
-			tmp->width = mas[i++];
-	if (mas[i] == '.')
-	{
-		if ((mas[++i] > '0' && mas[i] <= '9'))
-			while (mas[i] >= '0' && mas[i] <= '9')
-				tmp->precision = tmp->precision * 10 + mas[i++] - '0';
-		else if (mas[i] == '*')
-			tmp->precision = -1;
-		else if (ft_check_type(mas[i++]))
-			tmp->precision = 0;
-		else
-			exit(0);
-	}
-	if (!ft_check_type(mas[i]) && mas[i] != '\0')
-		exit(0);
-	tmp->type = mas[i];
-	if (mas[i] == '%')
-	{
-		tmp->data = ft_strnew(1);
-		tmp->data = ft_strjoin_char(tmp->data, mas[i]);
-		return (ft_controller(tmp));
-	}
-	str1 = ft_create_arg_string(str1, tmp->type, str, list);
-	if (!(tmp->data))
-		tmp->data = str1;
-	return (ft_controller(tmp));
 }
 
 result_list		*ft_create_list_result()
@@ -156,15 +92,11 @@ int				ft_printf(const char *format, ...)
 	result_list	*res_str;
 	result_list	*res_head;
 	result_list	*res_tmp;
-	//var			*var_str;
-	//var			*var_head;
 	var			*var_tmp;
 
 	i = 0;
-	//var_str = (var*)malloc(sizeof(var));
 	res_str = (result_list*)malloc(sizeof(result_list));
 	res_head = res_str;
-	//var_head = var_str;
 	va_start(str, format);
 	while (format[i] != '\0')
 	{
@@ -191,8 +123,6 @@ int				ft_printf(const char *format, ...)
 				i++;
 			res_str->data = var_tmp->data;
 			free(var_tmp);
-			//ft_putchar('\n');
-			//ft_putstr(res_str->data);
 			i++;
 		}
 		res_str->next = 0;

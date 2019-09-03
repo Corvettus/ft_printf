@@ -1,13 +1,20 @@
 #include "ft_printf.h"
+//#define MAX_UINT unsigned int  4294967295
 
-int     ft_convert108(int nmb)
+unsigned int	ft_convert108(long long int nmb)
 {
-	int tmp;
-	int a;
+	unsigned int	tmp;
+	unsigned int	a;
+	int				sign;
 
 	a = 0;
 	tmp = 0;
-	while (nmb > 7)
+	sign = 1;
+	if (nmb < 0)
+	{
+		nmb = UINT_MAX + nmb;
+	}
+	while ((unsigned int)nmb > 7)
 	{
 		a = nmb % 8;
 		nmb = nmb / 8;
@@ -21,12 +28,6 @@ int     ft_convert108(int nmb)
 		tmp = tmp / 10;
 		nmb = nmb * 10 + a;
 	}
-    nmb = nmb * 10 + tmp;
-    return (nmb);
+	nmb = nmb * 10 + tmp;
+	return (nmb);
 }
-/*
-unsigned long long int ft_converter()
-{
-
-}
-*/

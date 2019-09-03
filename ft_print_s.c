@@ -23,8 +23,9 @@ char	*ft_fil_whitespaces(char *str, int wdth, int len, char space)
 		while (wdth - len > i++)
 			str = ft_strjoin(" ", str);
 	}
-	else 
-	{	while (wdth - len > i++)
+	else
+	{
+		while (wdth - len > i++)
 			str = ft_strjoin("0", str);
 	}
 	return (str);
@@ -51,48 +52,35 @@ char	*ft_crop_str(char *str, int len, int crop)
 		tmp = ft_strnew(crop);
 		tmp = ft_strncpy(tmp, str, crop);
 	}
-	//free(str);
 	str = tmp;
 	return (str);
 }
-//нужно сделать поддержку "*" , "-" и фришки.
+
 char	*ft_print_s(var *s)
 {
 	char	*str;
 	int		wdth;
 	int		len;
 
-	len = 0;
 	wdth = (s->width) ? s->width : 0;
 	if (!(s->data))
 		s->data = "(null)";
 	len = ft_strlen(s->data);
-	/*printf("Wdth  :%d\n", wdth);
-	printf("width  :%d\n", s->width);
-	printf("precision  :%d\n", s->precision);
-	printf("len  :%d\n", len);*/
-
-	if (s->precision >= len && s->flag != '0')
+	if (s->precision >= len)
 		s->precision = 0;
-	if (s->flag == '0')
-		wdth = s->precision;
 	if (!(str = ft_strnew(wdth)))
 		return (0);
-	if (s->precision > 0)
+	if (s->precision)
 	{
 		s->data = ft_crop_str(s->data, len, s->precision);
 		len = (len > s->precision) ? s->precision : len;
 	}
-
 	if (s->width)
 	{
 		if (s->flag != '-')
 			s->data = ft_fil_whitespaces(s->data, wdth, len, s->flag);
 		else if (s->flag == '-')
-		{
 			s->data = ft_end_whitespaces(s->data, wdth, len);
-			//str = ft_rev_str(str);
-		}
 	}
 	str = ft_strjoin(str, s->data);
 	return (str);

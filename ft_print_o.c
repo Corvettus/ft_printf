@@ -1,10 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_o.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 16:39:28 by rpoetess          #+#    #+#             */
+/*   Updated: 2019/09/03 16:39:30 by rpoetess         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-char    *ft_print_o(var *s)
+char	*ft_print_o(var *tmp)
 {
-	char*   str;
+	char	*res;
 
-
-	str = s->data;
-	return (str);
+	if (tmp->width < tmp->precision)
+		tmp->width = tmp->precision;
+	if (tmp->flag == '?' && ft_strlen(tmp->data) < tmp->precision)
+		tmp->flag = '0';
+	tmp->precision = 0;
+	res = ft_print_s(tmp);
+	return (res);
 }

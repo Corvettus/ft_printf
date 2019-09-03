@@ -14,6 +14,8 @@ SRC = ft_printf.c \
 		ft_toa.c \
 		ft_convert_108.c \
 		ft_start_double.c \
+		ft_check.c \
+		ft_ntlstn.c \
 		main.c
 
 OBJ = $(SRC:.c=.o)

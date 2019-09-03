@@ -12,12 +12,11 @@
 
 #include "ft_printf.h"
 
-char	*ft_print_d(var *s)
+char	*ft_print_d(var *tmp)
 {
-	char	*str;
+	char	*res;
 
-	//str = ft_strnew(0);
-	str = s->data;
-	//ft_putstr(str);
-	return (str);
+	tmp->precision = 0;
+	res = ft_print_s(tmp);
+	return (res);
 }

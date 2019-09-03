@@ -10,12 +10,15 @@
 #include <float.h>
 #include <stdint.h>
 
+
 typedef struct var
 {
 	int						width;
 	int						precision;
 	int						arg_sign;
 	char					flag;
+	char					size1;
+	char					size2;
 	char					type;
 	char*					data;
 } var;
@@ -62,13 +65,16 @@ char	*ft_print_f(var *s);
 char	*ft_print_pc(var *s);
 
 char	*ft_controller(var *tmp);
-
-int		ft_check_flags(char format);
+char	*ft_create_list_var(const char *mas, int i,
+			va_list str, var *list);
+char			*ft_create_arg_string(char *str1, char type, va_list str, var *list);
+int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
-int		ft_convert108(int nmb);
+unsigned int		ft_convert108(long long int nmb);
 char	*ft_start_double(long double n);
 char	*ft_fil_whitespaces(char *str, int wdth, int len, char space);
 char	*ft_end_whitespaces(char *str, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
+var		*ft_ntlstn_var(var *tmp);
 
 #endif
