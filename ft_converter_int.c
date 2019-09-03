@@ -1,15 +1,19 @@
 #include "ft_printf.h"
 
-void	ft_ulli_to_size(var *s, unsigned long long int num)
+char	ft_ulli_to_size(unsigned long long int num, char size1, char size2)
 {
-	unsigned long long int  remainder;
-	size_t                  i;
-
-	i = 0;
-	while (num != 0)
+	if (size1 == 'l')
 	{
-		remainder = num % 10;
-		s->data[i++] = '0' + remainder;
-		num = num / 10;
+		if (size2 == 'l')
+			num = (int long long)num;
+		else
+			num = (int long)num;
+	}
+	else if(size1 == 'h')
+	{
+		if (size2 == 'h')
+			num = (unsigned int)num;
+		else
+			num = (short int)num;
 	}
 }

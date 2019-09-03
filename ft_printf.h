@@ -10,8 +10,7 @@
 #include <float.h>
 #include <stdint.h>
 
-
-typedef struct var
+typedef struct	var
 {
 	int						width;
 	int						precision;
@@ -23,7 +22,7 @@ typedef struct var
 	char*					data;
 } var;
 
-typedef struct result_list
+typedef struct	result_list
 {
 	struct result_list*		next;
 	char*					data;
@@ -38,19 +37,19 @@ typedef struct float_struct
 	int						base;
 	int						power;
 	char					*res;
-} float_struct;
+}float_struct;
 
-int     ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
-char    *ft_print_c(var *s);
+char	*ft_print_c(var *s);
 
-char    *ft_print_s(var *s);
+char	*ft_print_s(var *s);
 
-char    *ft_print_p(var *s);
+char	*ft_print_p(var *s);
 
 char	*ft_print_pc(var *s);
 
-char    *ft_ullitoa(unsigned long long int n, int arg_sign);
+char	*ft_ullitoa(unsigned long long int n, int arg_sign);
 
 char	*ft_print_d(var *s);
 
@@ -67,7 +66,7 @@ char	*ft_print_pc(var *s);
 char	*ft_controller(var *tmp);
 char	*ft_create_list_var(const char *mas, int i,
 			va_list str, var *list);
-char			*ft_create_arg_string(char *str1, char type, va_list str, var *list);
+char	*ft_create_arg_string(char *str1, var *tmp, va_list str, var *list);
 int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
 unsigned int		ft_convert108(long long int nmb);
@@ -75,6 +74,12 @@ char	*ft_start_double(long double n);
 char	*ft_fil_whitespaces(char *str, int wdth, int len, char space);
 char	*ft_end_whitespaces(char *str, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
-var		*ft_ntlstn_var(var *tmp);
+var				*ft_ntlstn_var(var *tmp);
+void			ft_ulli_to_size(unsigned long long int num, char size);
+result_list		*ft_ifprecent(result_list *res_str,
+					const char *format, va_list str, int *i);
+result_list		*ft_ifnopercent(result_list *res_str,
+					result_list *res_tmp, const char *format, int *i);
+var		*ft_ifseedot(var *tmp, int *i, const char *mas);
 
 #endif

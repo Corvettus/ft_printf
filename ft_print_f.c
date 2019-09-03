@@ -21,7 +21,6 @@ char	*ft_print_f(var *s)
 	int		i;
 
 	i = 0;
-	len = 0;
 	wdth = (s->width) ? s->width : 0;
 	len = ft_strlen(s->data);
 	while (s->data[i] != '.')
@@ -35,14 +34,10 @@ char	*ft_print_f(var *s)
 		s->data = ft_crop_str(s->data, len, s->precision + i + 1);
 		len = (len > s->precision) ? s->precision + i : len;
 	}
-	if (s->precision)
-		len++;
+	len = (s->precision) ? ++len : len;
 	if (s->width)
-	{
-		if (s->flag != '-')
-			s->data = ft_fil_whitespaces(s->data, wdth, len, s->flag);
-		else
-			s->data = ft_end_whitespaces(s->data, wdth, len);
-	}
+		s->data = (s->flag != '-') ?
+			ft_fil_whitespaces(s->data, wdth, len, s->flag) :
+			ft_end_whitespaces(s->data, wdth, len);
 	return (s->data);
 }

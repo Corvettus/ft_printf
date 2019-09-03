@@ -20,6 +20,8 @@ var				*ft_ntlstn_var(var *tmp)
 	tmp->data = 0;
 	tmp->arg_sign = 1;
 	tmp->flag = '?';
+	tmp->size1 = 0;
+	tmp->size2 = 0;
 	return (tmp);
 }
 
@@ -38,25 +40,15 @@ char			*ft_create_list_var(const char *mas, int i,
 		while (mas[i] >= '0' && mas[i] <= '9')
 			tmp->width = tmp->width * 10 + mas[i++] - '0';
 	}
-		else if (mas[i] == '*')
-			tmp->width = mas[i++];
+	else if (mas[i] == '*')
+		tmp->width = mas[i++];
 	if (mas[i] == '.')
-	{
-		if ((mas[++i] > '0' && mas[i] <= '9'))
-			while (mas[i] >= '0' && mas[i] <= '9')
-				tmp->precision = tmp->precision * 10 + mas[i++] - '0';
-		else if (mas[i] == '*')
-			tmp->precision = -1;
-		else if (ft_check_type(mas[i++]))
-			tmp->precision = 0;
-		else
-			exit(0);
-	}
+		tmp = ft_ifseedot(tmp, &i, mas);
 	if (mas[i] == 'L')
 		tmp->size1 = mas[i++];
-	else 
+	else
 	{
-		if (mas[i] == 'h' || mas[i] == 'l' )
+		if (mas[i] == 'h' || mas[i] == 'l')
 			tmp->size1 = mas[i++];
 		if (mas[i] == 'h' || mas[i] == 'l')
 			tmp->size2 = mas[i++];
@@ -70,8 +62,22 @@ char			*ft_create_list_var(const char *mas, int i,
 		tmp->data = ft_strjoin_char(tmp->data, mas[i]);
 		return (ft_controller(tmp));
 	}
-	str1 = ft_create_arg_string(str1, tmp->type, str, list);
+	str1 = ft_create_arg_string(str1, tmp, str, list);
 	if (!(tmp->data))
 		tmp->data = str1;
 	return (ft_controller(tmp));
+}
+
+var				*ft_ifseedot(var *tmp, int *i, const char *mas)
+{
+	if ((mas[++(*i)] > '0' && mas[*i] <= '9'))
+		while (mas[*i] >= '0' && mas[*i] <= '9')
+			tmp->precision = tmp->precision * 10 + mas[(*i)++] - '0';
+	else if (mas[*i] == '*')
+		tmp->precision = -1;
+	else if (ft_check_type(mas[(*i)++]))
+		tmp->precision = 0;
+	else
+		exit(0);
+	return (tmp);
 }
