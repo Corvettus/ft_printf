@@ -57,7 +57,7 @@ char	*ft_print_o(var *s);
 
 char	*ft_print_u(var *s);
 
-char	*ft_print_X(var *s);
+char	*ft_print_x(var *s);
 
 char	*ft_print_f(var *s);
 

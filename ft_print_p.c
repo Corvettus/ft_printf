@@ -103,7 +103,6 @@ char    *ft_print_p(var *s)
 	return (str);
 }
 
-
 void	ft_supoctalsminus(t_spec *s, t_ran *ran)
 {
 	if (s->minus == 0 && s->precision == 0)

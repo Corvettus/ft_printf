@@ -31,7 +31,7 @@ char	*ft_controller(var *tmp)
 	else if (tmp->type == 'u')
 		res = ft_print_u(tmp);
 	else if (tmp->type == 'x' || tmp->type == 'X')
-		res = ft_print_X(tmp);
+		res = ft_print_x(tmp);
 	if (tmp->type == 'f')
 		res = ft_print_f(tmp);
 	return (res);
