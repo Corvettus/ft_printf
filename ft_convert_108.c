@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-//#define MAX_UINT unsigned int  4294967295
 
 unsigned int	ft_convert108(long long int nmb)
 {

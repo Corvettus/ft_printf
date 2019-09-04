@@ -3,8 +3,6 @@
 
 int	main(void)
 {
-
-
 	// STRING
 	printf("   5s|%5s|\n", "this is a test");
 	ft_printf("My 5s|%5s|\n\n", "this is a test");
@@ -36,6 +34,11 @@ int	main(void)
 	printf("   -5.6s|%-5.6s|\n", NULL);
 	ft_printf("My -5.6s|%-5.6s|\n\n", NULL);
 
+	printf("   5.15s|%5.15s|\n", NULL);
+	ft_printf("My 5.15s|%5.15s|\n\n", NULL);
+
+	printf("   -5.16s|%-5.16s|\n", NULL);
+	ft_printf("My -5.16s|%-5.16s|\n\n", NULL);
 
 	// 8 
 	int i = 1234324;
@@ -84,7 +87,7 @@ int	main(void)
 	ft_printf("My 10.5o:|%10.5o|\n\n", i);
 
 	// DOUBLE
-	double f = 10.12457;
+	double f = 1023.2345;
 	printf("\n   f:|%f|\n", f);
 	ft_printf("My f:|%f|\n\n", f);
 
@@ -173,12 +176,17 @@ int	main(void)
 
 	printf("    -10u|%-10u|\n", num);
 	ft_printf(" My -10u|%-10u|\n\n", num);
-/*
-	long int num = 65426355;
+
+
+/*	long int num = 65426355;
 	printf("   u:|%li|\n", num);
-	ft_printf("My u:|%Li|\n\n", num);
+	ft_printf("My u:|%li|\n\n", num);
 
 	printf("   -u:|%ld|\n", -num);
 	ft_printf("My -u:|%ld|\n\n", -num);
-	*/
+*/
+	// POINT 
+	char d1[4]="abc";
+	printf ("   p|%p|\n",d1);
+	ft_printf("My p|%p|\n\n", d1);
 }

@@ -19,15 +19,11 @@ char	*ft_fil_whitespaces(char *str, int wdth, int len, char space)
 
 	i = 0;
 	if (space != '0')
-	{
 		while (wdth - len > i++)
 			str = ft_strjoin(" ", str);
-	}
 	else
-	{
 		while (wdth - len > i++)
 			str = ft_strjoin("0", str);
-	}
 	return (str);
 }
 
@@ -63,11 +59,9 @@ char	*ft_print_s(var *s)
 	int		len;
 
 	wdth = (s->width) ? s->width : 0;
-	if (!(s->data))
-		s->data = "(null)";
+	s->data = (!(s->data)) ? "(null)" : s->data;
 	len = ft_strlen(s->data);
-	if (s->precision >= len)
-		s->precision = 0;
+	s->precision = (s->precision >= len) ? 0 : s->precision;
 	if (!(str = ft_strnew(wdth)))
 		return (0);
 	if (s->precision)

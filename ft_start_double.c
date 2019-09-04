@@ -13,14 +13,26 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-float_struct	ft_create_double(long double n)
+float			ft_power(float nb, int power)
 {
-	float_struct	tmp;
-	double			num;
+	float	s;
+
+	s = nb;
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	while (power-- > 1)
+		nb = s * nb;
+	return (nb);
+}
+
+float_struct	ft_create_double_list(float_struct tmp, long double n)
+{
+	long double		num;
 
 	num = n;
-	tmp.power = 0;
-	tmp.mantisa = 0;
+	tmp.power = 1;
 	tmp.mantisa_len = 0;
 	tmp.res = ft_strnew(0);
 	while (num > 10)
@@ -30,19 +42,22 @@ float_struct	ft_create_double(long double n)
 	}
 	tmp.base = num;
 	tmp.mantisa = n - (long double)(long int)n;
-//	printf("Num :%f\n", num);
-//	printf("Base :%d\n", tmp.base);
-//	printf("Mantisa :%f\n", tmp.mantisa);
-	//if ((int)tmp.mantisa < tmp.mantisa)
-		tmp.mantisa += 0.0000005;
-	while(((tmp.mantisa) != (long int)(tmp.mantisa)) && tmp.mantisa_len < 6)
-		{
-			tmp.mantisa_len++;
-			tmp.mantisa *= 10;
-//			printf("%f\n", tmp.mantisa);
-		}
-//	printf("Mantisa Len :%d\n", tmp.mantisa_len);
-//	printf("Mantisa :%f\n", tmp.mantisa);
+	return (tmp);
+}
+
+float_struct	ft_create_double(long double n, int precision)
+{
+	float_struct	tmp;
+
+	tmp = ft_create_double_list(tmp, n);
+	precision = (precision > 6) ? 6 : precision;
+	if (precision > 0)
+		tmp.mantisa += 0.5 * ft_power(0.1, precision);
+	while (tmp.mantisa_len < 6)
+	{
+		tmp.mantisa_len++;
+		tmp.mantisa *= 10;
+	}
 	tmp.num = n;
 	if (n < 0)
 	{
@@ -52,14 +67,14 @@ float_struct	ft_create_double(long double n)
 	return (tmp);
 }
 
-char			*ft_start_double(long double n)
+char			*ft_start_double(long double n, int precision)
 {
 	float_struct	tmp;
 	int				len;
 	int				wdth;
 
 	wdth = (tmp.mantisa_len) ? (tmp.mantisa_len) : 0;
-	tmp = ft_create_double(n);
+	tmp = ft_create_double(n, precision);
 	tmp.res = ft_strjoin(tmp.res, ft_itoa((int)tmp.num));
 	if (tmp.mantisa != 0)
 	{

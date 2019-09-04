@@ -70,16 +70,17 @@ char	*ft_create_arg_string(char *str1, var *tmp, va_list str, var *list);
 int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
 unsigned int		ft_convert108(long long int nmb);
-char	*ft_start_double(long double n);
+char	*ft_start_double(long double n, int precision);
 char	*ft_fil_whitespaces(char *str, int wdth, int len, char space);
 char	*ft_end_whitespaces(char *str, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
-var				*ft_ntlstn_var(var *tmp);
-void			ft_ulli_to_size(unsigned long long int num, char size);
+var		*ft_ntlstn_var(var *tmp);
+char	ft_ulli_to_size(unsigned long long int num, char size1, char size2);
 result_list		*ft_ifprecent(result_list *res_str,
 					const char *format, va_list str, int *i);
 result_list		*ft_ifnopercent(result_list *res_str,
 					result_list *res_tmp, const char *format, int *i);
 var		*ft_ifseedot(var *tmp, int *i, const char *mas);
+var		*ft_srchflgs(var *tmp, int *i, const char *mas);
 
 #endif

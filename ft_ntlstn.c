@@ -31,28 +31,7 @@ char			*ft_create_list_var(const char *mas, int i,
 	char	*str1;
 	var		*tmp;
 
-	tmp = ft_ntlstn_var(tmp);
-	if (mas[i] == '-' || mas[i] == '+' || mas[i] == ' '
-		|| mas[i] == '#' || mas[i] == '0')
-		tmp->flag = mas[i++];
-	if (mas[i] > '0' && mas[i] <= '9')
-	{
-		while (mas[i] >= '0' && mas[i] <= '9')
-			tmp->width = tmp->width * 10 + mas[i++] - '0';
-	}
-	else if (mas[i] == '*')
-		tmp->width = mas[i++];
-	if (mas[i] == '.')
-		tmp = ft_ifseedot(tmp, &i, mas);
-	if (mas[i] == 'L')
-		tmp->size1 = mas[i++];
-	else
-	{
-		if (mas[i] == 'h' || mas[i] == 'l')
-			tmp->size1 = mas[i++];
-		if (mas[i] == 'h' || mas[i] == 'l')
-			tmp->size2 = mas[i++];
-	}
+	tmp = ft_srchflgs(tmp, &i, mas);
 	if (!ft_check_type(mas[i]) && mas[i] != '\0')
 		exit(0);
 	tmp->type = mas[i];
@@ -66,6 +45,33 @@ char			*ft_create_list_var(const char *mas, int i,
 	if (!(tmp->data))
 		tmp->data = str1;
 	return (ft_controller(tmp));
+}
+
+var				*ft_srchflgs(var *tmp, int *i, const char *mas)
+{
+	tmp = ft_ntlstn_var(tmp);
+	if (mas[*i] == '-' || mas[*i] == '+' || mas[*i] == ' '
+		|| mas[*i] == '#' || mas[*i] == '0')
+		tmp->flag = mas[(*i)++];
+	if (mas[*i] > '0' && mas[*i] <= '9')
+	{
+		while (mas[*i] >= '0' && mas[*i] <= '9')
+			tmp->width = tmp->width * 10 + mas[(*i)++] - '0';
+	}
+	else if (mas[*i] == '*')
+		tmp->width = mas[*i++];
+	if (mas[*i] == '.')
+		tmp = ft_ifseedot(tmp, i, mas);
+	if (mas[*i] == 'L')
+		tmp->size1 = mas[(*i)++];
+	else
+	{
+		if (mas[*i] == 'h' || mas[*i] == 'l')
+			tmp->size1 = mas[*i++];
+		if (mas[*i] == 'h' || mas[*i] == 'l')
+			tmp->size2 = mas[(*i)++];
+	}
+	return (tmp);
 }
 
 var				*ft_ifseedot(var *tmp, int *i, const char *mas)
