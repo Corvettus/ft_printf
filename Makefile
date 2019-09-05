@@ -17,7 +17,9 @@ SRC = ft_printf.c \
 		ft_check.c \
 		ft_ntlstn.c \
 		ft_strjoin_char.c \
-		main.c
+		main.c \
+
+FLS = -Wall -Werror -Wextra
 
 OBJ = $(SRC:.c=.o)
 
@@ -25,14 +27,17 @@ all: $(NAME)
 
 $(NAME):
 	make -C libft
-	gcc -g $(SRC) -I libft -L libft/ -lft -o $(NAME)
+	gcc -c $(FLS) $(SRC) -I libft
+	@cp libft/libft.a ./$(NAME)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 clean:
 	make clean -C libft
-	rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
 	make fclean -C libft
-	rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 	
 re: fclean all

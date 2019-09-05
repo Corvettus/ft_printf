@@ -14,7 +14,5 @@
 
 char	*ft_print_x(var *s)
 {
-	char	*str;
-
-	return (str);
+	return (s->data);
 }

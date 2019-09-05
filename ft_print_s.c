@@ -43,6 +43,7 @@ char	*ft_crop_str(char *str, int len, int crop)
 {
 	char	*tmp;
 
+	tmp = 0;
 	if (len > crop)
 	{
 		tmp = ft_strnew(crop);

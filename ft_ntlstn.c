@@ -14,7 +14,6 @@
 
 var				*ft_ntlstn_var(var *tmp)
 {
-	tmp = (var*)malloc(sizeof(var));
 	tmp->precision = 0;
 	tmp->width = 0;
 	tmp->data = 0;
@@ -31,6 +30,8 @@ char			*ft_create_list_var(const char *mas, int i,
 	char	*str1;
 	var		*tmp;
 
+	str1 = 0;
+	tmp = (var*)malloc(sizeof(var));
 	tmp = ft_srchflgs(tmp, &i, mas);
 	if (!ft_check_type(mas[i]) && mas[i] != '\0')
 		exit(0);

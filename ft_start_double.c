@@ -49,6 +49,7 @@ float_struct	ft_create_double(long double n, int precision)
 {
 	float_struct	tmp;
 
+	tmp.mantisa_len = 0;
 	tmp = ft_create_double_list(tmp, n);
 	precision = (precision > 6) ? 6 : precision;
 	if (precision > 0)
@@ -70,7 +71,6 @@ float_struct	ft_create_double(long double n, int precision)
 char			*ft_start_double(long double n, int precision)
 {
 	float_struct	tmp;
-	int				len;
 	int				wdth;
 
 	wdth = (tmp.mantisa_len) ? (tmp.mantisa_len) : 0;
@@ -79,8 +79,8 @@ char			*ft_start_double(long double n, int precision)
 	if (tmp.mantisa != 0)
 	{
 		tmp.res = ft_strjoin(tmp.res, ".");
-		if (ft_strlen(ft_itoa((int)tmp.mantisa)) < tmp.mantisa_len)
-			while (ft_strlen(ft_itoa((int)tmp.mantisa)) < tmp.mantisa_len--)
+		if ((int)ft_strlen(ft_itoa((int)tmp.mantisa)) < tmp.mantisa_len)
+			while ((int)ft_strlen(ft_itoa((int)tmp.mantisa)) < tmp.mantisa_len--)
 				tmp.res = ft_strjoin(tmp.res, "0");
 		tmp.res = ft_strjoin(tmp.res, ft_itoa((int)tmp.mantisa));
 	}

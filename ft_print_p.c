@@ -14,7 +14,7 @@
 
 char	*ft_print_p(var *s)
 {
-	return (0);
+	return (s->data);
 }
 /*
 void	ft_supzerox(t_spec *s, t_ran *ran)

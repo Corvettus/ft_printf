@@ -18,7 +18,7 @@ char	*ft_print_o(var *tmp)
 
 	if (tmp->width < tmp->precision)
 		tmp->width = tmp->precision;
-	if (tmp->flag == '?' && ft_strlen(tmp->data) < tmp->precision)
+	if (tmp->flag == '?' && (int)ft_strlen(tmp->data) < tmp->precision)
 		tmp->flag = '0';
 	tmp->precision = 0;
 	res = ft_print_s(tmp);

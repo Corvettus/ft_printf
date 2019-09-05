@@ -12,13 +12,16 @@
 
 #include "ft_printf.h"
 
-void			ft_print_result_list(result_list *res)
+int			ft_print_result_list(result_list *res, int i)
 {
+	i = 0;
 	while (res)
 	{
 		ft_putstr(res->data);
+			i = ft_strlen(res->data);
 		res = res->next;
 	}
+	return (i);
 }
 
 char			*ft_create_arg_string(char *str1, var *tmp,
@@ -89,6 +92,7 @@ int				ft_printf(const char *format, ...)
 	result_list	*res_tmp;
 
 	i = 0;
+	res_tmp = (result_list*)malloc(sizeof(result_list));
 	res_str = (result_list*)malloc(sizeof(result_list));
 	res_head = res_str;
 	va_start(str, format);
@@ -104,8 +108,9 @@ int				ft_printf(const char *format, ...)
 		}
 		res_str->next = 0;
 	}
-	ft_print_result_list(res_head->next);
+	i = ft_print_result_list(res_head->next, i);
 	free(res_str);
+	free(res_tmp);
 	va_end(str);
-	return (i + 1);
+	return (i);
 }
