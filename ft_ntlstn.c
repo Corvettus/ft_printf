@@ -25,7 +25,7 @@ var				*ft_ntlstn_var(var *tmp)
 }
 
 char			*ft_create_list_var(const char *mas, int i,
-					va_list str, var *list)
+					va_list str)
 {
 	char	*str1;
 	var		*tmp;
@@ -42,7 +42,7 @@ char			*ft_create_list_var(const char *mas, int i,
 		tmp->data = ft_strjoin_char(tmp->data, mas[i]);
 		return (ft_controller(tmp));
 	}
-	str1 = ft_create_arg_string(str1, tmp, str, list);
+	str1 = ft_create_arg_string(str1, tmp, str);
 	if (!(tmp->data))
 		tmp->data = str1;
 	return (ft_controller(tmp));

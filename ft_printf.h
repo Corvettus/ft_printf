@@ -60,8 +60,8 @@ char	*ft_print_pc(var *s);
 
 char	*ft_controller(var *tmp);
 char	*ft_create_list_var(const char *mas, int i,
-			va_list str, var *list);
-char	*ft_create_arg_string(char *str1, var *tmp, va_list str, var *list);
+			va_list str);
+char	*ft_create_arg_string(char *str1, var *tmp, va_list str);
 int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
 unsigned int		ft_convert108(long long int nmb);

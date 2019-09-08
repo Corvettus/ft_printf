@@ -19,9 +19,9 @@ char	*ft_print_d(var *tmp)
 	if ((int)ft_strlen(tmp->data) < tmp->precision)
 		while ((int)ft_strlen(tmp->data) < tmp->precision && tmp->precision < tmp->width)
 			tmp->data = ft_strjoin("0", tmp->data);
-	if (tmp->flag2 == '+')
+	if ((tmp->flag2 == '+') && (tmp->arg_sign > 0))
 		tmp->data = ft_strjoin("+", tmp->data);
-	else if (tmp->flag == '+')
+	else if ((tmp->flag == '+') && (tmp->arg_sign > 0))
 		tmp->data = ft_strjoin("+", tmp->data);
 	tmp->precision = 0;
 	res = ft_print_s(tmp);
