@@ -51,9 +51,19 @@ char			*ft_create_list_var(const char *mas, int i,
 var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 {
 	tmp = ft_ntlstn_var(tmp);
+	while (mas[*i] == ' ')
+		{
+			tmp->width++;
+			(*i)++;
+		}
 	if (mas[*i] == '-' || mas[*i] == '+' || mas[*i] == ' '
 		|| mas[*i] == '#' || mas[*i] == '0')
 		tmp->flag = mas[(*i)++];
+	if (mas[*i] == '+')
+	{
+		tmp->flag2 = '+';
+		(*i)++;
+	}
 	if (mas[*i] > '0' && mas[*i] <= '9')
 	{
 		while (mas[*i] >= '0' && mas[*i] <= '9')

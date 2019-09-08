@@ -90,25 +90,36 @@ int				ft_printf(const char *format, ...)
 	result_list	*res_str;
 	result_list	*res_head;
 	result_list	*res_tmp;
+	char		*res;
 
 	i = 0;
+	res = ft_strnew(0);
 	res_tmp = (result_list*)malloc(sizeof(result_list));
 	res_str = (result_list*)malloc(sizeof(result_list));
 	res_head = res_str;
 	va_start(str, format);
 	while (format[i] != '\0')
 	{
-		res_str = (format[i] != '%' && format[i] != '\0') ?
-					ft_ifnopercent(res_str, res_tmp, format, &i) : res_str;
+		res_str->data = 0;
+		if (format[i] != '%' && format[i] != '\0')
+		{
+			res_str = ft_ifnopercent(res_str, res_tmp, format, &i);
+			if (res_str->data)
+				res = ft_strjoin(res, res_str->data);
+		}
 		if (format[i] == '%')
 		{
 			res_str->next = (result_list*)malloc(sizeof(res_str));
 			res_str = res_str->next;
 			res_str = ft_ifprecent(res_str, format, str, &i);
+			if (res_str->data > 0)
+				res = ft_strjoin(res, res_str->data);
 		}
 		res_str->next = 0;
 	}
-	i = ft_print_result_list(res_head->next, i);
+	//i = ft_print_result_list(res_head->next, i);
+	ft_putstr(res);
+	i = ft_strlen(res);
 	free(res_str);
 	free(res_tmp);
 	va_end(str);
