@@ -23,12 +23,6 @@ typedef struct	var
 	char*					data;
 } var;
 
-typedef struct	result_list
-{
-	struct result_list*		next;
-	char*					data;
-} result_list;
-
 typedef struct float_struct
 {
 	float					num;
@@ -77,10 +71,9 @@ char	*ft_end_whitespaces(char *str, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
 var		*ft_ntlstn_var(var *tmp);
 char	ft_ulli_to_size(unsigned long long int num, char size1, char size2);
-result_list		*ft_ifprecent(result_list *res_str,
+char		*ft_ifprecent(char *res_str,
 					const char *format, va_list str, int *i);
-result_list		*ft_ifnopercent(result_list *res_str,
-					result_list *res_tmp, const char *format, int *i);
+char		*ft_ifnopercent(char *res_str, const char *format, int *i);
 var		*ft_ifseedot(var *tmp, int *i, const char *mas);
 var		*ft_srchflgs(var *tmp, int *i, const char *mas);
 void	ft_i(var *s, int num);
