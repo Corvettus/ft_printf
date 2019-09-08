@@ -50,7 +50,7 @@ char	*ft_print_p(var *s);
 
 char	*ft_print_pc(var *s);
 
-char	*ft_ullitoa(unsigned long long int n, int arg_sign);
+char	*ft_llitoa(long long int n, int arg_sign);
 
 char	*ft_print_d(var *s);
 

@@ -42,7 +42,7 @@ char			*ft_create_arg_string(char *str1, var *tmp,
 		nb = (va_arg(str, unsigned long long int));
 		list->arg_sign = (nb > 0) ? 1 : -1;
 		nb = (nb > 0) ? nb : nb * (-1);
-		str1 = ft_ullitoa(nb, list->arg_sign);
+		str1 = ft_llitoa(nb, list->arg_sign);
 	}
 	else if (tmp->type == 'u')
 		str1 = ft_itoa(va_arg(str, unsigned int));

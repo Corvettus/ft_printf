@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	puting_ulli_to_a(unsigned long long int n, char **res, size_t buf)
+static void	puting_ulli_to_a(long long int n, char **res, size_t buf)
 {
 	while (n)
 	{
@@ -21,10 +21,10 @@ static void	puting_ulli_to_a(unsigned long long int n, char **res, size_t buf)
 	}
 }
 
-char		*ft_ullitoa(unsigned long long int n, int arg_sign)
+char		*ft_llitoa(long long int n, int arg_sign)
 {
 	char					*res;
-	unsigned long long int	k;
+	long long int			k;
 	size_t					buf;
 
 	buf = 1;
