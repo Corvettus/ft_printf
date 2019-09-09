@@ -64,23 +64,18 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 {
 	tmp = ft_ntlstn_var(tmp);
 	while (mas[*i] == ' ')
-		{
-			tmp->width++;
-			(*i)++;
-		}
+	{
+		tmp->width++;
+		(*i)++;
+	}
 	if (mas[*i] == '-' || mas[*i] == '+' || mas[*i] == ' '
 		|| mas[*i] == '#' || mas[*i] == '0')
 		tmp->flag = mas[(*i)++];
 	if (mas[*i] == '+')
-	{
-		tmp->flag2 = '+';
-		(*i)++;
-	}
+		tmp->flag2 = mas[(*i)++];
 	if (mas[*i] > '0' && mas[*i] <= '9')
-	{
 		while (mas[*i] >= '0' && mas[*i] <= '9')
 			tmp->width = tmp->width * 10 + mas[(*i)++] - '0';
-	}
 	else if (mas[*i] == '*')
 		tmp->width = mas[*i++];
 	if (mas[*i] == '.')

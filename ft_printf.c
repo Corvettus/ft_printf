@@ -22,11 +22,13 @@ char			*ft_create_arg_string(char *str1, var *tmp,
 	else if (tmp->type == 'd' || tmp->type == 'i')
 		str1 = ft_get_d(str1, tmp, str);
 	else if (tmp->type == 'u')
-		str1 = ft_itoa(va_arg(str, unsigned int));
+		str1 = ft_get_u(str1, tmp, str);
 	else if (tmp->type == 'o')
 		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
 	else if (tmp->type == 'f')
 		str1 = ft_get_f(str1, tmp, str);
+	else if (tmp->type == 'x')
+		str1 = ft_get_x(str1, tmp, str);
 	return (str1);
 }
 

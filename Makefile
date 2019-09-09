@@ -20,6 +20,8 @@ SRC = ft_printf.c \
 		ft_get_d.c \
 		ft_get_f.c \
 		ft_get_c.c \
+		ft_get_u.c \
+		ft_get_x.c \
 		test.c \
 		main.c \
 

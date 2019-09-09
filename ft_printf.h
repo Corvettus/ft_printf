@@ -23,7 +23,7 @@ typedef struct	var
 	char*					data;
 } var;
 
-typedef struct float_struct
+typedef struct	float_struct
 {
 	float					num;
 	float					mantisa;
@@ -32,7 +32,7 @@ typedef struct float_struct
 	int						base;
 	int						power;
 	char					*res;
-}float_struct;
+}	float_struct;
 
 int		ft_printf(const char *format, ...);
 char	*ft_print_c(var *s);
@@ -108,5 +108,7 @@ char	*ft_create_xi(char *s, unsigned int n, int sz);
 char	*ft_get_d(char *str1, var *tmp, va_list str);
 char	*ft_get_f(char *str1, var *tmp, va_list str);
 char	*ft_get_c(char *str1, var *tmp, va_list str);
+char	*ft_get_u(char *str1, var *tmp, va_list str);
+char	*ft_get_x(char *str1, var *tmp, va_list str);
 
 #endif
