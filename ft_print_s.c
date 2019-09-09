@@ -62,6 +62,8 @@ char	*ft_print_s(var *s)
 	wdth = (s->width) ? s->width : 0;
 	s->data = (!(s->data)) ? "(null)" : s->data;
 	len = ft_strlen(s->data);
+	if (s->arg_sign == -1)
+		len--;
 	s->precision = (s->precision >= len) ? 0 : s->precision;
 	if (!(str = ft_strnew(wdth)))
 		return (0);
@@ -77,6 +79,8 @@ char	*ft_print_s(var *s)
 		else if (s->flag == '-')
 			s->data = ft_end_whitespaces(s->data, wdth, len);
 	}
+	if (s->arg_sign == -1)
+		s->data = ft_strjoin("-", s->data);
 	str = ft_strjoin(str, s->data);
 	return (str);
 }

@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-unsigned int	ft_convert108(long long int nmb)
+uintmax_t	ft_convert108(intmax_t nmb)
 {
-	unsigned int	tmp;
-	unsigned int	a;
+	intmax_t	tmp;
+	intmax_t	a;
 	int				sign;
 
 	a = 0;
@@ -25,7 +25,7 @@ unsigned int	ft_convert108(long long int nmb)
 	{
 		nmb = UINT_MAX + nmb;
 	}
-	while ((unsigned int)nmb > 7)
+	while ((uintmax_t)nmb > 7)
 	{
 		a = nmb % 8;
 		nmb = nmb / 8;

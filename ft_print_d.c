@@ -23,7 +23,7 @@ char	*ft_print_d(var *tmp)
 		tmp->data = ft_strjoin("+", tmp->data);
 	else if ((tmp->flag == '+') && (tmp->arg_sign > 0))
 		tmp->data = ft_strjoin("+", tmp->data);
-	tmp->precision = 0;
+		tmp->precision = 0;
 	res = ft_print_s(tmp);
 	return (res);
 }

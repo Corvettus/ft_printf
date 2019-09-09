@@ -15,29 +15,18 @@
 char			*ft_create_arg_string(char *str1, var *tmp,
 								va_list str)
 {
-	long long int	nb;
-
 	if (tmp->type == 'c' || tmp->type == '%')
-	{
-		str1 = ft_strnew(1);
-		str1[0] = (char)va_arg(str, int);
-		str1[1] = '\0';
-	}
+		str1 = ft_get_c(str1, tmp, str);
 	else if (tmp->type == 's' || tmp->type == 'p')
 		str1 = va_arg(str, char*);
 	else if (tmp->type == 'd' || tmp->type == 'i')
-	{
-		nb = (va_arg(str, unsigned long long int));
-		tmp->arg_sign = (nb < 0 && tmp->arg_sign != 0) ? -1 : tmp->arg_sign;
-		nb = (nb > 0) ? nb : nb * (-1);
-		str1 = ft_llitoa(nb, tmp->arg_sign);
-	}
+		str1 = ft_get_d(str1, tmp, str);
 	else if (tmp->type == 'u')
 		str1 = ft_itoa(va_arg(str, unsigned int));
 	else if (tmp->type == 'o')
 		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
 	else if (tmp->type == 'f')
-		str1 = ft_start_double(va_arg(str, double), tmp->precision);
+		str1 = ft_get_f(str1, tmp, str);
 	return (str1);
 }
 
