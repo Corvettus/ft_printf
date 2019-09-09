@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
+
 int	main(void)
 {
 	// STRING
@@ -177,6 +178,8 @@ int	main(void)
 	printf("    -10u|%-10u|\n", num);
 	ft_printf(" My -10u|%-10u|\n\n", num);
 
+	printf("   5f:|%5f|\n", f);
+	ft_printf("My 5f:|%5llf|\n\n", f);
 
 /*	long int num = 65426355;
 	printf("   u:|%li|\n", num);
@@ -185,8 +188,15 @@ int	main(void)
 	printf("   -u:|%ld|\n", -num);
 	ft_printf("My -u:|%ld|\n\n", -num);
 */
-	// POINT 
+/*	// POINT 
 	char d1[4]="abc";
 	printf ("   p|%p|\n",d1);
 	ft_printf("My p|%p|\n\n", d1);
+*/
+/*	char *str;
+	
+	str = 0;
+	printf( "%x\n", 120);
+	printf( "%s", ft_create_xi(str, 120, 0));
+*/
 }

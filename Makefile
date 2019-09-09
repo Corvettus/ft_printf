@@ -17,6 +17,10 @@ SRC = ft_printf.c \
 		ft_check.c \
 		ft_ntlstn.c \
 		ft_strjoin_char.c \
+		ft_get_d.c \
+		ft_get_f.c \
+		ft_get_c.c \
+		test.c \
 		main.c \
 
 FLS = -Wall -Werror -Wextra

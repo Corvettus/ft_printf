@@ -35,45 +35,32 @@ typedef struct float_struct
 }float_struct;
 
 int		ft_printf(const char *format, ...);
-
 char	*ft_print_c(var *s);
-
 char	*ft_print_s(var *s);
-
 char	*ft_print_p(var *s);
-
 char	*ft_print_pc(var *s);
-
-char	*ft_llitoa(long long int n, int arg_sign);
-
+char	*ft_llitoa(long long int n, var *tmp);
 char	*ft_print_d(var *s);
-
 char	*ft_print_o(var *s);
-
 char	*ft_print_u(var *s);
-
 char	*ft_print_x(var *s);
-
 char	*ft_print_f(var *s);
-
 char	*ft_print_pc(var *s);
-
 char	*ft_controller(var *tmp);
-char	*ft_create_list_var(const char *mas, int i,
-			va_list str);
+char	*ft_create_list_var(const char *mas, int i, va_list str);
 char	*ft_create_arg_string(char *str1, var *tmp, va_list str);
 int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
-unsigned int		ft_convert108(long long int nmb);
+uintmax_t	ft_convert108(intmax_t nmb);
 char	*ft_start_double(long double n, int precision);
 char	*ft_fil_whitespaces(char *str, int wdth, int len, char space);
 char	*ft_end_whitespaces(char *str, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
 var		*ft_ntlstn_var(var *tmp);
 char	ft_ulli_to_size(unsigned long long int num, char size1, char size2);
-char		*ft_ifprecent(char *res_str,
+char	*ft_ifprecent(char *res_str,
 					const char *format, va_list str, int *i);
-char		*ft_ifnopercent(char *res_str, const char *format, int *i);
+char	*ft_ifnopercent(char *res_str, const char *format, int *i);
 var		*ft_ifseedot(var *tmp, int *i, const char *mas);
 var		*ft_srchflgs(var *tmp, int *i, const char *mas);
 void	ft_i(var *s, int num);
@@ -96,26 +83,30 @@ void	ft_osi(var *s, unsigned short int num);
 void	ft_oc(var *s, unsigned char num);
 void	ft_oli(var *s, unsigned long int num);
 void	ft_olli(var *s, unsigned long long int num);
-void    ft_create_i(var *s, int n);
-void    ft_create_si(var *s, short int n);
-void    ft_create_c(var *s, char n);
-void    ft_create_li(var *s, long int n);
-void    ft_create_lli(var *s, long long int n);
-void    ft_create_ui(var *s, unsigned int n);
-void    ft_create_usi(var *s, unsigned short int n);
-void    ft_create_uc(var *s, unsigned char n);
-void    ft_create_uli(var *s, unsigned long int n);
-void    ft_create_ulli(var *s, unsigned long long int n);
-void    ft_create_xui(var *s, unsigned int n);
-void    ft_create_xui(var *s, unsigned int n);
-void    ft_create_xusi(var *s, unsigned short int n);
-void    ft_create_xuc(var *s, unsigned char n);
-void    ft_create_xuli(var *s, unsigned long int n);
-void    ft_create_xulli(var *s, unsigned long long int n);
-void    ft_create_oi(var *s, unsigned int n);
-void    ft_create_osi(var *s, unsigned short int n);
-void    ft_create_oc(var *s, unsigned char n);
-void    ft_create_oli(var *s, unsigned long int n);
-void    ft_create_olli(var *s, unsigned long long int n);
+void	ft_create_i(var *s, int n);
+void	ft_create_si(var *s, short int n);
+void	ft_create_c(var *s, char n);
+void	ft_create_li(var *s, long int n);
+void	ft_create_lli(var *s, long long int n);
+void	ft_create_ui(var *s, unsigned int n);
+void	ft_create_usi(var *s, unsigned short int n);
+void	ft_create_uc(var *s, unsigned char n);
+void	ft_create_uli(var *s, unsigned long int n);
+void	ft_create_ulli(var *s, unsigned long long int n);
+void	ft_create_xui(var *s, unsigned int n);
+void	ft_create_xui(var *s, unsigned int n);
+void	ft_create_xusi(var *s, unsigned short int n);
+void	ft_create_xuc(var *s, unsigned char n);
+void	ft_create_xuli(var *s, unsigned long int n);
+void	ft_create_xulli(var *s, unsigned long long int n);
+void	ft_create_oi(var *s, unsigned int n);
+void	ft_create_osi(var *s, unsigned short int n);
+void	ft_create_oc(var *s, unsigned char n);
+void	ft_create_oli(var *s, unsigned long int n);
+void	ft_create_olli(var *s, unsigned long long int n);
+char	*ft_create_xi(char *s, unsigned int n, int sz);
+char	*ft_get_d(char *str1, var *tmp, va_list str);
+char	*ft_get_f(char *str1, var *tmp, va_list str);
+char	*ft_get_c(char *str1, var *tmp, va_list str);
 
 #endif

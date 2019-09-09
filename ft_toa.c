@@ -21,14 +21,16 @@ static void	puting_ulli_to_a(long long int n, char **res, size_t buf)
 	}
 }
 
-char		*ft_llitoa(long long int n, int arg_sign)
+char		*ft_llitoa(long long int nb, var *tmp)
 {
 	char					*res;
 	long long int			k;
 	size_t					buf;
 
+	tmp->arg_sign = (nb < 0) ? -1 : 1;
+	nb = (nb > 0) ? nb : nb * (-1);
 	buf = 1;
-	k = n;
+	k = nb;
 	while (k)
 	{
 		buf++;
@@ -37,8 +39,6 @@ char		*ft_llitoa(long long int n, int arg_sign)
 	if (!(res = (char*)malloc(buf * sizeof(char))))
 		return (0);
 	res[--buf] = 0;
-	puting_ulli_to_a(n, &res, buf);
-	if (arg_sign == -1)
-		res = ft_strjoin("-", res);
+	puting_ulli_to_a(nb, &res, buf);
 	return (res);
 }

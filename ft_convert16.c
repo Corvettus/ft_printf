@@ -1,7 +1,6 @@
 #include "ft_printf.h"
 
-void	ft_xui(var *s, unsigned long long int num,
-	int sz)
+void	ft_xui(var *s,  int num, int sz)
 {
 	unsigned int	remainder;
 	unsigned int	localnum;
