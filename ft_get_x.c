@@ -6,10 +6,8 @@ char	*ft_llxtoa(var *s, unsigned long long int n)
 	size_t					buf;
 
 	k = n;
-	if (n == 0)
-		buf = 1;
-	else
-		buf = 0;
+
+	buf = (!k ? 1 : 0);
 	while (k)
 	{
 		buf++;
@@ -47,3 +45,4 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 	str1 = ft_llxtoa(tmp, nb);
 	return (str1);
 }
+
