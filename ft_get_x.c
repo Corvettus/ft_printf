@@ -1,22 +1,30 @@
 #include "ft_printf.h"
 
-char	*ft_llxtoa(unsigned long long int n)
+char	*ft_llxtoa(var *s, unsigned long long int n)
 {
 	char					*res;
 	unsigned long long int	k;
 	size_t					buf;
 
-	buf = 1;
 	k = n;
+	!k ? buf = 1 : buf = 0;
 	while (k)
 	{
 		buf++;
 		k /= 16;
 	}
-	if (!(res = (char*)malloc(buf * sizeof(char))))
+	if (!(res = ft_strnew((size_t)buf)))
 		return (0);
 	res[--buf] = 0;
-	ft_xulli(n, &res, buf);
+	if (s->size1 == 'h')
+	{
+		if (s->size2 == 'h')
+			ft_xi(s, n, ++buf);
+		else
+			ft_xsi(s, n, ++buf);
+	}
+	else
+		ft_xlli(s, n, ++buf);
 	return (res);
 }
 
@@ -34,6 +42,6 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 	}
 	else
 		nb = va_arg(str, unsigned long long int);
-	str1 = ft_llxtoa(nb);
+	str1 = ft_llxtoa(tmp, nb);
 	return (str1);
 }
