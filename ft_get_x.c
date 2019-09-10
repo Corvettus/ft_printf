@@ -41,7 +41,7 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 			nb = (unsigned short int)va_arg(str, unsigned int);
 	}
 	else
-		nb = va_arg(str, unsigned long long int);
+		nb = (unsigned long long int)va_arg(str, unsigned long long int);
 	str1 = ft_llxtoa(tmp, nb);
 	return (str1);
 }
