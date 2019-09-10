@@ -6,16 +6,18 @@ char	*ft_llxtoa(var *s, unsigned long long int n)
 	unsigned long long int	k;
 	size_t					buf;
 
-	k = n;
-	!k ? buf = 1 : buf = 0;
+	if (k = n)
+		buf = 0;
+	else
+		buf = 1;
 	while (k)
 	{
 		buf++;
 		k /= 16;
 	}
-	if (!(res = ft_strnew((size_t)buf)))
+	if (!(s->data = ft_strnew((size_t)buf)))
 		return (0);
-	res[--buf] = 0;
+	s->data[buf] = 0;
 	if (s->size1 == 'h')
 	{
 		if (s->size2 == 'h')
