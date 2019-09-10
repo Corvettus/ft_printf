@@ -33,8 +33,8 @@ char			*ft_create_list_var(const char *mas, int i,
 	str1 = 0;
 	tmp = (var*)malloc(sizeof(var));
 	tmp = ft_srchflgs(tmp, &i, mas);
-	if (!ft_check_type(mas[i]) && mas[i] != '\0')
-		exit(0);
+	/*if (!ft_check_type(mas[i]) && mas[i] != '\0')
+		exit(0);*/
 	tmp->type = mas[i];
 	if (mas[i] == '%')
 	{
@@ -50,7 +50,7 @@ char			*ft_create_list_var(const char *mas, int i,
 
 var				*ft_ifseedot(var *tmp, int *i, const char *mas)
 {
-	if ((mas[++(*i)] > '0' && mas[*i] <= '9'))
+	if ((mas[++(*i)] >= '0' && mas[*i] <= '9'))
 		while (mas[*i] >= '0' && mas[*i] <= '9')
 			tmp->precision = tmp->precision * 10 + mas[(*i)++] - '0';
 	else if (mas[*i] == '*')
@@ -64,26 +64,25 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 {
 	tmp = ft_ntlstn_var(tmp);
 	while (mas[*i] == ' ')
-	{
-		tmp->width++;
-		(*i)++;
-	}
+		tmp->flag = mas[(*i)++];
 	if (mas[*i] == '-' || mas[*i] == '+' || mas[*i] == ' '
 		|| mas[*i] == '#' || mas[*i] == '0')
 		tmp->flag = mas[(*i)++];
-	if (mas[*i] == '+')
+	if ((mas[*i] == '+' || mas[*i] == ' '))
 		tmp->flag2 = mas[(*i)++];
-	if (mas[*i] > '0' && mas[*i] <= '9')
+	if (mas[*i] == ' ')
+		(*i)++;
+	if (mas[*i] >= '0' && mas[*i] <= '9')
 		while (mas[*i] >= '0' && mas[*i] <= '9')
 			tmp->width = tmp->width * 10 + mas[(*i)++] - '0';
 	else if (mas[*i] == '*')
 		tmp->width = mas[*i++];
 	if (mas[*i] == '.')
 		tmp = ft_ifseedot(tmp, i, mas);
-	if (mas[*i] == 'h' || mas[*i] == 'l' || mas[(*i)] == 'L')
+	if (mas[*i] == 'h' || mas[*i] == 'l' || mas[(*i)] == 'L' || mas[*i] == 'j' || mas[*i] == 'z')
 	{
 		tmp->size1 = mas[(*i)++];
-		if ((mas[*i] == 'h' || mas[*i] == 'l') && tmp->size1 != 'L')
+		if ((mas[*i] == 'h' || mas[*i] == 'l') && tmp->size1 != 'L' && tmp->size1 != 'j' && tmp->size1 != 'z')
 			tmp->size2 = mas[(*i)++];
 	}
 	return (tmp);

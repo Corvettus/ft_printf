@@ -23,7 +23,7 @@ void	ft_osi(var *s, unsigned short int num)
 	while (num != 0)
 	{
 		remainder = num % 8;
-		s->data[j++] = '0' + remainder;
+		s->data[i++] = '0' + remainder;
 		num = num / 8;
 	}
 }
@@ -37,7 +37,7 @@ void	ft_oc(var *s, unsigned char num)
 	while (num != 0)
 	{
 		remainder = num % 8;
-		s->data[j++] = '0' + remainder;
+		s->data[i++] = '0' + remainder;
 		num = num / 8;
 	}
 }
@@ -51,7 +51,7 @@ void	ft_oli(var *s, unsigned long int num)
 	while (num != 0)
 	{
 		remainder = num % 8;
-		s->data[j++] = '0' + remainder;
+		s->data[i++] = '0' + remainder;
 		num = num / 8;
 	}
 }

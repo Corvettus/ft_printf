@@ -11,7 +11,8 @@ SRC = ft_printf.c \
 		ft_print_f.c \
 		ft_print_pc.c \
 		ft_controller.c \
-		ft_toa.c \
+		ft_llitoa.c \
+		ft_ullitoa.c \
 		ft_convert_108.c \
 		ft_start_double.c \
 		ft_check.c \
@@ -21,7 +22,9 @@ SRC = ft_printf.c \
 		ft_get_f.c \
 		ft_get_c.c \
 		ft_get_u.c \
+		ft_get_o.c \
 		ft_get_x.c \
+		ft_convert16.c \
 		test.c \
 		main.c \
 

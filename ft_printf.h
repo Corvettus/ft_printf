@@ -40,6 +40,7 @@ char	*ft_print_s(var *s);
 char	*ft_print_p(var *s);
 char	*ft_print_pc(var *s);
 char	*ft_llitoa(long long int n, var *tmp);
+char	*ft_ullitoa(long long int nb, var *tmp);
 char	*ft_print_d(var *s);
 char	*ft_print_o(var *s);
 char	*ft_print_u(var *s);
@@ -53,7 +54,7 @@ int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
 uintmax_t	ft_convert108(intmax_t nmb);
 char	*ft_start_double(long double n, int precision);
-char	*ft_fil_whitespaces(char *str, int wdth, int len, char space);
+char	*ft_fil_whitespaces(var *s, int wdth, int len);
 char	*ft_end_whitespaces(char *str, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
 var		*ft_ntlstn_var(var *tmp);
@@ -110,5 +111,9 @@ char	*ft_get_f(char *str1, var *tmp, va_list str);
 char	*ft_get_c(char *str1, var *tmp, va_list str);
 char	*ft_get_u(char *str1, var *tmp, va_list str);
 char	*ft_get_x(char *str1, var *tmp, va_list str);
+char	*ft_get_o(char *str1, var *tmp, va_list str);
+void	ft_xsi(var *s, unsigned long long int num, int w);
+void	ft_xc(var *s, unsigned long long int num, int w);
+void	ft_xlli(var *s, unsigned long long int num, int w);
 
 #endif

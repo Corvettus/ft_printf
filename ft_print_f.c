@@ -37,7 +37,7 @@ char	*ft_print_f(var *s)
 	len = (s->precision) ? ++len : len;
 	if (s->width)
 		s->data = (s->flag != '-') ?
-			ft_fil_whitespaces(s->data, wdth, len, s->flag) :
+			ft_fil_whitespaces(s, wdth, len) :
 			ft_end_whitespaces(s->data, wdth, len);
 	return (s->data);
 }

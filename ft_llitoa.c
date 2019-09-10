@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	puting_ulli_to_a(long long int n, char **res, size_t buf)
+static void	ft_puting_lli_to_a(long long int n, char **res, size_t buf)
 {
 	while (n)
 	{
@@ -27,6 +27,8 @@ char		*ft_llitoa(long long int nb, var *tmp)
 	long long int			k;
 	size_t					buf;
 
+	if (nb == 0)
+		return ("0");
 	tmp->arg_sign = (nb < 0) ? -1 : 1;
 	nb = (nb > 0) ? nb : nb * (-1);
 	buf = 1;
@@ -39,6 +41,6 @@ char		*ft_llitoa(long long int nb, var *tmp)
 	if (!(res = (char*)malloc(buf * sizeof(char))))
 		return (0);
 	res[--buf] = 0;
-	puting_ulli_to_a(nb, &res, buf);
+	ft_puting_lli_to_a(nb, &res, buf);
 	return (res);
 }

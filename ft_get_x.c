@@ -2,14 +2,14 @@
 
 char	*ft_llxtoa(var *s, unsigned long long int n)
 {
-	char					*res;
 	unsigned long long int	k;
 	size_t					buf;
 
-	if (k = n)
-		buf = 0;
-	else
+	k = n;
+	if (n == 0)
 		buf = 1;
+	else
+		buf = 0;
 	while (k)
 	{
 		buf++;
@@ -21,13 +21,13 @@ char	*ft_llxtoa(var *s, unsigned long long int n)
 	if (s->size1 == 'h')
 	{
 		if (s->size2 == 'h')
-			ft_xi(s, n, ++buf);
+			ft_xc(s, n, ++buf);
 		else
 			ft_xsi(s, n, ++buf);
 	}
 	else
 		ft_xlli(s, n, ++buf);
-	return (res);
+	return (s->data);
 }
 
 char	*ft_get_x(char *str1, var *tmp, va_list str)

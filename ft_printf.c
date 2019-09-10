@@ -24,7 +24,7 @@ char			*ft_create_arg_string(char *str1, var *tmp,
 	else if (tmp->type == 'u')
 		str1 = ft_get_u(str1, tmp, str);
 	else if (tmp->type == 'o')
-		str1 = ft_itoa(ft_convert108(va_arg(str, int)));
+		str1 = ft_get_o(str1, tmp, str);
 	else if (tmp->type == 'f')
 		str1 = ft_get_f(str1, tmp, str);
 	else if (tmp->type == 'x')

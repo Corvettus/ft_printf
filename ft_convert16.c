@@ -40,7 +40,6 @@ void	ft_xc(var *s, unsigned long long int num, int w)
 			s->data[--w] = 'A' - 10 + remainder;
 		localnum = localnum / 16;
 	}
-	
 }
 
 void	ft_xlli(var *s, unsigned long long int num, int w)

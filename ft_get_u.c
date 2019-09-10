@@ -33,6 +33,6 @@ char	*ft_get_u(char *str1, var *tmp, va_list str)
 	}
 	else
 		nb = va_arg(str, unsigned int);
-	str1 = ft_itoa(nb);
+	str1 = ft_llitoa(nb, tmp);
 	return (str1);
 }

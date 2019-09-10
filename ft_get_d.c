@@ -14,7 +14,7 @@
 
 char	*ft_get_d(char *str1, var *tmp, va_list str)
 {
-	intmax_t	nb;
+	size_t	nb;
 
 	nb = 0;
 	if (tmp->size1 == 'l')
@@ -31,6 +31,10 @@ char	*ft_get_d(char *str1, var *tmp, va_list str)
 		else
 			nb = (short int)va_arg(str, int);
 	}
+	else if (tmp->size1 == 'j')
+			nb = va_arg(str, intmax_t);
+	else if (tmp->size1 == 'z')
+			nb = va_arg(str, size_t);
 	else
 		nb = va_arg(str, int);
 	str1 = ft_llitoa(nb, tmp);

@@ -4,7 +4,7 @@
 
 int	main(void)
 {
-	// STRING
+/*	// STRING
 	printf("   5s|%5s|\n", "this is a test");
 	ft_printf("My 5s|%5s|\n\n", "this is a test");
 
@@ -180,7 +180,7 @@ int	main(void)
 
 	printf("   5f:|%5f|\n", f);
 	ft_printf("My 5f:|%5llf|\n\n", f);
-
+*/
 /*	long int num = 65426355;
 	printf("   u:|%li|\n", num);
 	ft_printf("My u:|%li|\n\n", num);
@@ -199,4 +199,26 @@ int	main(void)
 	printf( "%x\n", 120);
 	printf( "%s", ft_create_xi(str, 120, 0));
 */
+//	printf("%x", 42);
+//	ft_printf("%lu\n", -42);
+//	printf("%lu\n", -42);
+//	ft_printf("%ju\n", 4999999999);
+//	ft_printf("|%  +d|\n", 42);
+	//printf("%  +d\n", 42);
+
+/*	unsigned int a = -1;
+	printf("%u\n", a);
+	ft_printf("%u\n", a);*/
+/*	printf("%lu\n", a);
+	ft_printf("%lu\n", a);
+	printf("%llu\n", a);
+	ft_printf("%llu\n", a);
+	printf("%hu\n", a);
+	ft_printf("%hu\n", a);
+	printf("%hhu\n", a);
+	ft_printf("%hhu\n", a);*/
+//	ft_printf("% ++d", 42);
+//	printf("% ++d", 42);
+	printf("%d\n", 0);
+	ft_printf("%d\n", 0);
 }

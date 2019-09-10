@@ -20,10 +20,16 @@ char	*ft_print_d(var *tmp)
 		while ((int)ft_strlen(tmp->data) < tmp->precision && tmp->precision < tmp->width)
 			tmp->data = ft_strjoin("0", tmp->data);
 	if ((tmp->flag2 == '+') && (tmp->arg_sign > 0))
+		tmp->width -= 2;
+	else if ((tmp->flag2 == ' ') && (tmp->arg_sign > 0) && tmp->flag != '+')
+		tmp->data = ft_strjoin(" ", tmp->data);
+	else if ((tmp->flag == '+') && (tmp->arg_sign > 0) && tmp->flag2 != '+')
 		tmp->data = ft_strjoin("+", tmp->data);
-	else if ((tmp->flag == '+') && (tmp->arg_sign > 0))
-		tmp->data = ft_strjoin("+", tmp->data);
-		tmp->precision = 0;
+	tmp->precision = 0;
+	if (tmp->flag == ' ' && tmp->arg_sign > 0)
+		tmp->data = ft_strjoin(" ", tmp->data);
 	res = ft_print_s(tmp);
+	if ((tmp->flag2 == '+') && (tmp->arg_sign > 0))
+		res = ft_strjoin("+", res);
 	return (res);
 }
