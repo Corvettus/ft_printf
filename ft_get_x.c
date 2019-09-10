@@ -2,14 +2,11 @@
 
 char	*ft_llxtoa(var *s, unsigned long long int n)
 {
-	char					*res;
 	unsigned long long int	k;
 	size_t					buf;
 
-	if (k = n)
-		buf = 0;
-	else
-		buf = 1;
+	k = n;
+	buf = (!k ? 1 : 0);
 	while (k)
 	{
 		buf++;
@@ -27,7 +24,7 @@ char	*ft_llxtoa(var *s, unsigned long long int n)
 	}
 	else
 		ft_xlli(s, n, ++buf);
-	return (res);
+	return (s->data);
 }
 
 char	*ft_get_x(char *str1, var *tmp, va_list str)
@@ -44,6 +41,6 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 	}
 	else
 		nb = (unsigned long long int)va_arg(str, unsigned long long int);
-	str1 = ft_llxtoa(tmp, nb);
-	return (str1);
+	//str1 = ft_llxtoa(tmp, nb);
+	return (ft_llxtoa(tmp, nb));
 }
