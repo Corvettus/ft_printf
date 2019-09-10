@@ -77,8 +77,6 @@ char	*ft_print_s(var *s)
 		else if (s->flag == '-')
 			s->data = ft_end_whitespaces(s->data, wdth, len);
 	}
-	if (s->arg_sign == -1)
-		s->data = ft_strjoin("-", s->data);
 	str = ft_strjoin(str, s->data);
 	return (str);
 }
