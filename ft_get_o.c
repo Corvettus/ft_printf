@@ -21,6 +21,6 @@ char	*ft_get_o(char *str1, var *tmp, va_list str)
 	}
 	else
 		nb = va_arg(str, int);
-	str1 = ft_llitoa(ft_convert108(nb), tmp);
+	str1 = ft_itoa_base(nb, 8, tmp->type);
 	return (str1);
 }

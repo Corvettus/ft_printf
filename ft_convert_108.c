@@ -12,33 +12,75 @@
 
 #include "ft_printf.h"
 
-uintmax_t	ft_convert108(intmax_t nmb)
+/*long long int	*ft_convert108(intmax_t nmb)
 {
-	intmax_t	tmp;
-	intmax_t	a;
-	int				sign;
+	intmax_t		n;
+	intmax_t		len;
+	long long		*res;
+	intmax_t		i;
 
-	a = 0;
-	tmp = 0;
-	sign = 1;
+	i = 0;
+	n = nmb;
+	len = 0;	
+	res = ft_strnew(len);
 	if (nmb < 0)
-	{
 		nmb = UINT_MAX + nmb;
-	}
-	while ((uintmax_t)nmb > 7)
 	{
-		a = nmb % 8;
-		nmb = nmb / 8;
-		tmp = tmp * 10 + a;
+		n = n / 8;
+		len++;
+		res = n + nmb % 8;
 	}
-	tmp = tmp * 10 + nmb;
-	nmb = 0;
-	while (tmp > 9)
+	return (res);
+}
+*/
+
+static size_t	digit_count(long nb, int base)
+{
+	size_t		i;
+
+	i = 0;
+	while (nb)
 	{
-		a = tmp % 10;
-		tmp = tmp / 10;
-		nmb = nmb * 10 + a;
+		nb /= base;
+		i++;
 	}
-	nmb = nmb * 10 + tmp;
-	return (nmb);
+	return (i);
+}
+
+char			*ft_itoa_base(long long int value, int base, char type)
+{
+	char	*ret;
+	char	*tab_base;
+	int		taille;
+	int		i;
+	int		sign;
+
+	if (base < 2 || base > 16)
+		return (0);
+	if (base == 10 && value == -2147483648)
+		return ("-2147483648");
+	sign = 0;
+	if (base == 10 && value < 0)
+		sign = 1;
+	if (value < 0)
+		value = -value;
+	if (value == 0)
+		return ("0");
+	tab_base = (char *)malloc(sizeof(char) * 17);
+	if (type == 'X')
+		tab_base = "0123456789ABCDEF";
+	else
+		tab_base = "0123456789abcdef";
+	taille = digit_count(value, base);
+	taille += (sign ? 1 : 0);
+	ret = (char *)malloc(sizeof(char) * (taille + 1));
+	i = 1;
+	sign ? (ret[0] = '-') : 0;
+	while (value != 0)
+	{
+		ret[taille - i++] = tab_base[value % base];
+		value /= base;
+	}
+	ret[taille] = '\0';
+	return (ret);
 }

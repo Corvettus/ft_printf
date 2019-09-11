@@ -1,33 +1,5 @@
 #include "ft_printf.h"
 
-char	*ft_llxtoa(var *s, unsigned long long int n)
-{
-	unsigned long long int	k;
-	size_t					buf;
-
-	k = n;
-
-	buf = (!k ? 1 : 0);
-	while (k)
-	{
-		buf++;
-		k /= 16;
-	}
-	if (!(s->data = ft_strnew((size_t)buf)))
-		return (0);
-	s->data[buf] = 0;
-	if (s->size1 == 'h')
-	{
-		if (s->size2 == 'h')
-			ft_xc(s, n, ++buf);
-		else
-			ft_xsi(s, n, ++buf);
-	}
-	else
-		ft_xlli(s, n, ++buf);
-	return (s->data);
-}
-
 char	*ft_get_x(char *str1, var *tmp, va_list str)
 {
 	int long long	nb;
@@ -40,8 +12,12 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 		else
 			nb = (unsigned short int)va_arg(str, unsigned int);
 	}
+	else if (tmp->size1 == 'j')
+			nb = va_arg(str, uintmax_t);
+	else if (tmp->size1 == 'z')
+			nb = va_arg(str, size_t);
 	else
 		nb = (unsigned long long int)va_arg(str, unsigned long long int);
-	str1 = ft_llxtoa(tmp, nb);
+	str1 = ft_itoa_base(nb, 16, tmp->type);
 	return (str1);
 }

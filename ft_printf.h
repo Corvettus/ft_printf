@@ -52,7 +52,6 @@ char	*ft_create_list_var(const char *mas, int i, va_list str);
 char	*ft_create_arg_string(char *str1, var *tmp, va_list str);
 int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
-uintmax_t	ft_convert108(intmax_t nmb);
 char	*ft_start_double(long double n, int precision);
 char	*ft_fil_whitespaces(var *s, int wdth, int len);
 char	*ft_end_whitespaces(char *str, int wdth, int len);
@@ -105,6 +104,7 @@ void	ft_create_osi(var *s, unsigned short int n);
 void	ft_create_oc(var *s, unsigned char n);
 void	ft_create_oli(var *s, unsigned long int n);
 void	ft_create_olli(var *s, unsigned long long int n);
+char	*ft_convert108(intmax_t nmb);
 char	*ft_create_xi(char *s, unsigned int n, int sz);
 char	*ft_get_d(char *str1, var *tmp, va_list str);
 char	*ft_get_f(char *str1, var *tmp, va_list str);
@@ -115,5 +115,6 @@ char	*ft_get_o(char *str1, var *tmp, va_list str);
 void	ft_xsi(var *s, unsigned long long int num, int w);
 void	ft_xc(var *s, unsigned long long int num, int w);
 void	ft_xlli(var *s, unsigned long long int num, int w);
+char	*ft_itoa_base(long long int value, int base, char type);
 
 #endif
