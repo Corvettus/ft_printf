@@ -31,7 +31,6 @@ char		*ft_llitoa(long long int nb, var *tmp)
 		return ("");*/
 	if (nb == 0)
 		return ("0");
-	
 	tmp->arg_sign = (nb < 0) ? -1 : 1;
 	nb = (nb > 0) ? nb : nb * (-1);
 	buf = 1;
@@ -41,9 +40,12 @@ char		*ft_llitoa(long long int nb, var *tmp)
 		buf++;
 		k /= 10;
 	}
+	if (nb == (-9223372036854775807 - 1))
+		return (ft_strdup("9223372036854775808"));
 	if (!(res = (char*)malloc(buf * sizeof(char))))
 		return (0);
 	res[--buf] = 0;
 	ft_puting_lli_to_a(nb, &res, buf);
 	return (res);
 }
+

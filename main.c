@@ -226,6 +226,7 @@ int	main(void)
 	//printf("@moulitest: %.d %.0d", 0, 0);
 //	ft_printf("|%2c|\n", 0);
 //	printf("|%2c|", 0);
-	printf("@moulitest: |%o|\n", 0);
-	ft_printf("@moulitest: |%o|\n", 0);
+	printf("@moulitest: %.5u\n", 42);
+	ft_printf("@moulitest: %.5u", 42);
+
 }
