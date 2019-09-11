@@ -199,7 +199,8 @@ int	main(void)
 	printf( "%x\n", 120);
 	printf( "%s", ft_create_xi(str, 120, 0));
 */
-//	printf("%x", 42);
+/*	printf("%x\n", 42);
+	ft_printf("%x", 42);*/
 //	ft_printf("%lu\n", -42);
 //	printf("%lu\n", -42);
 //	ft_printf("%ju\n", 4999999999);
@@ -219,6 +220,12 @@ int	main(void)
 	ft_printf("%hhu\n", a);*/
 //	ft_printf("% ++d", 42);
 //	printf("% ++d", 42);
-	printf("%d\n", 0);
-	ft_printf("%d\n", 0);
+//	printf("%d\n", 0);
+//	ft_printf("%d\n", 0);
+	//ft_printf("@moulitest: %.d %.0d", 0, 0);
+	//printf("@moulitest: %.d %.0d", 0, 0);
+//	ft_printf("|%2c|\n", 0);
+//	printf("|%2c|", 0);
+	printf("@moulitest: |%o|\n", 0);
+	ft_printf("@moulitest: |%o|\n", 0);
 }

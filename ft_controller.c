@@ -17,9 +17,9 @@ char	*ft_controller(var *tmp)
 	char *res;
 
 	if (tmp->type == '%')
-		res = ft_print_s(tmp);
+		res = ft_print_c(tmp);
 	else if (tmp->type == 'c')
-		res = ft_print_s(tmp);
+		res = ft_print_c(tmp);
 	else if (tmp->type == 's')
 		res = ft_print_s(tmp);
 	else if (tmp->type == 'p')

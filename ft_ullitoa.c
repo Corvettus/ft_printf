@@ -16,7 +16,8 @@ char		*ft_ullitoa(long long int nb, var *tmp)
 	size_t					buf;
 
     (void)tmp->arg_sign;
-	//nb = (nb < 0) ? ULONG_MAX + nb : nb;
+	if (nb == 0)
+		return(ft_strdup("0"));
 	buf = 1;
 	k = nb;
 	while (k)

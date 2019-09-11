@@ -11,14 +11,14 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 var				*ft_ntlstn_var(var *tmp)
 {
-	tmp->precision = 0;
-	tmp->width = 0;
 	tmp->data = 0;
 	tmp->arg_sign = 1;
 	tmp->flag = '?';
+	tmp->precision = 0;
 	tmp->size1 = '0';
 	tmp->size2 = '0';
 	return (tmp);
@@ -38,8 +38,9 @@ char			*ft_create_list_var(const char *mas, int i,
 	tmp->type = mas[i];
 	if (mas[i] == '%')
 	{
-		tmp->data = ft_strnew(1);
-		tmp->data = ft_strjoin_char(tmp->data, mas[i]);
+		tmp->data = ft_strnew(0);
+		if (tmp->data)
+			tmp->data = ft_strjoin_char(tmp->data, mas[i]);
 		return (ft_controller(tmp));
 	}
 	str1 = ft_create_arg_string(str1, tmp, str);
@@ -50,13 +51,24 @@ char			*ft_create_list_var(const char *mas, int i,
 
 var				*ft_ifseedot(var *tmp, int *i, const char *mas)
 {
-	if ((mas[++(*i)] >= '0' && mas[*i] <= '9'))
+	(*i)++;
+	if ((mas[*i] > '0' && mas[*i] <= '9'))
+	{
+		tmp->precision = 0;
 		while (mas[*i] >= '0' && mas[*i] <= '9')
 			tmp->precision = tmp->precision * 10 + mas[(*i)++] - '0';
+	}
+	else if (mas[*i] == '0')
+	{
+		(*i)++;
+		if (ft_check_type(mas[(*i)]))
+			return (tmp);
+	}
 	else if (mas[*i] == '*')
 		tmp->precision = -1;
-	else if (ft_check_type(mas[(*i)++]))
+	else if (ft_check_type(mas[(*i)]))
 		tmp->precision = 0;
+	//printf("B|%c|\n", mas[*i]);
 	return (tmp);
 }
 
@@ -66,9 +78,9 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 	while (mas[*i] == ' ')
 		tmp->flag = mas[(*i)++];
 	if (mas[*i] == '-' || mas[*i] == '+' || mas[*i] == ' '
-		|| mas[*i] == '#' || mas[*i] == '0')
+		|| mas[*i] == '0')
 		tmp->flag = mas[(*i)++];
-	if ((mas[*i] == '+' || mas[*i] == ' '))
+	if (mas[*i] == '+' || mas[*i] == ' ' || mas[*i] == '#')
 		tmp->flag2 = mas[(*i)++];
 	if (mas[*i] == ' ')
 		(*i)++;

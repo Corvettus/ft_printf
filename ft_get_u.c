@@ -31,8 +31,12 @@ char	*ft_get_u(char *str1, var *tmp, va_list str)
 		else
 			nb = (unsigned short int)va_arg(str, unsigned int);
 	}
+	else if (tmp->size1 == 'j')
+			nb = va_arg(str, uintmax_t);
+	else if (tmp->size1 == 'z')
+			nb = va_arg(str, size_t);
 	else
-		nb = va_arg(str, unsigned int);
-	str1 = ft_llitoa(nb, tmp);
+			nb = va_arg(str, unsigned int);
+	str1 = ft_ullitoa(nb, tmp);
 	return (str1);
 }

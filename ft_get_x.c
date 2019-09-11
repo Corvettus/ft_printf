@@ -30,7 +30,7 @@ char	*ft_llxtoa(var *s, unsigned long long int n)
 
 char	*ft_get_x(char *str1, var *tmp, va_list str)
 {
-	int long long nb;
+	int long long	nb;
 
 	nb = 0;
 	if (tmp->size1 == 'h')
@@ -45,4 +45,3 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 	str1 = ft_llxtoa(tmp, nb);
 	return (str1);
 }
-

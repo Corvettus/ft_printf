@@ -23,12 +23,15 @@ static void	ft_puting_lli_to_a(long long int n, char **res, size_t buf)
 
 char		*ft_llitoa(long long int nb, var *tmp)
 {
-	char					*res;
-	long long int			k;
-	size_t					buf;
+	char			*res;
+	long long int	k;
+	size_t			buf;
 
+	/*if (tmp->type == 'o' && nb == 0 && (tmp->width || tmp->precision))
+		return ("");*/
 	if (nb == 0)
 		return ("0");
+	
 	tmp->arg_sign = (nb < 0) ? -1 : 1;
 	nb = (nb > 0) ? nb : nb * (-1);
 	buf = 1;

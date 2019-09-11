@@ -7,7 +7,7 @@ SRC = ft_printf.c \
 		ft_print_d.c \
 		ft_print_o.c \
 		ft_print_u.c \
-		ft_print_X.c \
+		ft_print_x.c \
 		ft_print_f.c \
 		ft_print_pc.c \
 		ft_controller.c \
@@ -25,10 +25,9 @@ SRC = ft_printf.c \
 		ft_get_o.c \
 		ft_get_x.c \
 		ft_convert16.c \
-		test.c \
 		main.c \
 
-FLS = -Wall -Wextra
+FLS = -Wall -Werror -Wextra
 
 OBJ = $(SRC:.c=.o)
 
