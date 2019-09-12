@@ -58,6 +58,8 @@ char	*ft_print_s(var *s)
 	int		len;
 
 	wdth = (s->width > 0) ? s->width : 0;
+	if (!(s->data) && s->type == 'c')
+		return (0);
 	s->data = (!(s->data)) ? "(null)" : s->data;
 	len = ft_strlen(s->data);
 	if (s->arg_sign == -1 || s->flag2 == '+')

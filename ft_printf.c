@@ -27,7 +27,7 @@ char			*ft_create_arg_string(char *str1, var *tmp,
 		str1 = ft_get_o(str1, tmp, str);
 	else if (tmp->type == 'f')
 		str1 = ft_get_f(str1, tmp, str);
-	else if (tmp->type == 'x')
+	else if (tmp->type == 'x' || tmp->type == 'X')
 		str1 = ft_get_x(str1, tmp, str);
 	return (str1);
 }
@@ -66,7 +66,7 @@ int				ft_printf(const char *format, ...)
 			res = ft_ifprecent(res, format, str, &i);
 	}
 	ft_putstr(res);
-	i = ft_strlen(res);
+	i = ft_strlen(res); //- ft_strsrch_null(res);
 	free(res);
 	va_end(str);
 	return (i);

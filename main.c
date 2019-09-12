@@ -209,8 +209,8 @@ int	main(void)
 
 /*	unsigned int a = -1;
 	printf("%u\n", a);
-	ft_printf("%u\n", a);*/
-/*	printf("%lu\n", a);
+	ft_printf("%u\n", a);
+	printf("%lu\n", a);
 	ft_printf("%lu\n", a);
 	printf("%llu\n", a);
 	ft_printf("%llu\n", a);
@@ -230,6 +230,10 @@ int	main(void)
 	//ft_printf("@moulitest: %.5u", 42);
 	//ft_printf("%o\n", 40);
 	//printf("%o", 40);
-
+	//printf("%#x\n", 42);
+	//ft_printf("%#x\n", 42);
+	ft_printf("%#X\n", 42);
 	write(1, 0, 1);
+	//ft_printf("%c\n", 0);
+	//printf("%c", 0);
 }

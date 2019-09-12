@@ -15,6 +15,7 @@
 
 var				*ft_ntlstn_var(var *tmp)
 {
+	tmp->width = 0;
 	tmp->data = 0;
 	tmp->arg_sign = 1;
 	tmp->flag = '?';

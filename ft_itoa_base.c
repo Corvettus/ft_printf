@@ -55,6 +55,7 @@ char			*ft_itoa_base(long long int value, int base, char type)
 	int		i;
 	int		sign;
 
+	tab_base = 0;
 	if (base < 2 || base > 16)
 		return (0);
 	if (base == 10 && value == -2147483648)
@@ -66,7 +67,7 @@ char			*ft_itoa_base(long long int value, int base, char type)
 		value = -value;
 	if (value == 0)
 		return ("0");
-	tab_base = (char *)malloc(sizeof(char) * 17);
+	tab_base = (char*)malloc(sizeof(char) * 17);
 	if (type == 'X')
 		tab_base = "0123456789ABCDEF";
 	else

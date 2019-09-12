@@ -15,11 +15,11 @@ typedef struct	var
 	int						width;
 	int						precision;
 	int						arg_sign;
+	char					type;
 	char					flag;
 	char					flag2;
 	char					size1;
 	char					size2;
-	char					type;
 	char*					data;
 } var;
 
