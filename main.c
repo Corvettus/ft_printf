@@ -232,18 +232,15 @@ int	main(void)
 	//printf("%o", 40);
 	//printf("%#x\n", 42);
 	//ft_printf("%#x\n", 42);
-<<<<<<< HEAD
 	//ft_printf("%#X\n", 42);
 	//write(1, 0, 1);
-=======
 //	ft_printf("%#X\n", 42);
 //	write(1, 0, 1);
 
-	int *a = 0;
+	//int *a = 0;
 //	ft_printf("\n%p\n", &a);
-	printf("|%2p|\n", a);
-	ft_printf("|%2p|\n", a);
->>>>>>> 7f8c263d31451f0bba0aee0247b2c034df97e7bd
+	//printf("|%2p|\n", a);
+	//ft_printf("|%2p|\n", a);
 	//ft_printf("%c\n", 0);
 	printf("%c\n", 0);
 	ft_printf("A %c G\n", 0);
