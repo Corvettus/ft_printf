@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_f.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 16:37:01 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/08/31 16:37:03 by rpoetess         ###   ########.fr       */
+/*   Updated: 2019/09/13 19:55:59 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ char	*ft_print_f(var *s)
 	if (s->width)
 		s->data = (s->flag != '-') ?
 			ft_fil_whitespaces(s, wdth, len) :
-			ft_end_whitespaces(s->data, wdth, len);
+			ft_end_whitespaces(s, wdth, len);
 	return (s->data);
 }

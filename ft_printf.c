@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 16:35:51 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/08/31 16:35:53 by rpoetess         ###   ########.fr       */
+/*   Updated: 2019/09/13 18:11:22 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char			*ft_create_arg_string(char *str1, var *tmp,
 {
 	if (tmp->type == 'c' || tmp->type == '%')
 		str1 = ft_get_c(str1, tmp, str);
-	else if (tmp->type == 's' || tmp->type == 'p')
+	else if (tmp->type == 's')
 		str1 = va_arg(str, char*);
 	else if (tmp->type == 'd' || tmp->type == 'i')
 		str1 = ft_get_d(str1, tmp, str);
@@ -48,7 +48,7 @@ char			*ft_create_arg_string(char *str1, var *tmp,
 		str1 = ft_get_o(str1, tmp, str);
 	else if (tmp->type == 'f')
 		str1 = ft_get_f(str1, tmp, str);
-	else if (tmp->type == 'x' || tmp->type == 'X')
+	else if (tmp->type == 'x' || tmp->type == 'X' || tmp->type == 'p')
 		str1 = ft_get_x(str1, tmp, str);
 	return (str1);
 }
