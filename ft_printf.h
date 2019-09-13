@@ -54,7 +54,7 @@ int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
 char	*ft_start_double(long double n, int precision);
 char	*ft_fil_whitespaces(var *s, int wdth, int len);
-char	*ft_end_whitespaces(char *str, int wdth, int len);
+char	*ft_end_whitespaces(var *s, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
 var		*ft_ntlstn_var(var *tmp);
 char	ft_ulli_to_size(unsigned long long int num, char size1, char size2);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 16:30:58 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/08/31 16:31:00 by rpoetess         ###   ########.fr       */
+/*   Updated: 2019/09/13 19:56:50 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,15 @@ char	*ft_fil_whitespaces(var *s, int wdth, int len)
 			s->data = ft_strjoin("0", s->data);
 	return (s->data);
 }
-char	*ft_end_whitespaces(char *str, int wdth, int len)
+
+char	*ft_end_whitespaces(var *s, int wdth, int len)
 {
 	int		i;
-	char	*new;
 
-	new = ft_strnew(0);
 	i = 0;
 	while (wdth - len > i++)
-		str = ft_strjoin(str, " ");
-	return (str);
+		s->data = ft_strjoin(s->data, " ");
+	return (s->data);
 }
 
 char	*ft_crop_str(char *str, int len, int crop)
@@ -77,7 +76,7 @@ char	*ft_print_s(var *s)
 		if (s->flag != '-')
 			s->data = ft_fil_whitespaces(s, wdth, len);
 		else if (s->flag == '-')
-			s->data = ft_end_whitespaces(s->data, wdth, len);
+			s->data = ft_end_whitespaces(s, wdth, len);
 	}
 	str = ft_strjoin(str, s->data);
 	return (str);
