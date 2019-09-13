@@ -241,6 +241,10 @@ int	main(void)
 //	ft_printf("\n%p\n", &a);
 //	printf("|%2p|\n", a);
 //	ft_printf("|%2p|\n", a);
+	//int *a = 0;
+//	ft_printf("\n%p\n", &a);
+	//printf("|%2p|\n", a);
+	//ft_printf("|%2p|\n", a);
 	//ft_printf("%c\n", 0);
 //	printf("%c\n", 0);
 	ft_printf("A %c G\n", 0);
