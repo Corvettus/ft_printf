@@ -92,17 +92,19 @@ int				ft_printf(const char *format, ...)
 			tmp = ft_ifnopercent(tmp, format, &i);
 			len += (tmp) ? ft_strlen(tmp) : 0;
 			res = ft_strjoin(res, tmp);
+			//write(1, &res, 1);
 			free(tmp);
 		}
 		if (format[i] == '%')
 		{
 			tmp = ft_strnew(0);
 			tmp = ft_strjoin(tmp, ft_ifprecent(tmp, format, str, &i));
-			len += (tmp > 0) ? ft_strlen(tmp) : 1;
+			len += (!tmp) ? 1 : (int)ft_strlen(tmp);
 			res = ft_strjoin(res, tmp);
 			free(tmp);
 		}
 	}
+	//ft_putnbr(len);
 	ft_putstr_len(res, len);
 	//i = ft_strlen(res); //- ft_strsrch_null(res);
 	free(res);

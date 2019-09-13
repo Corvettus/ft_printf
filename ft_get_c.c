@@ -25,5 +25,7 @@ char	*ft_get_c(char *str1, var *tmp, va_list str)
 	c = va_arg(str, int);
 	str1[0] = (char)c;
 	str1[1] = '\0';
+	if (str1[0] == 0)
+		str1[0] = 0;
 	return (str1);
 }

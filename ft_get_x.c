@@ -17,7 +17,11 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 	else if (tmp->size1 == 'z' && tmp->type != 'p')
 		nb = va_arg(str, size_t);
 	else
+	{
 		nb = (unsigned long long int)va_arg(str, unsigned long long int);
+		if (nb == 4294967296 && tmp->size1 == 0)
+			return ("0");
+	}
 /*	if (nb < 0)
 	nb = */
 	if (nb == 0)
