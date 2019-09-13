@@ -18,6 +18,10 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 			nb = va_arg(str, size_t);
 	else
 		nb = (unsigned long long int)va_arg(str, unsigned long long int);
+/*	if (nb < 0)
+	nb = */
+	if (nb == 0)
+		return("0");
 	str1 = ft_itoa_base(nb, 16, tmp->type);
 	return (str1);
 }

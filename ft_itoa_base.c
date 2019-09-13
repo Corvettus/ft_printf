@@ -62,7 +62,7 @@ char			*ft_itoa_base(long long int value, int base, char type)
 		return ("-2147483648");
 	sign = 0;
 	if (base == 10 && value < 0)
-		sign = 1;
+		sign = -1;
 	if (value < 0)
 		value = -value;
 	if (value == 0)

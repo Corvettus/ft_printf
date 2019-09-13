@@ -45,8 +45,12 @@ char			*ft_create_list_var(const char *mas, int i,
 		return (ft_controller(tmp));
 	}
 	str1 = ft_create_arg_string(str1, tmp, str);
-	if (!(tmp->data))
+	if (!(tmp->data) && tmp->type == 'c')
+		tmp->data = 0;
+	else
 		tmp->data = str1;
+		//return(ft_controller(0));
+	//write(1, &tmp->data, 1);
 	return (ft_controller(tmp));
 }
 

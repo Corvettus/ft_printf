@@ -232,8 +232,22 @@ int	main(void)
 	//printf("%o", 40);
 	//printf("%#x\n", 42);
 	//ft_printf("%#x\n", 42);
-	ft_printf("%#X\n", 42);
-	write(1, 0, 1);
+	//ft_printf("%#X\n", 42);
+	//write(1, 0, 1);
 	//ft_printf("%c\n", 0);
-	//printf("%c", 0);
+	printf("%c\n", 0);
+	ft_printf("A %c G\n", 0);
+	//write(1, NULL, 1);
+
+/*	char	str[8];
+	str[0] = 82;
+	str[1] = 117;
+	str[2] = 115;
+	str[3] = 0;
+	str[4] = 108;
+	str[5] = 97;
+	str[6] = 110;
+	str[7] = 0;
+	write(1, &str, 8);
+*/
 }
