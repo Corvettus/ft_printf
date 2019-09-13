@@ -242,8 +242,8 @@ int	main(void)
 	//printf("|%2p|\n", a);
 	//ft_printf("|%2p|\n", a);
 	//ft_printf("%c\n", 0);
-	printf("%c\n", 0);
-	ft_printf("A %c G\n", 0);
+	printf("|A %c G|\n", 0);
+	ft_printf("|A %c G|\n", 0);
 	//write(1, NULL, 1);
 
 /*	char	str[8];
