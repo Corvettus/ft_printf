@@ -12,27 +12,6 @@
 
 #include "ft_printf.h"
 
-void			ft_putstr_len(char *str, int n)
-{
-	int		i;
-	char	c;
-
-	c = 0;
-	i = 0;
-/*	while (i < n)
-	{
-		if (str[i] == 0)
-		{
-			write(1, &c, 1);
-			i++;
-		}
-		else
-			ft_putchar(str[i++]);
-	}
-*/
-	write(1, str, n);
-}
-
 char			*ft_create_arg_string(char *str1, var *tmp,
 								va_list str)
 {
@@ -75,7 +54,6 @@ int			ft_ifprecent(const char *format, va_list str, int *i)
 	while (!ft_check_type(format[*i]) && format[*i] != '\0')
 		(*i)++;
 	(*i)++;
-	//write(1, &res_str, 1);
 	return (len);
 }
 
@@ -97,9 +75,6 @@ int				ft_printf(const char *format, ...)
 		if (format[i] == '%')
 			len += ft_ifprecent(format, str, &i);
 	}
-	//ft_putnbr(len);
-	//ft_putstr_len(res, len);
-	//i = ft_strlen(res); //- ft_strsrch_null(res);
 	free(res);
 	va_end(str);
 	return (len);

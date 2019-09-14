@@ -76,7 +76,6 @@ var				*ft_ifseedot(var *tmp, int *i, const char *mas)
 		tmp->precision = -1;
 	else if (ft_check_type(mas[(*i)]))
 		tmp->precision = 0;
-	//printf("B|%c|\n", mas[*i]);
 	return (tmp);
 }
 
@@ -92,6 +91,8 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 		tmp->flag2 = mas[(*i)++];
 	if (mas[*i] == ' ')
 		(*i)++;
+	if (mas[*i] == '-')
+		tmp->flag = mas[(*i)++];
 	if (mas[*i] >= '0' && mas[*i] <= '9')
 		while (mas[*i] >= '0' && mas[*i] <= '9')
 			tmp->width = tmp->width * 10 + mas[(*i)++] - '0';

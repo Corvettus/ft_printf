@@ -18,7 +18,7 @@ char	*ft_print_x(var *tmp)
 	if (tmp->flag == '-')
 		while((int)ft_strlen(tmp->data) < tmp->precision)
 			tmp->data = ft_strjoin("0", tmp->data);
-	if (tmp->flag2 == '#' && tmp->data != 0)
+	if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0)
 	{
 		if (tmp->type == 'x')
 			tmp->data = ft_strjoin("0x", tmp->data);
