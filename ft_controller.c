@@ -12,10 +12,26 @@
 
 #include "ft_printf.h"
 
-char	*ft_controller(var *tmp)
+int	ft_write(char *res)
+{
+	int	i;
+	int	len;
+
+	len = 0;
+	i = 0;
+	while(res[i] != '\0')
+	{
+		ft_putchar(res[i++]);
+		len++;
+	}
+	return (len);
+}
+int	ft_controller(var *tmp)
 {
 	char *res;
 
+	/*if (!(tmp->data))
+		return (0);*/
 	if (tmp->type == '%')
 		res = ft_print_c(tmp);
 	else if (tmp->type == 'c')
@@ -34,5 +50,5 @@ char	*ft_controller(var *tmp)
 		res = ft_print_x(tmp);
 	if (tmp->type == 'f')
 		res = ft_print_f(tmp);
-	return (res);
+	return (ft_write(res));
 }

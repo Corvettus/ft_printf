@@ -14,6 +14,7 @@ SRC = ft_printf.c \
 		ft_llitoa.c \
 		ft_ullitoa.c \
 		ft_itoa_base.c \
+		ft_uitoa_base.c \
 		ft_start_double.c \
 		ft_check.c \
 		ft_ntlstn.c \

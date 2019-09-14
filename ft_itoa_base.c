@@ -12,29 +12,7 @@
 
 #include "ft_printf.h"
 
-/*long long int	*ft_convert108(intmax_t nmb)
-{
-	intmax_t		n;
-	intmax_t		len;
-	long long		*res;
-	intmax_t		i;
-
-	i = 0;
-	n = nmb;
-	len = 0;	
-	res = ft_strnew(len);
-	if (nmb < 0)
-		nmb = UINT_MAX + nmb;
-	{
-		n = n / 8;
-		len++;
-		res = n + nmb % 8;
-	}
-	return (res);
-}
-*/
-
-static size_t	digit_count(long nb, int base)
+static size_t	digit_count(intmax_t nb, int base)
 {
 	size_t		i;
 
@@ -47,7 +25,7 @@ static size_t	digit_count(long nb, int base)
 	return (i);
 }
 
-char			*ft_itoa_base(long long int value, int base, char type)
+char			*ft_itoa_base(intmax_t value, int base, char type)
 {
 	char	*ret;
 	char	*tab_base;
@@ -63,8 +41,6 @@ char			*ft_itoa_base(long long int value, int base, char type)
 	sign = 0;
 	if (base == 10 && value < 0)
 		sign = -1;
-	if (value < 0)
-		value = -value;
 	if (value == 0)
 		return ("0");
 	tab_base = (char*)malloc(sizeof(char) * 17);

@@ -4,20 +4,21 @@
 
 int	main(void)
 {
-/*	// STRING
-	printf("   5s|%5s|\n", "this is a test");
-	ft_printf("My 5s|%5s|\n\n", "this is a test");
+	size_t	i;
+	// STRING
+//	printf("   5s|%5s|\n", "this is a test");
+//	ft_printf("My 5s|%5s|\n\n", "this is a test");
 
-	printf("   25s|%25s|\n", "this is a test");
-	ft_printf("My 25s|%25s|\n\n", "this is a test");
+//	printf("   25s|%25s|\n", "this is a test");
+//	ft_printf("My 25s|%25s|\n\n", "this is a test");
 
-	printf("   -20s|%-20s|\n", "this is a test");
-	ft_printf("My -20s|%-20s|\n\n", "this is a test");
+//	printf("   -20s|%-20s|\n", "this is a test");
+//	ft_printf("My -20s|%-20s|\n\n", "this is a test");
 
-	printf("   -5s|%-5s|\n", "this is a test");
-	ft_printf("My -5s|%-5s|\n\n", "this is a test");
+//	printf("   -5s|%-5s|\n", "this is a test");
+//	ft_printf("My -5s|%-5s|\n\n", "this is a test");
 
-	printf("   25.6s|%25.6s|\n", "this is a test");
+/*	printf("   25.6s|%25.6s|\n", "this is a test");
 	ft_printf("My 25.6s|%25.6s|\n\n", "this is a test");
 
 	printf("   -20.6s|%-20.6s|\n", "this is a test");
@@ -246,8 +247,9 @@ int	main(void)
 	//printf("|%2p|\n", a);
 	//ft_printf("|%2p|\n", a);
 	//ft_printf("%c\n", 0);
-//	printf("%c\n", 0);
-	ft_printf("A %c", 0);
+//	ft_printf("%c\n", 0);
+//	ft_printf("%c\n", 5);
+	//ft_printf("A %c", 0);
 	//write(1, NULL, 1);
 
 /*	char	str[8];
@@ -261,4 +263,11 @@ int	main(void)
 	str[7] = 0;
 	write(1, &str, 8);
 */
+//	ft_printf("%.2s is a string", "");
+	//ft_printf("%x\n", 42);
+	i = -42;
+	ft_printf("%x\n", i);
+	//ft_printf("%X\n", i);
+//	printf("%X\n", i);
+//	ft_printf("%jx", -4294967296);
 }

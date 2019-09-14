@@ -53,23 +53,30 @@ char			*ft_create_arg_string(char *str1, var *tmp,
 	return (str1);
 }
 
-char			*ft_ifnopercent(char *res_str, const char *format, int *i)
+int			ft_ifnopercent(const char *format, int *i)
 {
+	int len;
+
+	len = 0;
 	while (format[*i] != '%' && format[*i] != '\0')
-		res_str = ft_strjoin_char(res_str, format[(*i)++]);
-	return (res_str);
+	{
+		write(1, &format[(*i)++], 1);
+		len++;
+	}
+	return (len);
 }
 
-char			*ft_ifprecent(char *res_str,
-					const char *format, va_list str, int *i)
+int			ft_ifprecent(const char *format, va_list str, int *i)
 {
-	//write(1, &res_str, 1);
-	res_str = ft_strjoin(res_str, ft_create_list_var(format, ++(*i), str));
-	while (!ft_check_type(format[*i]) && format[*i] != '\0' && res_str > 0)
+	int	len;
+
+	len = 0;
+	len = ft_create_list_var(format, ++(*i), str);
+	while (!ft_check_type(format[*i]) && format[*i] != '\0')
 		(*i)++;
 	(*i)++;
 	//write(1, &res_str, 1);
-	return (res_str);
+	return (len);
 }
 
 int				ft_printf(const char *format, ...)
@@ -78,7 +85,6 @@ int				ft_printf(const char *format, ...)
 	int			i;
 	char		*res;
 	int			len;
-	char		*tmp;
 
 	i = 0;
 	len = 0;
@@ -87,25 +93,12 @@ int				ft_printf(const char *format, ...)
 	while (format[i] != '\0')
 	{
 		if (format[i] != '%' && format[i] != '\0')
-		{
-			tmp = ft_strnew(0);
-			tmp = ft_ifnopercent(tmp, format, &i);
-			len += (tmp) ? ft_strlen(tmp) : 0;
-			res = ft_strjoin(res, tmp);
-			//write(1, &res, 1);
-			free(tmp);
-		}
+			len += ft_ifnopercent(format, &i);
 		if (format[i] == '%')
-		{
-			tmp = ft_strnew(0);
-			tmp = ft_strjoin(tmp, ft_ifprecent(tmp, format, str, &i));
-			len += (!tmp) ? 1 : (int)ft_strlen(tmp);
-			res = ft_strjoin(res, tmp);
-			free(tmp);
-		}
+			len += ft_ifprecent(format, str, &i);
 	}
 	//ft_putnbr(len);
-	ft_putstr_len(res, len);
+	//ft_putstr_len(res, len);
 	//i = ft_strlen(res); //- ft_strsrch_null(res);
 	free(res);
 	va_end(str);

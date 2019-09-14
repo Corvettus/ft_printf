@@ -143,7 +143,7 @@ OBJ = ft_memset.o \
 	  ft_sqrt.o \
 	  ft_strcdel.o \
 	  ft_isspace.o
-FLS = -Wall -Wextra
+FLS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

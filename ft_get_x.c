@@ -14,18 +14,18 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 	}
 	else if (tmp->size1 == 'j' && tmp->type != 'p')
 		nb = va_arg(str, uintmax_t);
-	else if (tmp->size1 == 'z' && tmp->type != 'p')
+	else if ((tmp->size1 == 'z' || tmp->size1 == 'l') && tmp->type != 'p')
 		nb = va_arg(str, size_t);
 	else
 	{
-		nb = (unsigned long long int)va_arg(str, unsigned long long int);
-		if (nb == 4294967296 && tmp->size1 == 0)
-			return ("0");
+		nb = va_arg(str, unsigned int);
+		/*if (nb == 4294967296 && tmp->size1 == 0)
+			return ("0");*/
 	}
 /*	if (nb < 0)
 	nb = */
 	if (nb == 0)
 		return("0");
-	str1 = ft_itoa_base(nb, 16, tmp->type);
+	str1 = ft_uitoa_base(nb, 16, tmp->type);
 	return (str1);
 }

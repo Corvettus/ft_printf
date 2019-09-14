@@ -47,8 +47,8 @@ char	*ft_print_u(var *s);
 char	*ft_print_x(var *s);
 char	*ft_print_f(var *s);
 char	*ft_print_pc(var *s);
-char	*ft_controller(var *tmp);
-char	*ft_create_list_var(const char *mas, int i, va_list str);
+int		ft_controller(var *tmp);
+int		ft_create_list_var(const char *mas, int i, va_list str);
 char	*ft_create_arg_string(char *str1, var *tmp, va_list str);
 int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
@@ -58,9 +58,8 @@ char	*ft_end_whitespaces(var *s, int wdth, int len);
 char	*ft_crop_str(char *str, int len, int crop);
 var		*ft_ntlstn_var(var *tmp);
 char	ft_ulli_to_size(unsigned long long int num, char size1, char size2);
-char	*ft_ifprecent(char *res_str,
-					const char *format, va_list str, int *i);
-char	*ft_ifnopercent(char *res_str, const char *format, int *i);
+int		ft_ifprecent(const char *format, va_list str, int *i);
+int		ft_ifnopercent(const char *format, int *i);
 var		*ft_ifseedot(var *tmp, int *i, const char *mas);
 var		*ft_srchflgs(var *tmp, int *i, const char *mas);
 void	ft_i(var *s, int num);
@@ -115,6 +114,7 @@ char	*ft_get_o(char *str1, var *tmp, va_list str);
 void	ft_xsi(var *s, unsigned long long int num, int w);
 void	ft_xc(var *s, unsigned long long int num, int w);
 void	ft_xlli(var *s, unsigned long long int num, int w);
-char	*ft_itoa_base(long long int value, int base, char type);
+char	*ft_itoa_base(intmax_t value, int base, char type);
+char	*ft_uitoa_base(uintmax_t value, int base, char type);
 
 #endif
