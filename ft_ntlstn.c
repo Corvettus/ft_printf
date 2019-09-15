@@ -32,25 +32,31 @@ int				ft_create_list_var(const char *mas, int i,
 {
 	char	*str1;
 	var		*tmp;
-	char	*nul;
+	int		nul;
 
-	nul = 0;
+	nul = 1;
 	str1 = 0;
 	tmp = (var*)malloc(sizeof(var));
 	tmp = ft_srchflgs(tmp, &i, mas);
 	tmp->type = mas[i];
-	str1 = ft_create_arg_string(str1, tmp, str);
-	if (str1 == 0 && tmp->type == 'c')
-	{
-		write(1, &str1, 1);
-		return(1);
-	}
 	if (mas[i] == '%')
 	{
 		tmp->data = ft_strnew(0);
 		if (tmp->data)
 			tmp->data = ft_strjoin_char(tmp->data, mas[i]);
 		return (ft_controller(tmp));
+	}
+	str1 = ft_create_arg_string(str1, tmp, str);
+	if (str1 == 0 && tmp->type == 'c')
+	{
+		while (tmp->width-- > 1)
+		{
+			ft_putchar(' ');
+			nul++;
+		}
+		write(1, &str1, 1);
+		return(nul);
+		//ft_controller(tmp);
 	}
 	if (!str)
 		str1 = 0;
@@ -92,7 +98,7 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 		tmp->flag = mas[(*i)++];
 	if (mas[*i] == '+' || mas[*i] == ' ' || mas[*i] == '#')
 		tmp->flag2 = mas[(*i)++];
-	if (mas[*i] == ' ')
+	if (mas[*i] == ' ' && tmp->flag == '+')
 		(*i)++;
 	if (mas[*i] == '-')
 		tmp->flag = mas[(*i)++];

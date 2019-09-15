@@ -272,8 +272,11 @@ int	main(void)
 //	ft_printf("%jx", -4294967296);
 //	ft_printf("@moulitest: %5.d %5.0d", 0, 0);
 //	ft_printf("@moulitest: %5.o %5.0o", 0, 0);
-	ft_printf("%#08x\n", 42);
-	printf("%#08x\n\n", 42);
-	ft_printf("%#-08x\n", 42);
+//	ft_printf("%#08x\n", 42);
+	//printf("%# 8x\n", 42);
+//	ft_printf("%#-08x\n", 42);
+	//printf("%+  d\n", 42);
+//	printf("%+d", 42);
 //	printf("%#-08x\n", 42);
+	ft_printf("%2c", 0);
 }

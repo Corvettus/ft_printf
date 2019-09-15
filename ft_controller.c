@@ -26,12 +26,11 @@ int	ft_write(char *res)
 	}
 	return (len);
 }
+
 int	ft_controller(var *tmp)
 {
 	char *res;
 
-	/*if (!(tmp->data))
-		return (0);*/
 	if (tmp->type == '%')
 		res = ft_print_c(tmp);
 	else if (tmp->type == 'c')

@@ -23,8 +23,6 @@ void	ft_ox(var *tmp)
 
 char	*ft_print_x(var *tmp)
 {
-/*	if (tmp->flag_1 == '0' && tmp->flag)
-		tmp->flag = '0';*/
 	if (tmp->flag == '-')
 		while((int)ft_strlen(tmp->data) < tmp->precision)
 			tmp->data = ft_strjoin("0", tmp->data);
@@ -32,7 +30,14 @@ char	*ft_print_x(var *tmp)
 		ft_ox(tmp);
 	if (tmp->flag != '-')
 	{
+		if (tmp->flag_1 == '0')
+		{
+			tmp->flag = '0';
+			tmp->width -= 2;
+		}
 		ft_fil_whitespaces(tmp, tmp->width, (int)ft_strlen(tmp->data));
+		if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0)
+			ft_ox(tmp);
 	}
 	else
 	{
