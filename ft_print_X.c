@@ -13,22 +13,33 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
+void	ft_ox(var *tmp)
+{
+	if (tmp->type == 'x')
+		tmp->data = ft_strjoin("0x", tmp->data);
+	if (tmp->type == 'X')
+		tmp->data = ft_strjoin("0X", tmp->data);
+}
+
 char	*ft_print_x(var *tmp)
 {
+/*	if (tmp->flag_1 == '0' && tmp->flag)
+		tmp->flag = '0';*/
 	if (tmp->flag == '-')
 		while((int)ft_strlen(tmp->data) < tmp->precision)
 			tmp->data = ft_strjoin("0", tmp->data);
-	if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0)
-	{
-		if (tmp->type == 'x')
-			tmp->data = ft_strjoin("0x", tmp->data);
-		if (tmp->type == 'X')
-			tmp->data = ft_strjoin("0X", tmp->data);
-	}
+	if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0 && tmp->flag_1 != '0')
+		ft_ox(tmp);
 	if (tmp->flag != '-')
+	{
 		ft_fil_whitespaces(tmp, tmp->width, (int)ft_strlen(tmp->data));
+	}
 	else
+	{
+		if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0 && tmp->flag_1 == '0')
+			ft_ox(tmp);
 		while((int)ft_strlen(tmp->data) < tmp->width)
 			tmp->data = ft_strjoin(tmp->data, " ");
+	}
 	return (tmp->data);
 }

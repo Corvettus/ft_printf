@@ -19,7 +19,9 @@ var				*ft_ntlstn_var(var *tmp)
 	tmp->data = 0;
 	tmp->arg_sign = 1;
 	tmp->flag = '?';
+	tmp->flag_1 = '?';
 	tmp->precision = 0;
+	tmp->precision_flag = 0;
 	tmp->size1 = '0';
 	tmp->size2 = '0';
 	return (tmp);
@@ -60,6 +62,7 @@ int				ft_create_list_var(const char *mas, int i,
 var				*ft_ifseedot(var *tmp, int *i, const char *mas)
 {
 	(*i)++;
+	tmp->precision_flag = 1;
 	if ((mas[*i] > '0' && mas[*i] <= '9'))
 	{
 		tmp->precision = 0;
@@ -93,6 +96,8 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 		(*i)++;
 	if (mas[*i] == '-')
 		tmp->flag = mas[(*i)++];
+	if (mas[*i] == '0')
+		tmp->flag_1 = mas[(*i)++];
 	if (mas[*i] >= '0' && mas[*i] <= '9')
 		while (mas[*i] >= '0' && mas[*i] <= '9')
 			tmp->width = tmp->width * 10 + mas[(*i)++] - '0';

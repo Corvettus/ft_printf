@@ -37,7 +37,11 @@ char	*ft_get_d(char *str1, var *tmp, va_list str)
 	else if (tmp->size1 == 'z')
 			nb = va_arg(str, size_t);
 	else
+	{
 		nb = va_arg(str, int);
+		if (nb == 0 && tmp->precision == 0 && tmp->precision_flag == 1)
+			return("");
+	}
 	str1 = ft_llitoa(nb, tmp);
 	return (str1);
 }

@@ -14,9 +14,11 @@ typedef struct	var
 {
 	int						width;
 	int						precision;
+	int						precision_flag;
 	int						arg_sign;
 	char					type;
 	char					flag;
+	char					flag_1;
 	char					flag2;
 	char					size1;
 	char					size2;

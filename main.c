@@ -4,7 +4,7 @@
 
 int	main(void)
 {
-	size_t	i;
+//	size_t	i;
 	// STRING
 //	printf("   5s|%5s|\n", "this is a test");
 //	ft_printf("My 5s|%5s|\n\n", "this is a test");
@@ -265,9 +265,15 @@ int	main(void)
 */
 //	ft_printf("%.2s is a string", "");
 	//ft_printf("%x\n", 42);
-	i = -42;
-	ft_printf("%x\n", i);
+//	i = -42;
+//	ft_printf("%x\n", i);
 	//ft_printf("%X\n", i);
 //	printf("%X\n", i);
 //	ft_printf("%jx", -4294967296);
+//	ft_printf("@moulitest: %5.d %5.0d", 0, 0);
+//	ft_printf("@moulitest: %5.o %5.0o", 0, 0);
+	ft_printf("%#08x\n", 42);
+	printf("%#08x\n\n", 42);
+	ft_printf("%#-08x\n", 42);
+//	printf("%#-08x\n", 42);
 }

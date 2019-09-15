@@ -17,7 +17,11 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 	else if ((tmp->size1 == 'z' || tmp->size1 == 'l') && tmp->type != 'p')
 		nb = va_arg(str, size_t);
 	else
+	{
 		nb = va_arg(str, unsigned int);
+		if (nb == 0 && tmp->precision == 0 && tmp->flag == '?' && tmp->precision_flag == 1)
+			return("");
+	}
 	if (nb == 0)
 		return("0");
 	str1 = ft_uitoa_base(nb, 16, tmp->type);
