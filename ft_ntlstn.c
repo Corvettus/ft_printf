@@ -102,7 +102,11 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 	if (mas[*i] == ' ' && tmp->flag == '+')
 		(*i)++;
 	if (mas[*i] == '-')
+	{
+		if (tmp->flag == '+')
+			tmp->flag2 = '+';
 		tmp->flag = mas[(*i)++];
+	}
 	if (mas[*i] == '0')
 		tmp->flag_1 = mas[(*i)++];
 	if (mas[*i] >= '0' && mas[*i] <= '9')
