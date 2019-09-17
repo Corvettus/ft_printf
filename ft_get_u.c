@@ -17,7 +17,7 @@ char	*ft_get_u(char *str1, var *tmp, va_list str)
 	uintmax_t	nb;
 
 	nb = 0;
-	if (tmp->size1 == 'l')
+	if (tmp->size1 == 'l' || tmp->type == 'U')
 	{
 		if (tmp->size2 == 'l')
 			nb = va_arg(str, unsigned long long);
@@ -32,11 +32,11 @@ char	*ft_get_u(char *str1, var *tmp, va_list str)
 			nb = (unsigned short int)va_arg(str, unsigned int);
 	}
 	else if (tmp->size1 == 'j')
-			nb = va_arg(str, uintmax_t);
+		nb = va_arg(str, uintmax_t);
 	else if (tmp->size1 == 'z')
-			nb = va_arg(str, size_t);
+		nb = va_arg(str, size_t);
 	else
-			nb = va_arg(str, unsigned int);
+		nb = va_arg(str, unsigned int);
 	str1 = ft_ullitoa(nb, tmp);
 	return (str1);
 }

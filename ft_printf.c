@@ -21,7 +21,7 @@ char			*ft_create_arg_string(char *str1, var *tmp,
 		str1 = va_arg(str, char*);
 	else if (tmp->type == 'd' || tmp->type == 'i')
 		str1 = ft_get_d(str1, tmp, str);
-	else if (tmp->type == 'u')
+	else if (tmp->type == 'u' || tmp->type == 'U')
 		str1 = ft_get_u(str1, tmp, str);
 	else if (tmp->type == 'o')
 		str1 = ft_get_o(str1, tmp, str);
@@ -61,12 +61,10 @@ int				ft_printf(const char *format, ...)
 {
 	va_list		str;
 	int			i;
-	char		*res;
 	int			len;
 
 	i = 0;
 	len = 0;
-	res = ft_strnew(0);
 	va_start(str, format);
 	while (format[i] != '\0')
 	{
@@ -75,7 +73,6 @@ int				ft_printf(const char *format, ...)
 		if (format[i] == '%')
 			len += ft_ifprecent(format, str, &i);
 	}
-	free(res);
 	va_end(str);
 	return (len);
 }

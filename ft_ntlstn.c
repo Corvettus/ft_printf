@@ -38,6 +38,8 @@ int				ft_create_list_var(const char *mas, int i,
 	str1 = 0;
 	tmp = (var*)malloc(sizeof(var));
 	tmp = ft_srchflgs(tmp, &i, mas);
+	if (!ft_check_type(mas[(i)]) || mas[i] == '\0')
+		exit(0);
 	tmp->type = mas[i];
 	if (mas[i] == '%')
 	{
@@ -54,9 +56,8 @@ int				ft_create_list_var(const char *mas, int i,
 			ft_putchar(' ');
 			nul++;
 		}
-		write(1, &str1, 1);
-		return(nul);
-		//ft_controller(tmp);
+		write (1, &str1, 1);
+		return (nul);
 	}
 	if (!str)
 		str1 = 0;
@@ -69,17 +70,17 @@ var				*ft_ifseedot(var *tmp, int *i, const char *mas)
 {
 	(*i)++;
 	tmp->precision_flag = 1;
-	if ((mas[*i] > '0' && mas[*i] <= '9'))
-	{
-		tmp->precision = 0;
-		while (mas[*i] >= '0' && mas[*i] <= '9')
-			tmp->precision = tmp->precision * 10 + mas[(*i)++] - '0';
-	}
-	else if (mas[*i] == '0')
+	if (mas[*i] == '0')
 	{
 		(*i)++;
 		if (ft_check_type(mas[(*i)]))
 			return (tmp);
+	}
+	if ((mas[*i] >= '0' && mas[*i] <= '9'))
+	{
+		tmp->precision = 0;
+		while (mas[*i] >= '0' && mas[*i] <= '9')
+			tmp->precision = tmp->precision * 10 + mas[(*i)++] - '0';
 	}
 	else if (mas[*i] == '*')
 		tmp->precision = -1;

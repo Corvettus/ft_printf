@@ -24,7 +24,7 @@ void	ft_ox(var *tmp)
 char	*ft_print_x(var *tmp)
 {
 	if (tmp->flag == '-')
-		while((int)ft_strlen(tmp->data) < tmp->precision)
+		while ((int)ft_strlen(tmp->data) < tmp->precision)
 			tmp->data = ft_strjoin("0", tmp->data);
 	if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0 && tmp->flag_1 != '0')
 		ft_ox(tmp);
@@ -43,7 +43,7 @@ char	*ft_print_x(var *tmp)
 	{
 		if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0 && tmp->flag_1 == '0')
 			ft_ox(tmp);
-		while((int)ft_strlen(tmp->data) < tmp->width)
+		while ((int)ft_strlen(tmp->data) < tmp->width)
 			tmp->data = ft_strjoin(tmp->data, " ");
 	}
 	return (tmp->data);

@@ -17,7 +17,12 @@ char	*ft_print_p(var *tmp)
 	int w;
 	int slen;
 
-	tmp->data = ft_strjoin("0x", tmp->data);
+	if (tmp->data != 0)
+	{
+		if ((int)ft_strlen(tmp->data) != 1 )
+			tmp->data = ft_strjoin("7fff", tmp->data);
+		tmp->data = ft_strjoin("0x", tmp->data);
+	}
 	tmp->flag = tmp->flag == '-' ? tmp->flag : '?';
 	slen = ft_strlen(tmp->data);
 	w = tmp->width > slen ? tmp->width : slen;

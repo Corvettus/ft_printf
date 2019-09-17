@@ -60,18 +60,22 @@ char	*ft_print_s(var *s)
 	if (!(s->data) && s->type == 'c')
 		return (0);
 	s->data = (!(s->data)) ? "(null)" : s->data;
+	if (s->precision == 0 && s->precision_flag == 1 && s->type == 's')
+	{
+		s->data = "";
+	}
 	len = ft_strlen(s->data);
 	if (s->arg_sign == -1 || s->flag2 == '+')
 		len--;
 	s->precision = (s->precision >= len) ? 0 : s->precision;
 	if (!(str = ft_strnew(wdth)))
-		return (0);
+		exit (0);
 	if (s->precision)
 	{
 		s->data = ft_crop_str(s->data, len, s->precision);
 		len = (len > s->precision) ? s->precision : len;
 	}
-	if (s->width)
+	if (s->width && s->width > (int)ft_strlen(s->data))
 	{
 		if (s->flag != '-')
 			s->data = ft_fil_whitespaces(s, wdth, len);

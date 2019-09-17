@@ -278,5 +278,29 @@ int	main(void)
 	//printf("%+  d\n", 42);
 //	printf("%+d", 42);
 //	printf("%#-08x\n", 42);
-	ft_printf("%2c", 0);
+//	ft_printf("%2c", 0);
+	//printf("%llo, %llo\n", 0llu, ULLONG_MAX);
+	//ft_printf("%llo, %llo", 0llu, ULLONG_MAX);
+	//ft_printf("045.2hi\n", 2090479521);
+	//printf("045.2hi\n", 2090479521);
+	//printf("%30.17hhd\n", 815017672);
+	//printf("%d", ft_printf("\\!/%11.2hhd\\!/\n", 1274913533));
+//	printf("%d\n ", ft_printf("%.0s", "NULL"));
+/*	printf(" :%d\n", printf("|%10.5d", -216));
+	printf(" :%d\n", ft_printf("%10.5d", -216));
+*/
+	printf(" :%d\n", printf("%3.3d", -8462));
+	printf(" :%d\n", printf("%3.4d", -8462));
+	printf(" :%d\n", printf("%4.3d", -8462));
+	printf(" :%d\n", printf("%4.4d", -8462));
+
+	printf(" :%d\n", ft_printf("%3.3d", -8462));
+	printf(" :%d\n", ft_printf("%3.4d", -8462));
+	printf(" :%d\n", ft_printf("%4.3d", -8462));
+	printf(" :%d\n", ft_printf("%4.4d", -8462));
+
+	/*ft_putchar('|');
+	ft_putstr(tmp->data);
+	ft_putchar('|');*/
+
 }

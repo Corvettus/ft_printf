@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_o.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/16 13:52:11 by rpoetess          #+#    #+#             */
+/*   Updated: 2019/09/16 13:52:13 by rpoetess         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char	*ft_get_o(char *str1, var *tmp, va_list str)
@@ -23,7 +35,7 @@ char	*ft_get_o(char *str1, var *tmp, va_list str)
 	{
 		nb = va_arg(str, int);
 		if (nb == 0 && tmp->precision == 0 && tmp->precision_flag == 1)
-			return("");
+			return ("");
 	}
 	str1 = ft_itoa_base(nb, 8, tmp->type);
 	return (str1);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_x.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/16 13:52:55 by rpoetess          #+#    #+#             */
+/*   Updated: 2019/09/16 13:52:57 by rpoetess         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char	*ft_get_x(char *str1, var *tmp, va_list str)
@@ -18,12 +30,12 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 		nb = va_arg(str, size_t);
 	else
 	{
-		nb = va_arg(str, unsigned int);
+		nb = (unsigned int)va_arg(str, unsigned int);
 		if (nb == 0 && tmp->precision == 0 && tmp->flag == '?' && tmp->precision_flag == 1)
-			return("");
+			return ("");
 	}
 	if (nb == 0)
-		return("0");
+		return ("0");
 	str1 = ft_uitoa_base(nb, 16, tmp->type);
 	return (str1);
 }

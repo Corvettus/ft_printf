@@ -19,7 +19,7 @@ int	ft_write(char *res)
 
 	len = 0;
 	i = 0;
-	while(res[i] != '\0')
+	while (res[i] != '\0')
 	{
 		ft_putchar(res[i++]);
 		len++;
@@ -43,7 +43,7 @@ int	ft_controller(var *tmp)
 		res = ft_print_d(tmp);
 	else if (tmp->type == 'o')
 		res = ft_print_o(tmp);
-	else if (tmp->type == 'u')
+	else if (tmp->type == 'u' || tmp->type == 'U')
 		res = ft_print_u(tmp);
 	else if (tmp->type == 'x' || tmp->type == 'X')
 		res = ft_print_x(tmp);

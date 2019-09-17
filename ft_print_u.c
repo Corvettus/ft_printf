@@ -15,11 +15,10 @@
 char	*ft_print_u(var *tmp)
 {
 	while ((tmp->flag == '?' || (tmp->precision > 0)) && tmp->precision > (int)ft_strlen(tmp->data))
-		{
-			tmp->flag = '0';
-			tmp->data = ft_strjoin("0", tmp->data);
-		}
-	//tmp->precision = 0;
+	{
+		tmp->flag = '0';
+		tmp->data = ft_strjoin("0", tmp->data);
+	}
 	tmp->data = ft_print_s(tmp);
 	return (tmp->data);
 }

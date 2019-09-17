@@ -14,9 +14,9 @@
 
 char	*ft_get_c(char *str1, var *tmp, va_list str)
 {
-	int	c;
-	int b;
-	char *nul;
+	int		c;
+	int		b;
+	char	*nul;
 
 	nul = 0;
 	b = (char)0;
@@ -29,6 +29,5 @@ char	*ft_get_c(char *str1, var *tmp, va_list str)
 	str1[1] = '\0';
 	if (c == 0)
 		str1 = nul;
-	//write(1, &str1, 1);
 	return (str1);
 }

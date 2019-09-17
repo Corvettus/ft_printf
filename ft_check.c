@@ -19,7 +19,7 @@ int				ft_check_type(char type)
 		type == 'g' || type == 'G' || type == 'o' ||
 		type == 's' || type == 'u' || type == 'x' ||
 		type == 'X' || type == 'p' || type == 'n' ||
-		type == '%')
+		type == '%' || type == 'U')
 		return (1);
 	return (0);
 }

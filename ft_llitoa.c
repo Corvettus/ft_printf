@@ -27,8 +27,6 @@ char		*ft_llitoa(long long int nb, var *tmp)
 	long long int	k;
 	size_t			buf;
 
-	/*if (tmp->type == 'o' && nb == 0 && (tmp->width || tmp->precision))
-		return ("");*/
 	if (nb == 0)
 		return ("0");
 	tmp->arg_sign = (nb < 0) ? -1 : 1;
@@ -48,4 +46,3 @@ char		*ft_llitoa(long long int nb, var *tmp)
 	ft_puting_lli_to_a(nb, &res, buf);
 	return (res);
 }
-
