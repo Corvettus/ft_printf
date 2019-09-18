@@ -36,7 +36,7 @@ char	*ft_strjoin_left(const char *s1, char *s2)
 	while (s2[j] != '\0')
 		res[i++] = s2[j++];
 	res[i] = 0;
-	if (ft_strlen(s2))
-		free((void *)s2);
+/*	if (ft_strlen(s2))
+		free((void *)s2);*/
 	return (res);
 }
