@@ -238,11 +238,11 @@ int	main(void)
 //	ft_printf("%#X\n", 42);
 //	write(1, 0, 1);
 
-//	int *a = 0;
+	int *a = 0;
 //	ft_printf("\n%p\n", &a);
 //	printf("|%2p|\n", a);
-//	ft_printf("|%2p|\n", a);
-	//int *a = 0;
+	ft_printf("|%2p|\n", a);
+//	int *a = 0;
 //	ft_printf("\n%p\n", &a);
 	//printf("|%2p|\n", a);
 	//ft_printf("|%2p|\n", a);
@@ -295,10 +295,10 @@ int	main(void)
 	/*ft_putchar('|');
 	ft_putstr(tmp->data);
 	ft_putchar('|');*/
- 	ft_printf("%05d\n", -42);
+/*	ft_printf("%05d\n", -42);
 	ft_printf("%0+5d\n", -42);
 	ft_printf("%-5d\n", -42);
- 	ft_printf("%-05d\n", -42);
-  	ft_printf("@moulitest: %.10d\n", -42);
-
+	ft_printf("%-05d\n", -42);
+	ft_printf("@moulitest: %.10d\n", -42);
+*/
 }

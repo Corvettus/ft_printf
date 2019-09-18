@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_x.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 13:52:55 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/09/16 13:52:57 by rpoetess         ###   ########.fr       */
+/*   Updated: 2019/09/18 18:48:31 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 	else
 	{
 		nb = (unsigned int)va_arg(str, unsigned int);
-		if (nb == 0 && tmp->precision == 0 && tmp->flag == '?' && tmp->precision_flag == 1)
+		if (!nb && !tmp->precision && tmp->flag == '?' && tmp->precision_flag)
 			return ("");
 	}
 	if (nb == 0)
