@@ -51,12 +51,23 @@ int				ft_create_list_var(const char *mas, int i,
 	str1 = ft_create_arg_string(str1, tmp, str);
 	if (str1 == 0 && tmp->type == 'c')
 	{
-		while (tmp->width-- > 1)
+		if (tmp->flag != '-')
 		{
-			ft_putchar(' ');
-			nul++;
+			while (tmp->width-- > 1)
+			{
+				ft_putchar(' ');
+				nul++;
+			}
 		}
 		write (1, &str1, 1);
+		if (tmp->flag == '-')
+		{
+			while (tmp->width-- > 1)
+			{
+				ft_putchar(' ');
+				nul++;
+			}
+		}
 		return (nul);
 	}
 	if (!str)
