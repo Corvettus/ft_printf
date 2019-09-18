@@ -15,7 +15,6 @@
 
 void	ft_if_ngtv_rgsgn(var *tmp)
 {
-
 	if (tmp->precision_flag == 1)
 	{
 		if (tmp->width > 0 && tmp->precision < tmp->width)
