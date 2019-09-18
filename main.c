@@ -289,16 +289,22 @@ int	main(void)
 /*	printf(" :%d\n", printf("|%10.5d", -216));
 	printf(" :%d\n", ft_printf("%10.5d", -216));
 */
-/*	printf(" :%d\n", printf("%010.5d", -216));
+
+	printf(" :%d\n", printf("%03.2d", -1));
+	printf(" :%d\n", ft_printf("%03.2d", -1));
+	printf(" :%d\n", printf("@moulitest: %.10d", -42));
+	printf(" :%d\n", ft_printf("@moulitest: %.10d", -42));
+	printf(" :%d\n", printf("%.3d",-23646));
+	printf(" :%d\n", ft_printf("%.3d",-23646));
+	printf(" :%d\n", printf("%10.5d", -216));
+	printf(" :%d\n", ft_printf("%10.5d", -216));
+	printf(" :%d\n", printf("%3.3d", -8462));
+	printf(" :%d\n", ft_printf("%3.3d", -8462));
+	printf(" :%d\n", printf("%010.5d", -216));
 	printf(" :%d\n", ft_printf("%010.5d", -216));
-*/
+
 	/*ft_putchar('|');
 	ft_putstr(tmp->data);
 	ft_putchar('|');*/
- 	ft_printf("%05d\n", -42);
-	ft_printf("%0+5d\n", -42);
-	ft_printf("%-5d\n", -42);
- 	ft_printf("%-05d\n", -42);
-  	ft_printf("@moulitest: %.10d\n", -42);
 
 }
