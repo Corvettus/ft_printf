@@ -58,6 +58,11 @@ void	ft_if_pstv_rgsgn(var *tmp)
 		{
 			if (tmp->precision_flag == 0)
 			{
+				if (tmp->flag == '0' && tmp->width > (int)ft_strlen(tmp->data))
+				{
+					tmp->width--;
+					tmp->flag_1 = ' ';
+				}
 				if (tmp->flag == '0' && tmp->width <= (int)ft_strlen(tmp->data))
 					tmp->data = ft_strjoin(" ", tmp->data);
 				if (tmp->flag != '0')
