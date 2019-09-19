@@ -303,7 +303,11 @@ int	main(void)
 	printf(" :%d\n", printf("% -4d", 94827));
 	printf(" :%d\n", ft_printf("% -4d", 94827));
 	printf("% d\n", 42);
-	ft_printf("% d", 42);
+	ft_printf("% d\n", 42);
+	printf("% 05d\n", 43);
+	ft_printf("% 05d\n", 43);
+	printf("% .4d\n", 5263);
+	ft_printf("% .4d", 5263);
 	/*ft_putchar('|');
 	ft_putstr(tmp->data);
 	ft_putchar('|');*/
