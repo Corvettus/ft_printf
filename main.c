@@ -316,8 +316,11 @@ int	main(void)
 	printf("% 08.3d\n", 8375);
 	ft_printf("% 08.3d\n", 8375);
 
-	printf("% -5d\n", 52625);
-	ft_printf("% -5d\n", 52625);
+	printf("% -3.7d\n", 3267);
+	ft_printf("% -3.7d\n", 3267);
+
+	printf("% 3.7d\n", 3267);
+	ft_printf("% 3.7d\n", 3267);
 
 /*	ft_printf("%05d\n", -42);
 	ft_printf("%0+5d\n", -42);
