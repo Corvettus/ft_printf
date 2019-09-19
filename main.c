@@ -300,9 +300,10 @@ int	main(void)
 	printf(" :%d\n", ft_printf("%10.5d", -216));
 	printf(" :%d\n", printf("%3.3d", -8462));
 	printf(" :%d\n", ft_printf("%3.3d", -8462));
-	printf(" :%d\n", printf("%010.5d", -216));
-	printf(" :%d\n", ft_printf("%010.5d", -216));
-
+	printf(" :%d\n", printf("% -4d", 94827));
+	printf(" :%d\n", ft_printf("% -4d", 94827));
+	printf("% d\n", 42);
+	ft_printf("% d", 42);
 	/*ft_putchar('|');
 	ft_putstr(tmp->data);
 	ft_putchar('|');*/

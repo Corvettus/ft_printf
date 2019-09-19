@@ -62,6 +62,8 @@ void	ft_if_pstv_rgsgn(var *tmp)
 		tmp->arg_sign = 2;
 	if (tmp->flag == '-' && tmp->flag2 == '+' && tmp->precision_flag == 1 && tmp->precision > 0)
 		tmp->precision--;
+	if (tmp->flag == ' ' && tmp->width == 0 && tmp->precision_flag == 0)
+		tmp->data = ft_strjoin(" ", tmp->data);
 }
 
 void	ft_if_ngtv_rgsgn1(var *tmp)
@@ -74,8 +76,9 @@ void	ft_if_ngtv_rgsgn1(var *tmp)
 			tmp->data = ft_strjoin("-", tmp->data);
 	if (tmp->arg_sign == -2 && tmp->precision_flag == 1)
 		tmp->data = ft_strjoin("-", tmp->data);
+/*	if (tmp->flag == ' ' || (tmp->flag2 == ' ' && tmp->flag != '+'))
+		tmp->width--;*/
 }
-
 char	*ft_print_d(var *tmp)
 {
 	if (tmp->arg_sign == -1)
@@ -107,8 +110,12 @@ char	*ft_print_d(var *tmp)
 	}
 	if (tmp->precision <= (int)ft_strlen(tmp->data) && tmp->precision_flag == 1)
 		tmp->precision = 0;
-	if (tmp->flag == ' ' && tmp->arg_sign > 0)
-		tmp->data = ft_strjoin(" ", tmp->data);	
+	/*if (tmp->flag == ' ' || (tmp->flag2 == ' ' && tmp->flag != '+'))
+	{
+		if (tmp->arg_sign == 1)
+			tmp->data = ft_strjoin(" ", tmp->data);
+	}*/
+
 	if (tmp->arg_sign == -2 && tmp->precision < tmp->width && tmp->precision_flag == 1)
 	{
 		tmp->arg_sign = -3;

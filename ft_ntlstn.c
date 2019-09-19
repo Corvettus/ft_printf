@@ -107,7 +107,11 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 		tmp->flag = mas[(*i)++];
 	if (mas[*i] == '-' || mas[*i] == '+' || mas[*i] == ' '
 		|| mas[*i] == '0')
+	{
+		if (tmp->flag == ' ')
+			tmp->flag2 = ' ';
 		tmp->flag = mas[(*i)++];
+	}
 	if (mas[*i] == '+' || mas[*i] == ' ' || mas[*i] == '#')
 		tmp->flag2 = mas[(*i)++];
 	if (mas[*i] == ' ' && tmp->flag == '+')
@@ -116,6 +120,8 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 	{
 		if (tmp->flag == '+')
 			tmp->flag2 = '+';
+		if (tmp->flag == '-')
+			tmp->flag2 = '-';
 		tmp->flag = mas[(*i)++];
 	}
 	if (mas[*i] == '0')
