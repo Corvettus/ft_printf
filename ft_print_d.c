@@ -110,24 +110,22 @@ void	ft_if_ngtv_rgsgn1(var *tmp)
 	{
 		if (tmp->precision >= (int)ft_strlen(tmp->data))
 			tmp->data = ft_strjoin("-", tmp->data);
-		if (tmp->arg_sign == -2)
+		if (tmp->arg_sign == -2 && tmp->flag_1 != '0')
 			tmp->data = ft_strjoin("-", tmp->data);
 	}
 }
 
 void	ft_if_pstv_rgsgn1(var *tmp)
 {
-	if (tmp->flag2 == '+')
-	{
-		if (tmp->flag == '-' && tmp->arg_sign == 1)
+	if (tmp->flag2 == '+' && tmp->flag == '-')
 			tmp->data = ft_strjoin("+", tmp->data);
-	}
-	if (tmp->arg_sign == 2)
+	if (tmp->arg_sign == 2 || tmp->flag_1 == '+')
 		tmp->data = ft_strjoin("+", tmp->data);
 }
 char	*ft_print_d(var *tmp)
 {
-/*	
+
+/*
 	ft_putchar('|');
 	ft_putchar(tmp->flag);
 	ft_putchar(tmp->flag_1);
@@ -146,10 +144,15 @@ char	*ft_print_d(var *tmp)
 		while ((int)ft_strlen(tmp->data) < tmp->precision)
 			tmp->data = ft_strjoin("0", tmp->data);
 		if (tmp->flag == '0' && tmp->flag2 == '+' && tmp->arg_sign == 1)
-		tmp->data = ft_strjoin("+", tmp->data);
+			tmp->data = ft_strjoin("+", tmp->data);
+		if (tmp->arg_sign == -2)
+		{
+			tmp->arg_sign = -1;
+			tmp->width++;
+			tmp->data = ft_strjoin("-", tmp->data);
+		}
 		while (tmp->width > (int)ft_strlen(tmp->data))
 			tmp->data = ft_strjoin(" ", tmp->data);
-
 	}
 	if (tmp->flag_1 == '0' && tmp->flag == '+')
 	{	if (tmp->flag != '?')
@@ -161,8 +164,8 @@ char	*ft_print_d(var *tmp)
 		ft_if_pstv_rgsgn(tmp);
 	if (tmp->precision > (int)ft_strlen(tmp->data))
 	{
-		if (tmp->flag == '+')
-			tmp->flag_1 = '+';
+		if (tmp->flag2 == '+' && tmp->flag_1 != ' ')
+			tmp->flag_1 = tmp->flag2;
 		tmp->flag = '0';
 		tmp->width = (tmp->arg_sign == -1) ? tmp->precision - 1 : tmp->precision;
 	}
@@ -173,6 +176,9 @@ char	*ft_print_d(var *tmp)
 		tmp->arg_sign = -3;
 		tmp->data = ft_strjoin("-", tmp->data);
 	}
+/*	ft_putchar('|');
+	ft_putstr(tmp->data);
+	ft_putchar('|');*/
 	tmp->data = ft_print_s(tmp);
 	if (tmp->arg_sign <= -1)
 		ft_if_ngtv_rgsgn1(tmp);
@@ -180,5 +186,12 @@ char	*ft_print_d(var *tmp)
 		ft_if_pstv_rgsgn1(tmp);
 	if (tmp->flag_1 == ' ')
 		tmp->data = ft_strjoin(" ", tmp->data);
+/*	
+	ft_putchar('|');
+	ft_putchar(tmp->flag);
+	ft_putchar(tmp->flag_1);
+	ft_putchar(tmp->flag2);
+	ft_putchar('|');
+*/
 	return (tmp->data);
 }
