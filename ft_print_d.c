@@ -81,10 +81,13 @@ void	ft_if_pstv_rgsgn(var *tmp)
 				}
 			}
 		}
-	if ((tmp->flag == '+') && tmp->precision <= tmp->width)
-		tmp->data = ft_strjoin("+", tmp->data);
-	if ((tmp->flag == '+') && tmp->precision > tmp->width)
-		tmp->arg_sign = 2;
+	if ((tmp->flag == '+'))
+	{
+		if (tmp->precision <= tmp->width)
+			tmp->data = ft_strjoin("+", tmp->data);
+		if (tmp->precision > tmp->width)
+			tmp->arg_sign = 2;
+	}
 	if (tmp->flag == '-' && tmp->flag2 == '+' && tmp->precision_flag == 1 && tmp->precision > 0)
 		tmp->precision--;
 	if (tmp->flag == ' ' && tmp->precision_flag == 0)

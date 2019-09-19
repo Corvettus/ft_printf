@@ -319,8 +319,8 @@ int	main(void)
 	printf("% -3.7d\n", 3267);
 	ft_printf("% -3.7d\n", 3267);
 
-	printf("% 7d\n", -14);
-	ft_printf("% 7d\n", -14);
+	printf("%010.5d\n", -216);
+	ft_printf("%010.5d\n", -216);
 
 /*	ft_printf("%05d\n", -42);
 	ft_printf("%0+5d\n", -42);
