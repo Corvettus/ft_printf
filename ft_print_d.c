@@ -64,9 +64,13 @@ void	ft_if_pstv_rgsgn(var *tmp)
 		tmp->precision--;
 	if (tmp->flag == ' ' && tmp->precision_flag == 0)
 		tmp->data = ft_strjoin(" ", tmp->data);
-	if (tmp->flag == ' ' && tmp->precision_flag == 1 && tmp->precision <= (int)ft_strlen(tmp->data))
-		tmp->data = ft_strjoin(" ", tmp->data);
-
+	if (tmp->flag == ' ' && tmp->precision_flag == 1)
+		{
+			if (tmp->precision <= (int)ft_strlen(tmp->data))
+				tmp->data = ft_strjoin(" ", tmp->data);
+			else if (tmp->flag_1)
+				tmp->flag_1 = ' ';
+		}
 }
 
 void	ft_if_ngtv_rgsgn1(var *tmp)
@@ -129,5 +133,7 @@ char	*ft_print_d(var *tmp)
 		tmp->data = ft_strjoin("+", tmp->data);
 	if (tmp->arg_sign <= -1)
 		ft_if_ngtv_rgsgn1(tmp);
+	if (tmp->flag_1 == ' ')
+		tmp->data = ft_strjoin(" ", tmp->data);
 	return (tmp->data);
 }

@@ -304,8 +304,6 @@ int	main(void)
 	printf(" :%d\n", ft_printf("% -4d", 94827));
 	printf("% d\n", 42);
 	ft_printf("% d\n", 42);
-	printf("% 05d\n", 43);
-	ft_printf("% 05d\n", 43);
 	printf("% .4d\n", 5263);
 	ft_printf("% .4d\n", 5263);
 	printf("% 05d\n", 43);
@@ -318,6 +316,7 @@ int	main(void)
 	/*ft_putchar('|');
 	ft_putstr(tmp->data);
 	ft_putchar('|');*/
+	
 /*	ft_printf("%05d\n", -42);
 	ft_printf("%0+5d\n", -42);
 	ft_printf("%-5d\n", -42);
