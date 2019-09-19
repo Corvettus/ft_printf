@@ -62,8 +62,11 @@ void	ft_if_pstv_rgsgn(var *tmp)
 		tmp->arg_sign = 2;
 	if (tmp->flag == '-' && tmp->flag2 == '+' && tmp->precision_flag == 1 && tmp->precision > 0)
 		tmp->precision--;
-	if (tmp->flag == ' ' && tmp->width == 0)
+	if (tmp->flag == ' ' && tmp->precision_flag == 0)
 		tmp->data = ft_strjoin(" ", tmp->data);
+	if (tmp->flag == ' ' && tmp->precision_flag == 1 && tmp->precision <= (int)ft_strlen(tmp->data))
+		tmp->data = ft_strjoin(" ", tmp->data);
+
 }
 
 void	ft_if_ngtv_rgsgn1(var *tmp)
