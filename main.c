@@ -310,17 +310,20 @@ int	main(void)
 	ft_printf("% 3.7d\n", 3267);
 	printf("% .3d\n", 0);
 	ft_printf("% .3d\n", 0);
-*/	printf("% 05d\n", 43);
-	ft_printf("% 05d\n", 43);
+*/	printf("%0+8.5d\n", 34);
+	ft_printf("%0+8.5d\n", 34);
 
-	printf("% 08.3d\n", 8375);
-	ft_printf("% 08.3d\n", 8375);
+	printf("%0+10.5d\n", -216);
+	ft_printf("%0+10.5d\n", -216);
 
-	printf("% -3.7d\n", 3267);
-	ft_printf("% -3.7d\n", 3267);
+	printf("%0+8.5d\n", 0);
+	ft_printf("%0+8.5d\n", 0);
 
-	printf("%010.5d\n", -216);
-	ft_printf("%010.5d\n", -216);
+	printf("%0+8.3d\n", 8375);
+	ft_printf("%0+8.3d\n", 8375);
+
+	printf("%+-3.7d\n", 3267);
+	ft_printf("%+-3.7d\n", 3267);
 
 /*	ft_printf("%05d\n", -42);
 	ft_printf("%0+5d\n", -42);
