@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-char	*ft_print_f(var *s)
+char	*ft_print_f(var *tmp)
 {
 	char	*str;
 	int		wdth;
@@ -21,23 +21,29 @@ char	*ft_print_f(var *s)
 	int		i;
 
 	i = 0;
-	wdth = (s->width) ? s->width : 0;
-	len = ft_strlen(s->data);
-	while (s->data[i] != '.')
+	len = ft_strlen(tmp->data);
+	while (tmp->data[i] != '.')
 		i++;
 	if (!(str = ft_strnew(wdth)))
 		return (0);
-	if (s->precision >= len)
-		s->precision = 0;
-	if (s->precision > 0)
+	if (tmp->precision >= len)
+		tmp->precision = 0;
+	if (tmp->precision > 0)
 	{
-		s->data = ft_crop_str(s->data, len, s->precision + i + 1);
-		len = (len > s->precision) ? s->precision + i : len;
+		tmp->data = ft_crop_str(tmp->data, len, tmp->precision + i + 1);
+		len = (len > tmp->precision) ? tmp->precision + i : len;
 	}
-	len = (s->precision) ? ++len : len;
-	if (s->width)
-		s->data = (s->flag != '-') ?
-			ft_fil_whitespaces(s, wdth, len) :
-			ft_end_whitespaces(s, wdth, len);
-	return (s->data);
+	len = (tmp->precision) ? ++len : len;
+	
+	if (tmp)
+	if (tmp->flag != '-')
+		tmp->data = ft_fil_whitespaces(tmp, tmp->width, len);
+	if (tmp->flag == '-')
+		tmp->data = ft_end_whitespaces(tmp, tmp->width, len);
+
+	if (tmp->arg_sign == -1)
+		tmp->data = ft_strjoin("-", tmp->data);
+	if (tmp->flag2 == ' ' && tmp->arg_sign != -1 && (tmp->flag == '-' || tmp->flag == '0'))
+		tmp->data = ft_strjoin(" ", tmp->data);
+	return (tmp->data);
 }

@@ -314,6 +314,7 @@ int	main(void)
 //	printf("%0+8.5d\n", 34);
 //	ft_printf("%0+8.5d\n", 34);
 
+/*	
 	printf("%010.5d\n", -216);
 	ft_printf("%010.5d\n", -216);
 
@@ -325,7 +326,7 @@ int	main(void)
 
 	printf("%.4d\n", -2372);
 	ft_printf("%.4d\n", -2372);
-
+*/
 //	printf("%0+8.5d\n", 0);
 //	ft_printf("%0+8.5d\n", 0);
 
@@ -346,4 +347,15 @@ int	main(void)
 	ft_putstr(tmp->data);
 	ft_putchar('|');
 */
+/*	
+	ft_putchar('|');
+	ft_putchar(tmp->flag);
+	ft_putchar(tmp->flag_1);
+	ft_putchar(tmp->flag2);
+	ft_putchar('|');
+*/
+
+	printf("%.10Lf\n", 0.0000000001l);
+	ft_printf("%.10Lf", 0.0000000001l);
+
 }
