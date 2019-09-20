@@ -37,7 +37,12 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 	}
 	if (tmp->precision_flag == 0)
 	{
-		if (tmp->flag == '-' || tmp->flag == ' ')
+		if (tmp->flag == ' ')
+		{
+			tmp->data = ft_strjoin("-", tmp->data);
+			tmp->width--;
+		}
+		if (tmp->flag == '-')
 		{
 			tmp->data = ft_strjoin("-", tmp->data);
 			tmp->width--;
@@ -107,7 +112,7 @@ void	ft_rgsgn1(var *tmp)
 {
 	if (tmp->arg_sign <= -1)
 	{
-		if (tmp->precision_flag == 0)
+		if (tmp->precision_flag == 0 && tmp->flag != ' ')
 			if ((tmp->flag == '0' || tmp->width == 0 || tmp->width == (int)ft_strlen(tmp->data)))
 				tmp->data = ft_strjoin("-", tmp->data);
 		if (tmp->precision_flag == 1)
