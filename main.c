@@ -354,9 +354,15 @@ int	main(void)
 	ft_putchar(tmp->flag2);
 	ft_putchar('|');
 */
-	printf("|% 1hhi|\n", -745300512);
-	ft_printf("|% 1hhi|\n", -745300512);
-	ft_printf("|% 1d|\n", -745300512);
+
+	printf("|% 6hi|\n", -2530);
+	ft_printf("|% 6hi|\n", -2530);
+
+	printf("|!%2.3hi!|\n", 787403460);
+	ft_printf("|!%2.3hi!|\n", 787403460);
+
+	printf("|%+45hhi|\n", -916058737);
+	ft_printf("|%+45hhi|\n", -916058737);
 
 /*
 	printf("%-+5.1f\n", -7.3);
