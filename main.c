@@ -355,14 +355,8 @@ int	main(void)
 	ft_putchar('|');
 */
 
-	printf("|% 6hi|\n", -2530);
-	ft_printf("|% 6hi|\n", -2530);
-
-	printf("|!%2.3hi!|\n", 787403460);
-	ft_printf("|!%2.3hi!|\n", 787403460);
-
-	printf("|%+45hhi|\n", -916058737);
-	ft_printf("|%+45hhi|\n", -916058737);
+	printf("|%-2.6i|\n", -1934567);
+	ft_printf("|%-2.6i|\n", -1934567);
 
 /*
 	printf("%-+5.1f\n", -7.3);
