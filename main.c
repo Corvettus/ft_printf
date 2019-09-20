@@ -355,7 +355,7 @@ int	main(void)
 	ft_putchar('|');
 */
 
-	printf("%.10Lf\n", 0.0000000001l);
-	ft_printf("%.10Lf", 0.0000000001l);
+	printf("%-+5.1f\n", -7.3);
+	ft_printf("%-+5.1f", -7.3);
 
 }

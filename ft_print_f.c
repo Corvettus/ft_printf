@@ -21,6 +21,12 @@ char	*ft_print_f(var *tmp)
 	int		i;
 
 	i = 0;
+/*	ft_putchar('|');
+	ft_putchar(tmp->flag);
+	ft_putchar(tmp->flag_1);
+	ft_putchar(tmp->flag2);
+	ft_putchar('|');
+*/
 	len = ft_strlen(tmp->data);
 	while (tmp->data[i] != '.')
 		i++;
@@ -35,15 +41,29 @@ char	*ft_print_f(var *tmp)
 	}
 	len = (tmp->precision) ? ++len : len;
 	
-	if (tmp)
+
+	if (tmp->flag == '-')
+	{
+		if (tmp->flag2 == ' ' || tmp->flag2 == '+')
+			tmp->width--;
+	}
 	if (tmp->flag != '-')
 		tmp->data = ft_fil_whitespaces(tmp, tmp->width, len);
 	if (tmp->flag == '-')
 		tmp->data = ft_end_whitespaces(tmp, tmp->width, len);
-
 	if (tmp->arg_sign == -1)
 		tmp->data = ft_strjoin("-", tmp->data);
-	if (tmp->flag2 == ' ' && tmp->arg_sign != -1 && (tmp->flag == '-' || tmp->flag == '0'))
-		tmp->data = ft_strjoin(" ", tmp->data);
+	if (tmp->arg_sign != -1)
+	{
+		if (tmp->flag2 == ' ')
+		{
+			if (tmp->flag == '-' || tmp->flag == '0')
+				tmp->data = ft_strjoin(" ", tmp->data);
+			if (tmp->flag == '+')
+				tmp->data = ft_strjoin("+", tmp->data);
+		}
+		if (tmp->flag == '-' && tmp->flag2 == '+')
+			tmp->data = ft_strjoin("+", tmp->data);
+	}
 	return (tmp->data);
 }
