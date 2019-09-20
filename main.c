@@ -354,8 +354,10 @@ int	main(void)
 	ft_putchar(tmp->flag2);
 	ft_putchar('|');
 */
-
+	printf("|!%2hhi!|\n", -1673027184);
+	ft_printf("|!%2hhi!|\n", -1673027184);
+/*
 	printf("%-+5.1f\n", -7.3);
 	ft_printf("%-+5.1f", -7.3);
-
+*/
 }

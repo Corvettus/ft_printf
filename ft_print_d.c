@@ -17,6 +17,8 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 {
 	if (tmp->precision_flag == 1)
 	{
+		if (tmp->precision < (int)ft_strlen(tmp->data) && tmp->precision > tmp->width && tmp->width)
+			tmp->data = ft_strjoin("-", tmp->data);
 		if (tmp->width > 0 && tmp->precision < tmp->width)
 		{
 			if (tmp->width <= (int)ft_strlen(tmp->data))
@@ -40,7 +42,7 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 			tmp->data = ft_strjoin("-", tmp->data);
 			tmp->width--;
 		}
-		if (tmp->flag == '?' && tmp->width > (int)ft_strlen(tmp->data))
+		if (tmp->flag == '?')
 		{
 			tmp->data = ft_strjoin("-", tmp->data);
 			tmp->width--;
