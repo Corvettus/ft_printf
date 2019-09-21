@@ -355,9 +355,11 @@ int	main(void)
 	ft_putchar('|');
 */
 
-	printf("|%-2.6i|\n", -1934567);
-	ft_printf("|%-2.6i|\n", -1934567);
+	printf("|%4i|\n", -99);
+	ft_printf("|%4i|\n", -99);
 
+	printf("|% -2.8d|\n", -1751062729);
+	ft_printf("|% -2.8d|\n", -1751062729);
 /*
 	printf("%-+5.1f\n", -7.3);
 	ft_printf("%-+5.1f", -7.3);
