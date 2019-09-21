@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 13:52:11 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/09/18 20:38:30 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/09/21 05:43:25 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char	*ft_get_o(char *str1, var *tmp, va_list str)
 	else if (tmp->size1 == 'h')
 	{
 		if (tmp->size2 == 'h')
-			nb = (signed char)va_arg(str, int);
+			nb = (unsigned char)va_arg(str, int);
 		else
-			nb = (short int)va_arg(str, int);
+			nb = (unsigned short int)va_arg(str, int);
 	}
 	else
 	{
@@ -32,7 +32,6 @@ char	*ft_get_o(char *str1, var *tmp, va_list str)
 		if (nb == 0 && tmp->precision == 0 && tmp->precision_flag == 1)
 			return ("");
 	}
-
 	str1 = ft_itoa_base(nb, 8, tmp->type);
 	return (str1);
 }
