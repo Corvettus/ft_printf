@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 16:39:28 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/09/20 23:38:01 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/09/21 05:55:25 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_print_o(var *tmp)
 		tmp->flag = '0';
 	while (tmp->flag == '0' && (int)ft_strlen(tmp->data) < tmp->width)
 		tmp->data = ft_strjoin_left("0", tmp->data);
-	if (tmp->flag2 == '#')
+	if (tmp->flag2 == '#' && tmp->flag != '0')
 		tmp->data = ft_strjoin_left("0", tmp->data);
 	if (tmp->flag == '-')
 		while ((int)ft_strlen(tmp->data) < tmp->precision)
