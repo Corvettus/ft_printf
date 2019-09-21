@@ -355,11 +355,15 @@ int	main(void)
 	ft_putchar('|');
 */
 
-	printf("|%4i|\n", -99);
-	ft_printf("|%4i|\n", -99);
+/*	printf("|%04d|\n", -4825);
+	ft_printf("|%04d|\n", -4825);
 
-	printf("|% -2.8d|\n", -1751062729);
-	ft_printf("|% -2.8d|\n", -1751062729);
+	printf("|%04d|\n", -532);
+	ft_printf("|%04d|\n", -532);
+*/
+	printf("|%07d|\n", -54);
+	ft_printf("|%07d|\n", -54);
+
 /*
 	printf("%-+5.1f\n", -7.3);
 	ft_printf("%-+5.1f", -7.3);
