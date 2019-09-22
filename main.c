@@ -357,12 +357,12 @@ int	main(void)
 
 /*	printf("|%04d|\n", -4825);
 	ft_printf("|%04d|\n", -4825);
-
-	printf("|%04d|\n", -532);
-	ft_printf("|%04d|\n", -532);
 */
-	printf("|%07d|\n", -54);
-	ft_printf("|%07d|\n", -54);
+	printf("|%04d|\n", -4825);
+	ft_printf("|%04d|\n", -4825);
+
+	printf("|% 07d|\n", -54);
+	ft_printf("|% 07d|\n", -54);
 
 /*
 	printf("%-+5.1f\n", -7.3);

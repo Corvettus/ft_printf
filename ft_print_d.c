@@ -83,22 +83,28 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 			tmp->data = ft_strjoin("-", tmp->data);
 			tmp->width--;
 		}
+		if (tmp->flag == '0' && (tmp->flag2 == '?' || tmp->flag2 == ' ') && tmp->width != (int)ft_strlen(tmp->data))
+		{	
+			//tmp->data = ft_strjoin("-", tmp->data);
+			tmp->arg_sign = -2;
+			if (tmp->flag2 == ' ' && tmp->width < (int)ft_strlen(tmp->data))
+				tmp->width -= 1;
+			tmp->width -= 1;
+/*		}
 		if (tmp->flag == '0' && tmp->flag2 == '?' && tmp->width <= (int)ft_strlen(tmp->data))
 		{
 			tmp->data = ft_strjoin("-", tmp->data);
-			tmp->width--;
+			tmp->width--;*/
 		}
-		if (tmp->flag == '0' && tmp->width > (int)ft_strlen(tmp->data))
-			tmp->width -= 2;
 		if (tmp->flag == '0' && tmp->width == (int)ft_strlen(tmp->data))
-			tmp->data = ft_strjoin("0", tmp->data);
+			tmp->data = ft_strjoin("-", tmp->data);
 		if (tmp->flag != '-' && tmp->flag != '0' && tmp->width == (int)ft_strlen(tmp->data))
 			tmp->data = ft_strjoin(" ", tmp->data);
 	}
-		ft_putchar('|');
+	/*	ft_putchar('|');
 		ft_putnbr(tmp->width);
 		ft_putchar('|');
-
+*/
 }
 
 void	ft_if_pstv_rgsgn(var *tmp)
@@ -168,10 +174,10 @@ void	ft_rgsgn1(var *tmp)
 	if (tmp->arg_sign <= -1)
 	{
 		if (tmp->precision_flag == 0 && tmp->flag != ' ' && tmp->width)
-		{	//if ((tmp->flag == '0' || tmp->width == 0 || tmp->width > (int)ft_strlen(tmp->data)))
-			if ((tmp->flag == '0' && tmp->width >= (int)ft_strlen(tmp->data)) && tmp->width)
+		{
+			if ((tmp->flag == '0' && tmp->flag2 != ' ' && tmp->width >= (int)ft_strlen(tmp->data)) && tmp->width)
 				tmp->data = ft_strjoin("-", tmp->data);
-			if (tmp->flag == '0' && tmp->flag2 == ' ')
+			if (tmp->flag == '0' && tmp->flag2 == ' ' && tmp->width >= (int)ft_strlen(tmp->data) && tmp->width)
 				tmp->data = ft_strjoin("-", tmp->data);
 		}
 		if (tmp->precision_flag == 1)
@@ -195,6 +201,12 @@ void	ft_rgsgn1(var *tmp)
 
 char	*ft_print_d(var *tmp)
 {
+/*	ft_putchar('|');
+	ft_putchar(tmp->flag);
+	ft_putchar(tmp->flag_1);
+	ft_putchar(tmp->flag2);
+	ft_putchar('|');*/
+
 	if (tmp->arg_sign == -1)
 		ft_if_ngtv_rgsgn(tmp);
 	if ((int)ft_strlen(tmp->data) < tmp->precision && tmp->precision_flag == 1)
@@ -251,7 +263,7 @@ char	*ft_print_d(var *tmp)
 	ft_putchar('|');
 	ft_putnbr(tmp->data);
 	ft_putchar('|');
-*/
+	*/
 	tmp->data = ft_print_s(tmp);
 	ft_rgsgn1(tmp);
 	if (tmp->flag_1 == ' ')
