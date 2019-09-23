@@ -13,6 +13,9 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
+#include "ft_printf.h"
+#include <stdio.h>
+
 void	ft_if_ngtv_rgsgn(var *tmp)
 {
 	if (tmp->precision_flag == 1)
@@ -72,6 +75,8 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 			}
 			else if (tmp->flag2 == '?' || tmp->flag2 == ' ')
 				tmp->data = ft_strjoin("-", tmp->data);
+			else if (tmp->flag2 == '+')
+				tmp->data = ft_strjoin("-", tmp->data);
 		}
 		if (tmp->flag == '-')
 		{
@@ -92,7 +97,10 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 				tmp->width -= 1;
 			tmp->width -= 1;
 		}
-
+		if (tmp->flag == '0' && tmp->flag2 == '+')
+		{
+			tmp->width -= 2;
+		}
 	/*	if (tmp->flag == '0' && tmp->flag2 == ' ')
 		{
 			if (tmp->width <= (int)ft_strlen(tmp->data))
@@ -109,6 +117,12 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 
 void	ft_if_pstv_rgsgn(var *tmp)
 {
+/*	ft_putchar('|');
+	ft_putchar(tmp->flag);
+	ft_putchar(tmp->flag_1);
+	ft_putchar(tmp->flag2);
+	ft_putchar('|');
+*/
 	if (tmp->flag2 == '+')
 		tmp->width -= 2;
 	if (tmp->flag2 == ' ' && tmp->flag != '+')
@@ -136,12 +150,22 @@ void	ft_if_pstv_rgsgn(var *tmp)
 				tmp->flag_1 = ' ';
 				tmp->width--;
 			}
+			/*	ft_putchar('|');
+				ft_putnbr(tmp->width);
+				ft_putnbr(tmp->precision);
+				ft_putnbr((int)ft_strlen(tmp->data));
+				ft_putchar('|');*/
 			if (tmp->flag == '0')
 			{
-				if (tmp->width <= tmp->precision)
+				if (tmp->width <= tmp->precision && tmp->width < (int)ft_strlen(tmp->data))
 					tmp->data = ft_strjoin(" ", tmp->data);
-				if (tmp->flag2 == ' ' && tmp->width < (int)ft_strlen(tmp->data) && tmp->width > tmp->precision)
+				else if (tmp->width < (int)ft_strlen(tmp->data) && tmp->precision < (int)ft_strlen(tmp->data))
 					tmp->data = ft_strjoin(" ", tmp->data);
+				else if (tmp->width == (int)ft_strlen(tmp->data) && tmp->width > tmp->precision)
+					tmp->data = ft_strjoin(" ", tmp->data);
+				//ft_putchar('|');
+				//ft_putstr(tmp->data);
+				//ft_putchar('|');
 			}
 		}
 	}
@@ -154,11 +178,17 @@ void	ft_if_pstv_rgsgn(var *tmp)
 	}
 	if (tmp->flag == '-' && tmp->flag2 == '+' && tmp->precision_flag == 1 && tmp->precision > 0)
 		tmp->precision--;
-/*	ft_putchar('|');
+	/*	
+	ft_putchar('|');
 	ft_putstr(tmp->data);
 	ft_putchar('|');
 	ft_putnbr(tmp->precision);
-	ft_putchar('|');*/
+	ft_putchar('|');
+	*/
+	/*ft_putchar('|');
+	ft_putstr(tmp->data);
+	ft_putchar('|');
+*/
 	if (tmp->flag == ' ' && tmp->precision_flag == 0)
 		tmp->data = ft_strjoin(" ", tmp->data);
 	if (tmp->flag == ' ' && tmp->flag2 == '?' && tmp->precision_flag == 1)
@@ -179,6 +209,8 @@ void	ft_rgsgn1(var *tmp)
 			if ((tmp->flag == '0' && tmp->flag2 != ' ' && tmp->width >= (int)ft_strlen(tmp->data)) && tmp->width)
 				tmp->data = ft_strjoin("-", tmp->data);
 			if (tmp->flag == '0' && tmp->flag2 == ' ' && tmp->width >= (int)ft_strlen(tmp->data) && tmp->width)
+				tmp->data = ft_strjoin("-", tmp->data);
+			if (tmp->flag == '0' && tmp->flag2 == '+')
 				tmp->data = ft_strjoin("-", tmp->data);
 		}
 		if (tmp->precision_flag == 1)
@@ -207,13 +239,13 @@ void	ft_rgsgn1(var *tmp)
 
 char	*ft_print_d(var *tmp)
 {
-	/*
+/*	
 	ft_putchar('|');
 	ft_putchar(tmp->flag);
 	ft_putchar(tmp->flag_1);
 	ft_putchar(tmp->flag2);
 	ft_putchar('|');
-*/
+	*/
 
 	if (tmp->arg_sign == -1)
 		ft_if_ngtv_rgsgn(tmp);
@@ -239,6 +271,8 @@ char	*ft_print_d(var *tmp)
 			tmp->width++;
 			tmp->data = ft_strjoin("-", tmp->data);
 		}
+		if (tmp->flag2 == ' ' && tmp->arg_sign >= 1)
+			tmp->width--;
 		while (tmp->width > (int)ft_strlen(tmp->data))
 			tmp->data = ft_strjoin(" ", tmp->data);
 	}
