@@ -357,9 +357,9 @@ int	main(void)
 
 /*	
 	ft_putchar('|');
-	ft_putchar(tmp->width);
-	ft_putchar(tmp->precision);
-	ft_putchar((int)ft_strlen(tmp->data));
+	ft_putnbr(tmp->width);
+	ft_putnbr(tmp->precision);
+	ft_putnbr((int)ft_strlen(tmp->data));
 	ft_putchar('|');
 */
 
@@ -381,8 +381,9 @@ int	main(void)
 	printf("|%0+5d|\n", -42);
 	ft_printf("|%0+5d|\n", -42);
 */
-	printf("|%+-.3zi|\n", 0);
+/*	printf("|%+-.2zi|\n", 0);
 	ft_printf("|%+-.2zi|\n", 0);
+	ft_printf("|%+-.3zi|\n", 0);
 
 	printf("|%+-2.10zi|\n", 819067566);
 	ft_printf("|%+-2.10zi|\n", 819067566);
@@ -392,12 +393,14 @@ int	main(void)
 
 	printf("|%+-46.46hhi|\n", 1395042012);
 	ft_printf("|%+-46.46hhi|\n", 1395042012);
-
-	printf("|%+-2.10zi|\n", 819067566);
-	ft_printf("|%+-2.10zi|\n", 819067566);
-
-/*
-	printf("%-+5.1f\n", -7.3);
-	ft_printf("%-+5.1f", -7.3);
 */
+
+	printf("%.10d\n", 4242);
+	ft_printf("%.10d\n", 4242);
+
+	printf("%4.15d\n", 42);
+	ft_printf("%4.15d\n", 42);
+
+	printf("@moulitest: %.10d\n", -42);
+	ft_printf("@moulitest: %.10d\n", -42);
 }
