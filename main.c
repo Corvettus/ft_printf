@@ -395,12 +395,7 @@ int	main(void)
 	ft_printf("|%+-46.46hhi|\n", 1395042012);
 */
 
-	printf("%.10d\n", 4242);
-	ft_printf("%.10d\n", 4242);
+	printf("%6.6d\n", -3);
+	ft_printf("%.6d\n", -3);
 
-	printf("%4.15d\n", 42);
-	ft_printf("%4.15d\n", 42);
-
-	printf("@moulitest: %.10d\n", -42);
-	ft_printf("@moulitest: %.10d\n", -42);
 }
