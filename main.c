@@ -419,7 +419,7 @@ int	main(void)
 	printf("%0+3.4d\n", 6983);
 	ft_printf("%0+3.4d\n", 6983);
 */
-	printf("%0+10.5d\n", -216);
-	ft_printf("%0+10.5d", -216);
+	printf("% +10.5d\n", -216);
+	ft_printf("% +10.5d", -216);
 
 }

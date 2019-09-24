@@ -39,6 +39,11 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 			tmp->data = ft_strjoin("-", tmp->data);
 		if (tmp->flag == '0')
 		{
+			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
+			{
+				if (tmp->width > (int)ft_strlen(tmp->data))
+					tmp->width--;
+			}
 			if (tmp->flag2 == '?')
 			{
 				if (tmp->width <= (int)ft_strlen(tmp->data))
@@ -114,6 +119,11 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 				if (tmp->precision < (int)ft_strlen(tmp->data))
 					tmp->data = ft_strjoin("-", tmp->data);
 			}
+			if (tmp->flag2 == ' ' && tmp->flag_1 == '?' )
+			{
+				if (tmp->precision < (int)ft_strlen(tmp->data))
+					tmp->data = ft_strjoin("-", tmp->data);
+			}
 		}
 /*
 	ft_putchar('|');
@@ -122,6 +132,12 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 	ft_putchar(tmp->flag2);
 	ft_putchar('|');
 */
+		if (tmp->flag == ' ')
+		{
+			if (tmp->flag2 == '?' && tmp->flag_1 == '?')
+				if (tmp->precision < (int)ft_strlen(tmp->data))
+					tmp->data = ft_strjoin("-", tmp->data);
+		}
 		if (tmp->flag == '0')
 		{
 			if (tmp->flag2 == '?')
@@ -140,6 +156,8 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 			{
 				if (tmp->flag_1 == '?')
 					tmp->flag = '?';
+				if (tmp->width >= tmp->precision && tmp->precision < (int)ft_strlen(tmp->data))
+					tmp->data = ft_strjoin("-", tmp->data);
 			}
 		}
 		if (tmp->flag == '+')
@@ -176,8 +194,19 @@ void	ft_if_pstv_rgsgn(var *tmp)
 		{
 			if (tmp->flag2 == ' ')
 			{
-			//	if (tmp->width == 0)
+				if (tmp->width <= (int)ft_strlen(tmp->data))
 					tmp->data = ft_strjoin("+", tmp->data);
+				if (tmp->width > (int)ft_strlen(tmp->data))
+				{
+					if (tmp->flag_1 == '0')
+					{
+						tmp->flag = '0';
+						tmp->flag_1 = 'p';
+						tmp->width--;
+					}
+					if (tmp->flag_1 == '?')
+						tmp->data = ft_strjoin("+", tmp->data);
+				}
 			}
 			if (tmp->flag2 == '?' && tmp->flag_1 == '?')
 				tmp->data = ft_strjoin("+", tmp->data);
@@ -202,24 +231,38 @@ void	ft_if_pstv_rgsgn(var *tmp)
 				//if (tmp->width >= (int)ft_strlen(tmp->data))
 				//tmp->flag = ' ';
 			}
+			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
+			{
+				//tmp->flag_1 = 's';
+				tmp->width--;
+			}
 		}
 		if (tmp->flag == '-')
 		{
-			if (tmp->flag2 == ' ' && tmp->flag_1 == ' ' && tmp->width <= (int)ft_strlen(tmp->data))
-				tmp->data = ft_strjoin(" ", tmp->data);
-			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
-				tmp->width--;
+			if (tmp->flag2 == ' ')
+			{
+				if (tmp->flag_1 == ' ')
+					if (tmp->width <= (int)ft_strlen(tmp->data))
+						tmp->data = ft_strjoin(" ", tmp->data);
+				if (tmp->flag_1 == '?')
+				{
+					if (tmp->width <= (int)ft_strlen(tmp->data))
+						tmp->data = ft_strjoin(" ", tmp->data);
+					tmp->width--;
+				}
+			}
 		}
+
 	}
 	if (tmp->precision_flag == 1)
 	{
-	/*
+/*
 	ft_putchar('|');
 	ft_putchar(tmp->flag);
 	ft_putchar(tmp->flag_1);
 	ft_putchar(tmp->flag2);
 	ft_putchar('|');
-	*/
+*/
 		if (tmp->flag == '+')
 		{
 			if (tmp->flag2 == '?' && tmp->flag_1 == '?')
@@ -229,6 +272,8 @@ void	ft_if_pstv_rgsgn(var *tmp)
 				if (tmp->precision > (int)ft_strlen(tmp->data) && tmp->precision > tmp->width)
 					tmp->flag_1 = '+';
 			}
+			if (tmp->flag2 == ' ' && tmp->flag_1 == '?' && tmp->precision < (int)ft_strlen(tmp->data))
+				tmp->data = ft_strjoin("+", tmp->data);
 		}
 		if (tmp->flag == '0')
 		{
@@ -252,7 +297,17 @@ void	ft_if_pstv_rgsgn(var *tmp)
 			if (tmp->flag2 == '+' && tmp->precision < (int)ft_strlen(tmp->data) && tmp->width >= tmp->precision)
 				tmp->data = ft_strjoin("+", tmp->data);
 			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
+			{
+				if (tmp->width < (int)ft_strlen(tmp->data) && tmp->precision < (int)ft_strlen(tmp->data))
+					tmp->data = ft_strjoin(" ", tmp->data);
 				tmp->width--;
+			}
+		}
+		if (tmp->flag == ' ')
+		{
+			if (tmp->flag2 == '?' && tmp->flag_1 == '?')
+				if (tmp->precision < (int)ft_strlen(tmp->data))
+					tmp->data = ft_strjoin(" ", tmp->data);
 		}
 	}
 }
@@ -272,15 +327,29 @@ char	*ft_print_d(var *tmp)
 		{
 			if (tmp->flag2 == '?')
 				tmp->data = ft_strjoin("+", tmp->data);
+			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
+				tmp->data = ft_strjoin("+", tmp->data);
 		}
 		if (tmp->flag == '-')
 		{
 			if (tmp->flag2 == '+')
 				tmp->data = ft_strjoin("+", tmp->data);
 		}
+		if (tmp->flag == ' ')
+		{
+			if (tmp->flag2 == '?' && tmp->flag_1 == '?')
+				tmp->data = ft_strjoin(" ", tmp->data);
+		}
 	}
 	if (tmp->arg_sign == -1 && tmp->precision_flag == 1 && tmp->precision == (int)ft_strlen(tmp->data))
 	{
+/*
+	ft_putchar('|');
+	ft_putchar(tmp->flag);
+	ft_putchar(tmp->flag_1);
+	ft_putchar(tmp->flag2);
+	ft_putchar('|');
+*/
 		if (tmp->flag == '?')
 		{
 			if (tmp->width > 0)
@@ -292,10 +361,14 @@ char	*ft_print_d(var *tmp)
 				tmp->data = ft_strjoin("-", tmp->data);
 			if (tmp->flag2 == '+')
 				tmp->data = ft_strjoin("-", tmp->data);
+			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
+				tmp->data = ft_strjoin("-", tmp->data);
 		}
 		if (tmp->flag == '+')
 		{
 			if (tmp->flag2 == '?' && tmp->flag_1 == '?')
+				tmp->data = ft_strjoin("-", tmp->data);
+			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
 				tmp->data = ft_strjoin("-", tmp->data);
 		}
 		if (tmp->flag == ' ')
@@ -316,7 +389,7 @@ char	*ft_print_d(var *tmp)
 			if (tmp->flag == ' ' && tmp->flag_1 == '?' && tmp->flag2 == '?')
 				tmp->flag_1 = ' ';
 			if (tmp->flag == ' ' && tmp->flag2 == '-' && tmp->flag2 == '?')
-				tmp->flag_1 = 'p';
+				tmp->flag_1 = 's';
 			tmp->flag = '0';
 		}
 		if (tmp->precision > tmp->width)
@@ -357,42 +430,56 @@ char	*ft_print_d(var *tmp)
 	{
 		if (tmp->flag == '0')
 		{
-			if (tmp->flag2 == '+' && tmp->width == (int)ft_strlen(tmp->data))
+
+			if (tmp->flag2 == '+' && tmp->flag_1 == '?' && tmp->width == (int)ft_strlen(tmp->data))
 				tmp->data = ft_strjoin("+", tmp->data);
-			if (tmp->flag2 == '?' && tmp->flag_1 == '+' && tmp->precision == (int)ft_strlen(tmp->data) && tmp->precision_flag == 1)
-				tmp->data = ft_strjoin("+", tmp->data);
-			if (tmp->flag2 == '?' && tmp->flag_1 == '0' && tmp->width == (int)ft_strlen(tmp->data) && tmp->precision_flag == 0)
-				tmp->data = ft_strjoin("+", tmp->data);
-			//if (tmp->flag2 == '?' && tmp->width == (int)ft_strlen(tmp->data))
-			//	tmp->data = ft_strjoin("+", tmp->data);
+			if (tmp->flag2 == ' ')
+			{
+				if (tmp->flag_1 == '?')
+					tmp->data = ft_strjoin(" ", tmp->data);
+				if (tmp->flag_1 == '+' && tmp->precision == (int)ft_strlen(tmp->data))
+					tmp->data = ft_strjoin("+", tmp->data);
+				if (tmp->flag_1 == '0' && tmp->width == (int)ft_strlen(tmp->data))
+					tmp->data = ft_strjoin("+", tmp->data);
+				if (tmp->flag_1 == 'p')
+				{
+					if (tmp->width == (int)ft_strlen(tmp->data))
+						tmp->data = ft_strjoin("+", tmp->data);
+				}
+			}
+			if (tmp->flag2 == '?')
+			{
+
+				if (tmp->flag_1 == '+' && tmp->precision == (int)ft_strlen(tmp->data) && tmp->precision_flag == 1)
+					tmp->data = ft_strjoin("+", tmp->data);
+				if (tmp->flag_1 == '0' && tmp->width == (int)ft_strlen(tmp->data) && tmp->precision_flag == 0)
+					tmp->data = ft_strjoin("+", tmp->data);
+				if (tmp->flag_1 == 's')
+					tmp->data = ft_strjoin(" ", tmp->data);
+				if (tmp->flag_1 == ' ' && tmp->precision == (int)ft_strlen(tmp->data) && tmp->precision_flag == 1)
+					tmp->data = ft_strjoin(" ", tmp->data);
+				//if (tmp->flag2 == '?' && tmp->width == (int)ft_strlen(tmp->data))
+				//	tmp->data = ft_strjoin("+", tmp->data);
+				/*if (tmp->flag2 == '+' && tmp->flag_1 == '?' && tmp->width < (int)ft_strlen(tmp->data))
+				{
+					if (tmp->width <= tmp->precision && tmp->precision_flag == 1)
+						tmp->data = ft_strjoin("+", tmp->data);
+					//else if (tmp->width > tmp->precision)
+					tmp->flag = '?';
+				}*/
+			}
 		}
 		if (tmp->flag == '+')
 		{
 			if (tmp->flag2 == '?' && tmp->precision == (int)ft_strlen(tmp->data) && tmp->precision_flag == 1)
 				tmp->data = ft_strjoin("+", tmp->data);
 		}
-		if (tmp->flag == '0')
-		{
-			if (tmp->flag2 == '?' && tmp->flag_1 == 'p')
-				tmp->data = ft_strjoin(" ", tmp->data);
-			/*if (tmp->flag2 == '+' && tmp->flag_1 == '?' && tmp->width < (int)ft_strlen(tmp->data))
-			{
-				if (tmp->width <= tmp->precision && tmp->precision_flag == 1)
-					tmp->data = ft_strjoin("+", tmp->data);
-				//else if (tmp->width > tmp->precision)
-				tmp->flag = '?';
-			}*/
-		}
 		if (tmp->flag == '-')
 		{
 			if (tmp->flag_1 == '?' && tmp->flag2 == ' ' && tmp->width == (int)ft_strlen(tmp->data))
 				tmp->data = ft_strjoin(" ", tmp->data);	
 		}
-		if (tmp->flag == '0' && tmp->flag2 == '?' && tmp->flag_1 == ' ')
-		{
-			if (tmp->precision == (int)ft_strlen(tmp->data))
-				tmp->data = ft_strjoin(" ", tmp->data);
-		}
+
 	}
 /*
 	ft_putchar('|');
@@ -410,6 +497,8 @@ char	*ft_print_d(var *tmp)
 			if (tmp->flag2 == '+' && tmp->width == (int)ft_strlen(tmp->data))
 				tmp->data = ft_strjoin("-", tmp->data);
 			if (tmp->flag2 == ' ' && tmp->flag_1 == '+' && tmp->precision == (int)ft_strlen(tmp->data))
+				tmp->data = ft_strjoin("-", tmp->data);
+			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
 				tmp->data = ft_strjoin("-", tmp->data);
 			if (tmp->flag2 == '?' && tmp->precision >= (int)ft_strlen(tmp->data))
 				tmp->data = ft_strjoin("-", tmp->data);
