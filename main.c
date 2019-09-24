@@ -395,7 +395,7 @@ int	main(void)
 	ft_printf("|%+-46.46hhi|\n", 1395042012);
 */
 
-	printf("%6.6d\n", -3);
-	ft_printf("%.6d\n", -3);
+	printf("%+-8.3d\n", 8375);
+	ft_printf("%+-8.3d", 8375);
 
 }
