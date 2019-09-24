@@ -395,7 +395,31 @@ int	main(void)
 	ft_printf("|%+-46.46hhi|\n", 1395042012);
 */
 
-	printf("%+-8.3d\n", 8375);
-	ft_printf("%+-8.3d", 8375);
+/*	printf("%0+2.3d\n", 6983);
+	ft_printf("%0+2.3d\n", 6983);
+
+	printf("%0+3.3d\n", 6983);
+	ft_printf("%0+3.3d\n", 6983);
+
+	printf("%0+4.3d\n", 6983);
+	ft_printf("%0+4.3d\n", 6983);
+
+	printf("%0+5.3d\n", 6983);
+	ft_printf("%0+5.3d\n", 6983);
+
+	printf("%0+6.3d\n", 6983);
+	ft_printf("%0+6.3d\n", 6983);
+
+	printf("%0+3.2d\n", 6983);
+	ft_printf("%0+3.2d\n", 6983);
+
+	printf("%0+3.3d\n", 6983);
+	ft_printf("%0+3.3d\n", 6983);
+
+	printf("%0+3.4d\n", 6983);
+	ft_printf("%0+3.4d\n", 6983);
+*/
+	printf("%0+10.5d\n", -216);
+	ft_printf("%0+10.5d", -216);
 
 }
