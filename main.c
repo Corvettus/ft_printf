@@ -333,15 +333,6 @@ int	main(void)
 //	printf("%0+8.3d\n", 8375);
 //	ft_printf("%0+8.3d\n", 8375);
 
-//	printf("%+-3.7d\n", 3267);
-//	ft_printf("%+-3.7d\n", 3267);
-
-/*	ft_printf("%05d\n", -42);
-	ft_printf("%0+5d\n", -42);
-	ft_printf("%-5d\n", -42);
-	ft_printf("%-05d\n", -42);
-	ft_printf("@moulitest: %.10d\n", -42);
-*/
 /*
 	ft_putchar('|');
 	ft_putstr(tmp->data);
@@ -363,63 +354,7 @@ int	main(void)
 	ft_putchar('|');
 */
 
-/*	printf("|% 010.2zd|\n", -1514570756);
-	ft_printf("|% 010.2zd|\n", -1514570756);
-
-	printf("|% 08.5d|\n", 34);
-	ft_printf("|% 08.5d|\n", 34);
-
-	printf("|% 03.7d|\n", 3267);
-	ft_printf("|% 03.7d|\n", 3267);
-*/
-/*	printf("|% ++d|\n", -42);
-	ft_printf("|% ++d|\n", -42);
-
-	printf("|%++ d|\n", -42);
-	ft_printf("|%++ d|\n", -42);
-
-	printf("|%0+5d|\n", -42);
-	ft_printf("|%0+5d|\n", -42);
-*/
-/*	printf("|%+-.2zi|\n", 0);
-	ft_printf("|%+-.2zi|\n", 0);
-	ft_printf("|%+-.3zi|\n", 0);
-
-	printf("|%+-2.10zi|\n", 819067566);
-	ft_printf("|%+-2.10zi|\n", 819067566);
-
-	printf("|%+-2.4hhi|\n", 557900400);
-	ft_printf("|%+-2.4hhi|\n", 557900400);
-
-	printf("|%+-46.46hhi|\n", 1395042012);
-	ft_printf("|%+-46.46hhi|\n", 1395042012);
-*/
-
-/*	printf("%0+2.3d\n", 6983);
-	ft_printf("%0+2.3d\n", 6983);
-
-	printf("%0+3.3d\n", 6983);
-	ft_printf("%0+3.3d\n", 6983);
-
-	printf("%0+4.3d\n", 6983);
-	ft_printf("%0+4.3d\n", 6983);
-
-	printf("%0+5.3d\n", 6983);
-	ft_printf("%0+5.3d\n", 6983);
-
-	printf("%0+6.3d\n", 6983);
-	ft_printf("%0+6.3d\n", 6983);
-
-	printf("%0+3.2d\n", 6983);
-	ft_printf("%0+3.2d\n", 6983);
-
-	printf("%0+3.3d\n", 6983);
-	ft_printf("%0+3.3d\n", 6983);
-
-	printf("%0+3.4d\n", 6983);
-	ft_printf("%0+3.4d\n", 6983);
-*/
-	printf("% +10.5d\n", -216);
-	ft_printf("% +10.5d", -216);
+	printf("|%0+.5hhd|\n", 880362176);
+	ft_printf("|%0+.5hhd|\n", 880362176);
 
 }
