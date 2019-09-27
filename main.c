@@ -350,11 +350,25 @@ int	main(void)
 	ft_putchar('|');
 	ft_putnbr(tmp->width);
 	ft_putnbr(tmp->precision);
+	ft_putnbr(tmp->precision_flag);
 	ft_putnbr((int)ft_strlen(tmp->data));
 	ft_putchar('|');
 */
 
-	printf("|%0+.5hhd|\n", 880362176);
-	ft_printf("|%0+.5hhd|\n", 880362176);
+	// DOUBLE
+
+/*	
+	printf("%.0f\n", 7.4);
+	ft_printf("%.0f\n", 7.4);
+
+	printf("%.1f\n", 7.5);
+	ft_printf("%.1f\n", 7.5);
+*/
+/*
+	printf("%f\n", -56.2012685);
+	ft_printf("%f\n", -56.2012685);
+*/
+	printf("%.11f\n",        1.25978548534310421);
+	ft_printf("%.11f\n",        1.25978548534310421);
 
 }
