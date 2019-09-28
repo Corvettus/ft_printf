@@ -31,6 +31,7 @@ typedef struct	float_struct
 	long double				mantisa;
 	long					sign;
 	int						mantisa_len;
+	int						zero_len;
 	int						base;
 	int						power;
 	char					*res;
@@ -42,7 +43,7 @@ char	*ft_print_s(var *s);
 char	*ft_print_p(var *s);
 char	*ft_print_pc(var *s);
 char	*ft_llitoa(long long int n, var *tmp);
-char	*ft_ullitoa(long long int nb, var *tmp);
+char	*ft_ullitoa(uintmax_t nb, var *tmp);
 char	*ft_print_d(var *s);
 char	*ft_print_o(var *s);
 char	*ft_print_u(var *s);

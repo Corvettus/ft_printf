@@ -13,9 +13,9 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-float			ft_power(float nb, int power)
+long double			ft_power(long double nb, int power)
 {
-	float	s;
+	long double	s;
 
 	s = nb;
 	if (power < 0)
@@ -51,9 +51,8 @@ float_struct	ft_create_double_list(float_struct tmp, long double n, int precisio
 float_struct	ft_create_double(long double n, int precision, var *var_struct)
 {
 	float_struct	tmp;
-	int				len_zero;
 
-	len_zero = 0;
+	tmp.zero_len = 0;
 	tmp.mantisa_len = 0;
 	tmp = ft_create_double_list(tmp, n, precision);
 	while (tmp.mantisa_len < precision && tmp.mantisa > 0)
@@ -61,11 +60,17 @@ float_struct	ft_create_double(long double n, int precision, var *var_struct)
 		tmp.mantisa_len++;
 		tmp.mantisa *= 10;
 		if ((long long int)tmp.mantisa == 0)
-			len_zero++;
+			tmp.zero_len++;
 	}
-	//if (var_struct->precision_flag == 1)
-		tmp.mantisa_len = len_zero;
-//	printf("|%d|", len_zero);
+	if (tmp.zero_len > 0)
+		tmp.mantisa_len = tmp.zero_len;
+	else
+		tmp.mantisa_len = precision;
+	/*
+	ft_putchar('|');
+	ft_putnbr(tmp.mantisa_len);
+	ft_putchar('|');
+*/
 	tmp.num = n;
 	if (n < 0)
 	{
@@ -79,19 +84,39 @@ char			*ft_start_double(long double n, var *var_struct)
 {
 	float_struct	tmp;
 	int				precision;
+	int				len;
+	long double		num;
 
+	len = 0;
 	var_struct->arg_sign = (n < 0) ? -1 : 1;
 	n = (n < 0) ? -n : n;
+	num = n;
+	/*while (num > (long int)num)
+	{
+		num *= 10.0;
+		ft_putchar('|');
+		ft_putnbr((long int)num);
+		ft_putchar('|');
+		len++;
+	}
+	ft_putchar('|');
+	ft_putnbr(len);
+	ft_putchar('|');
+*/
 //	n += 0.0000005;
 	precision = 0;
 	if (!(var_struct->precision == 0 && var_struct->precision_flag == 1))
 		precision = (var_struct->precision == 0) ? 6 : var_struct->precision;
-	/*
+/*	
 	ft_putchar('|');
-	ft_putnbr(var_struct->precision);
+	ft_putnbr(precision);
 	ft_putchar('|');
-	*/
+*/
+	//if (var_struct->precision_flag == 1)
+	//printf("%.21Lf\n", n);
 	n += 0.5 * ft_power(0.1, precision);
+	/*printf("|%.21Lf|\n", n);
+	printf("%.21Lf\n", 0.5 * ft_power(0.1, precision));*/
 	tmp = ft_create_double(n, precision, var_struct);
 	//tmp.res = ft_strjoin(tmp.res, ft_itoa((int)tmp.num));
 	tmp.res = ft_itoa((int)tmp.num);
@@ -99,13 +124,16 @@ char			*ft_start_double(long double n, var *var_struct)
 	{
 		
 		tmp.res = ft_strjoin(tmp.res, ".");
-			while (tmp.mantisa_len > 0)
-			{
-				tmp.res = ft_strjoin(tmp.res, "0");
-				tmp.mantisa_len--;
-			}
+		while (tmp.mantisa_len > 0 && tmp.zero_len > 0)
+		{
+			tmp.res = ft_strjoin(tmp.res, "0");
+			tmp.mantisa_len--;
+		}
+		//if (tmp.mantisa > 0)
+		//	tmp.mantisa += 0.5 * ft_power(0.1, precision);
+		//ft_putstr(ft_ullitoa((long long int)tmp.mantisa, var_struct));
 		if ((long long int)tmp.mantisa > 0)
-			tmp.res = ft_strjoin(tmp.res, ft_ullitoa((long long int)tmp.mantisa, var_struct));
+			tmp.res = ft_strjoin(tmp.res, ft_ullitoa((uintmax_t)tmp.mantisa, var_struct));
 	}
 	return (tmp.res);
 }
