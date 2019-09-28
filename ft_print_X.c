@@ -30,7 +30,12 @@ char	*ft_print_x(var *tmp)
 	ft_putchar(tmp->flag2);
 	ft_putchar('|');
 	*/
-	if ((int)ft_strlen(tmp->data) > 0)
+	int	flag_zero;
+
+	flag_zero = 0;
+	if ((int)ft_strlen(tmp->data) == 0)
+		flag_zero = 1;
+	if (flag_zero == 0)
 	{
 		if (tmp->precision_flag == 0)
 		{
@@ -43,32 +48,31 @@ char	*ft_print_x(var *tmp)
 		}
 		if (tmp->precision_flag == 1)
 		{
-			if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '-')
+			if (tmp->flag == '?' && tmp->flag2 == '#')
 			{
-				while (((int)ft_strlen(tmp->data) < tmp->precision))
-					tmp->data = ft_strjoin("0", tmp->data);		
+				if (tmp->flag_1 == '-' || tmp->flag_1 == '?' || tmp->flag_1 == '0')
+				{
+					//if (tmp->precision > tmp->width)
+						while ((int)ft_strlen(tmp->data) < tmp->precision)
+							tmp->data = ft_strjoin("0", tmp->data);		
+				}
 			}
-			if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '?')
+			if (tmp->flag == '-' && tmp->flag2 == '#')
 			{
-				while (((int)ft_strlen(tmp->data) < tmp->precision))
-					tmp->data = ft_strjoin("0", tmp->data);
+				if (tmp->flag_1 == '0')
+				{
+					while (tmp->precision > (int)ft_strlen(tmp->data))
+						tmp->data = ft_strjoin("0", tmp->data);
+				}
+				if (tmp->flag_1 == '?')
+				{
+					while (tmp->precision > (int)ft_strlen(tmp->data))
+						tmp->data = ft_strjoin("0", tmp->data);
+				}
 			}
-			if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '0')
-			{
-				while (tmp->precision > (int)ft_strlen(tmp->data))
-					tmp->data = ft_strjoin("0", tmp->data);
-			}
-			if (tmp->flag == '-' && tmp->flag2 == '#' && tmp->flag_1 == '0')
-			{
-				while (tmp->precision > (int)ft_strlen(tmp->data))
-					tmp->data = ft_strjoin("0", tmp->data);
-			}
-			if (tmp->flag == '-' && tmp->flag2 == '#' && tmp->flag_1 == '?')
-			{
-				while (tmp->precision > (int)ft_strlen(tmp->data))
-					tmp->data = ft_strjoin("0", tmp->data);
-			}
-
+			/*if (tmp->flag == 0 && tmp->flag2 == '#' && tmp->flag_1 == '?')
+				if (tmp->precision < tmp->width)
+					tmp->flag = '?';*/
 		}
 		if (tmp->flag == '?')
 		{
@@ -90,6 +94,26 @@ char	*ft_print_x(var *tmp)
 			while (tmp->width > (int)ft_strlen(tmp->data))
 				tmp->data = ft_strjoin("0", tmp->data);
 	}
+	if (tmp->precision_flag == 1 && (int)ft_strlen(tmp->data) == 0)
+	{
+		if (tmp->flag == '0' && tmp->flag2 == '#' && tmp->flag_1 == '?')
+		{
+			tmp->data = "0";
+			tmp->flag = '?';
+			tmp->flag2 = '?'; 
+		}
+	}
+	
 	tmp->data = ft_print_d(tmp);
+
+	if (flag_zero == 0)
+	{
+		if (tmp->flag == '0')
+		{
+			if (tmp->precision >= (int)ft_strlen(tmp->data))
+				if (tmp->flag2 == '#' && tmp->flag_1 == '?')
+					ft_ox(tmp);
+		}
+	}
 	return (tmp->data);
 }
