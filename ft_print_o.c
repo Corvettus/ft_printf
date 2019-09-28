@@ -14,6 +14,7 @@
 
 char	*ft_print_o(var *tmp)
 {
+
 	if (tmp->width < tmp->precision)
 		tmp->width = tmp->precision;
 	if (tmp->flag == '?' || tmp->flag == '0' || tmp->flag == '-')
@@ -32,7 +33,8 @@ char	*ft_print_o(var *tmp)
 		else if (tmp->flag == '-')
 			tmp->data = ft_end_whitespaces(tmp, tmp->width, (int)ft_strlen(tmp->data));
 	}
-	
+
+	//tmp->data = ft_print_d(tmp);		
 	return (tmp->data);
 }
 //if (tmp->precision)
