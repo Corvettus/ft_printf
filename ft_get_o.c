@@ -17,6 +17,13 @@ char	*ft_get_o(char *str1, var *tmp, va_list str)
 	intmax_t	nb;
 
 	nb = 0;
+	/*
+	ft_putchar('|');
+	ft_putchar(tmp->flag);
+	ft_putchar(tmp->flag_1);
+	ft_putchar(tmp->flag2);
+	ft_putchar('|');
+	*/
 	if (tmp->size1 == 'l')
 		nb = va_arg(str, unsigned long long int);
 	else if (tmp->size1 == 'h')
@@ -29,8 +36,18 @@ char	*ft_get_o(char *str1, var *tmp, va_list str)
 	else
 	{
 		nb = va_arg(str, unsigned int);
-		if (nb == 0 && tmp->precision == 0 && tmp->precision_flag == 1)
-			return ("");
+		if (nb == 0)
+		{
+			if (tmp->precision == 0 && tmp->precision_flag == 1)
+				return ("");
+			if (tmp->precision_flag == 0)
+			{
+				if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '?')
+					return ("");
+				if (tmp->flag == '-' && tmp->flag2 == '#' && tmp->flag_1 == '?')
+					return ("");
+			}
+		}
 	}
 	str1 = ft_itoa_base(nb, 8, tmp->type);
 	return (str1);

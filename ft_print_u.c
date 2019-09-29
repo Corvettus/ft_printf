@@ -20,6 +20,8 @@ char	*ft_print_u(var *tmp)
 		free (tmp->data);
 		tmp->data = "";
 	}
+	if (tmp->flag == ' ' || tmp->flag == '+')
+		tmp->flag = '?';
 	tmp->data = ft_print_d(tmp);
 	return (tmp->data);
 }
