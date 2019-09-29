@@ -288,7 +288,7 @@ int	main(void)
 	//printf("%d\n ", ft_printf("%.0s", "NULL"));
 	//printf(" :%d\n", printf("|%10.5d", -216));
 	//printf(" :%d\n", ft_printf("%10.5d", -216));
-    ft_printf("%+7d\n", 0);
+    //ft_printf("%+7d\n", 0);
 
 /*	printf(" :%d\n", printf("%03.2d", -1));
 	printf(" :%d\n", ft_printf("%03.2d", -1));
@@ -368,8 +368,8 @@ int	main(void)
 	//printf("%.19f\n",  0.999999999999999999999);
 	//ft_printf("%.19f\n",  0.999999999999999999999);
 
-	printf("%#05o\n", 43);
-	ft_printf("%#05o", 43);
+	printf("%#050.34zo\n", 0);
+	ft_printf("%#050.34zo", 0);
 
 	return (0);
 }
