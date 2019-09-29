@@ -368,7 +368,7 @@ int	main(void)
 	//printf("%.19f\n",  0.999999999999999999999);
 	//ft_printf("%.19f\n",  0.999999999999999999999);
 
-	printf("%#05o\n", 43);
-	ft_printf("%#05o", 43);
+	printf("%0#16zo\n", 0);
+	ft_printf("%0#16zo", 0);
 
 }
