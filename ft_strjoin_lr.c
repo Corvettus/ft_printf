@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 06:21:19 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/09/28 23:14:20 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/09/29 18:24:20 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ char	*ft_strjoin_left(const char *s1, char *s2)
 	int		l1;
 	int		l2;
 
-	if (!s1 || !s2)
-		return (0);
+	if (!s1)
+		return (s2);
+	else if (!s2)
+		return ((char *)s1);
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
 	if (!(res = (char*)malloc((l1 + l2 + 1) * sizeof(char))))
