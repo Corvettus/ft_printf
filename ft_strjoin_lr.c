@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 06:21:19 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/09/29 18:24:20 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/09/29 19:03:09 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ char	*ft_strjoin_right(char *s1, const char *s2)
 		return (0);
 	}
 	i = 0;
-	while (++i < l1)
+	while (++i <= l1)
 		res[i - 1] = s1[i - 1];
 	i = 0;
-	while (++i < l2)
+	while (++i <= l2)
 		res[l1 + i - 1] = s2[i - 1];
 	res[l1 + l2] = 0;
 	ft_free_str(s1);

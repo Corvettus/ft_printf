@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 16:30:58 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/09/29 18:31:43 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/09/29 19:03:57 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ char	*ft_end_whitespaces(var *s, int wdth, int len)
 
 	i = 0;
 	while (wdth - len > i++)
-		s->data = ft_strjoin(s->data, " ");
-//strjoin_right  FAILED
+		s->data = ft_strjoin_right(s->data, " ");
 	return (s->data);
 }
 
