@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 18:17:29 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/09/13 19:32:33 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/09/29 17:26:01 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 void	ft_ox(var *tmp)
 {
 	if (tmp->type == 'x')
-		tmp->data = ft_strjoin("0x", tmp->data);
+		tmp->data = ft_strjoin_left("0x", tmp->data);
 	if (tmp->type == 'X')
-		tmp->data = ft_strjoin("0X", tmp->data);
+		tmp->data = ft_strjoin_left("0X", tmp->data);
 }
 
 char	*ft_print_x(var *tmp)
 {
 	if (tmp->flag == '-')
 		while ((int)ft_strlen(tmp->data) < tmp->precision)
-			tmp->data = ft_strjoin("0", tmp->data);
+			tmp->data = ft_strjoin_left("0", tmp->data);
 	if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0 && tmp->flag_1 != '0')
 		ft_ox(tmp);
 	if (tmp->flag != '-')
@@ -44,7 +44,7 @@ char	*ft_print_x(var *tmp)
 		if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0 && tmp->flag_1 == '0')
 			ft_ox(tmp);
 		while ((int)ft_strlen(tmp->data) < tmp->width)
-			tmp->data = ft_strjoin(tmp->data, " ");
+			tmp->data = ft_strjoin_right(tmp->data, " ");
 	}
 	return (tmp->data);
 }
