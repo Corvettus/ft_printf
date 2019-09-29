@@ -63,8 +63,9 @@ char	*ft_print_o(var *tmp)
 	{
 		if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '?')
 			tmp->data = ft_strjoin("0", tmp->data);
-		if (tmp->flag == '?' && tmp->flag2 == '?' && tmp->flag_1 == '?')
-			tmp->data = ft_strjoin("0", tmp->data);
+		if (!(tmp->precision == 0 && tmp->precision_flag == 1))
+			if (tmp->flag == '?' && tmp->flag2 == '?' && tmp->flag_1 == '?')
+				tmp->data = ft_strjoin("0", tmp->data);
 		if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '0')
 		{
 			tmp->data = ft_strjoin("0", tmp->data);
@@ -73,8 +74,9 @@ char	*ft_print_o(var *tmp)
 		}
 		if (tmp->flag == '-' && tmp->flag2 == '#' && tmp->flag_1 == '?')
 			tmp->data = ft_strjoin("0", tmp->data);
-		if (tmp->flag == '-' && tmp->flag2 == '?' && tmp->flag_1 == '?')
-			tmp->data = ft_strjoin("0", tmp->data);
+		if (!(tmp->precision == 0 && tmp->precision_flag == 1))
+			if (tmp->flag == '-' && tmp->flag2 == '?' && tmp->flag_1 == '?')
+				tmp->data = ft_strjoin("0", tmp->data);
 		if (tmp->flag == '0' && tmp->flag2 == '#' && tmp->flag_1 == '?')
 		{
 			tmp->data = ft_strjoin("0", tmp->data);

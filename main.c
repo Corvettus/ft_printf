@@ -368,8 +368,8 @@ int	main(void)
 	//printf("%.19f\n",  0.999999999999999999999);
 	//ft_printf("%.19f\n",  0.999999999999999999999);
 
-	printf("%#050.34zo\n", 0);
-	ft_printf("%#050.34zo", 0);
+	printf("%.0o\n", 0);
+	ft_printf("%.0o", 0);
 
 	return (0);
 }
