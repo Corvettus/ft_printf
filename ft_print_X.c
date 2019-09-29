@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 18:17:29 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/09/29 17:27:53 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/09/29 17:32:09 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ char	*ft_print_x(var *tmp)
 			{
 				tmp->width -= 2;
 				while (tmp->width > (int)ft_strlen(tmp->data))
-					tmp->data = ft_strjoin("0", tmp->data);
+					tmp->data = ft_strjoin_left("0", tmp->data);
 			}
 			if (tmp->flag == '0' && tmp->flag2 == '#' && tmp->flag_1 == '?')
 			{
 				tmp->width -= 2;
 				while (tmp->width > (int)ft_strlen(tmp->data))
-					tmp->data = ft_strjoin("0", tmp->data);
+					tmp->data = ft_strjoin_left("0", tmp->data);
 			}
 		}
 		if (tmp->precision_flag == 1)
@@ -50,16 +50,16 @@ char	*ft_print_x(var *tmp)
 			if (tmp->flag == '?' && tmp->flag2 == '#')
 				if (tmp->flag_1 == '-' || tmp->flag_1 == '?' || tmp->flag_1 == '0')
 					while ((int)ft_strlen(tmp->data) < tmp->precision)
-						tmp->data = ft_strjoin("0", tmp->data);		
+						tmp->data = ft_strjoin_left("0", tmp->data);		
 			if (tmp->flag == '-' && tmp->flag2 == '#')
 				if (tmp->flag_1 == '0' || tmp->flag_1 == '?')
 					while (tmp->precision > (int)ft_strlen(tmp->data))
-						tmp->data = ft_strjoin("0", tmp->data);
+						tmp->data = ft_strjoin_left("0", tmp->data);
 			if (tmp->flag == '0' && tmp->flag2 == '#' && tmp->flag_1 == '?')
 			{
 				tmp->flag2 = '?';
 				while ((int)ft_strlen(tmp->data) < tmp->precision)
-					tmp->data = ft_strjoin("0", tmp->data);
+					tmp->data = ft_strjoin_left("0", tmp->data);
 				ft_ox(tmp);
 			}
 		}
@@ -74,17 +74,10 @@ char	*ft_print_x(var *tmp)
 	}
 	if (tmp->precision_flag == 0 && (int)ft_strlen(tmp->data) == 0)
 	{
-<<<<<<< HEAD
-		if (tmp->flag2 == '#' && ft_atoi(tmp->data) != 0 && tmp->flag_1 == '0')
-			ft_ox(tmp);
-		while ((int)ft_strlen(tmp->data) < tmp->width)
-			tmp->data = ft_strjoin_right(tmp->data, " ");
-=======
 		tmp->data = "0";
 		if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '0')
 			while (tmp->width > (int)ft_strlen(tmp->data))
-				tmp->data = ft_strjoin("0", tmp->data);
->>>>>>> f8005752c89e2a011274803ece6ad19a5218a15e
+				tmp->data = ft_strjoin_left("0", tmp->data);
 	}
 	if (tmp->precision_flag == 1 && (int)ft_strlen(tmp->data) == 0)
 		if (tmp->flag == '0' && tmp->flag2 == '#' && tmp->flag_1 == '?')
