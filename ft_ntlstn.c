@@ -132,6 +132,8 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 	}
 	if (mas[*i] == '0')
 		tmp->flag_1 = mas[(*i)++];
+	if (mas[*i] == '-' && tmp->flag_1 == '0')
+		tmp->flag = mas[(*i)++];
 	if (mas[*i] >= '0' && mas[*i] <= '9')
 		while (mas[*i] >= '0' && mas[*i] <= '9')
 			tmp->width = tmp->width * 10 + mas[(*i)++] - '0';
