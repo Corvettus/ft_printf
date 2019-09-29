@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 16:39:07 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/09/03 16:39:09 by rpoetess         ###   ########.fr       */
+/*   Updated: 2019/09/29 17:28:39 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_print_u(var *tmp)
 
 	if (tmp->precision == 0 && tmp->precision_flag == 1)
 	{
-		free (tmp->data);
+		free(tmp->data);
 		tmp->data = "";
 	}
 	if (tmp->flag == ' ' || tmp->flag == '+')

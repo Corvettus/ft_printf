@@ -56,6 +56,7 @@ char	*ft_create_arg_string(char *str1, var *tmp, va_list str);
 int		ft_check_type(char type);
 char	*ft_strjoin_char(char *str, char end);
 char	*ft_strjoin_left(const char *s1, char *s2);
+char	*ft_strjoin_right(char *s1, const char *s2);
 char	*ft_start_double(long double n, var *var_struct);
 char	*ft_fil_whitespaces(var *s, int wdth, int len);
 char	*ft_end_whitespaces(var *s, int wdth, int len);

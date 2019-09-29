@@ -285,10 +285,10 @@ int	main(void)
 	//printf("045.2hi\n", 2090479521);
 	//printf("%30.17hhd\n", 815017672);
 	//printf("%d", ft_printf("\\!/%11.2hhd\\!/\n", 1274913533));
-//	printf("%d\n ", ft_printf("%.0s", "NULL"));
-/*	printf(" :%d\n", printf("|%10.5d", -216));
-	printf(" :%d\n", ft_printf("%10.5d", -216));
-*/
+	//printf("%d\n ", ft_printf("%.0s", "NULL"));
+	//printf(" :%d\n", printf("|%10.5d", -216));
+	//printf(" :%d\n", ft_printf("%10.5d", -216));
+    ft_printf("%+7d\n", 0);
 
 /*	printf(" :%d\n", printf("%03.2d", -1));
 	printf(" :%d\n", ft_printf("%03.2d", -1));
@@ -371,4 +371,5 @@ int	main(void)
 	printf("%0#16zo\n", 0);
 	ft_printf("%0#16zo", 0);
 
+	return (0);
 }
