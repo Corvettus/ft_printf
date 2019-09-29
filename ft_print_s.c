@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "ft_printf.h"
 
 char	*ft_fil_whitespaces(var *s, int wdth, int len)
@@ -19,10 +20,10 @@ char	*ft_fil_whitespaces(var *s, int wdth, int len)
 	i = 0;
 	if (s->flag != '0')
 		while (wdth - len > i++)
-			s->data = ft_strjoin_left(" ", s->data);
+			s->data = ft_strjoin(" ", s->data);
 	else
 		while (wdth - len > i++)
-			s->data = ft_strjoin_left("0", s->data);
+			s->data = ft_strjoin("0", s->data);
 	return (s->data);
 }
 
@@ -32,7 +33,7 @@ char	*ft_end_whitespaces(var *s, int wdth, int len)
 
 	i = 0;
 	while (wdth - len > i++)
-		s->data = ft_strjoin_right(s->data, " ");
+		s->data = ft_strjoin(s->data, " ");
 	return (s->data);
 }
 
@@ -41,14 +42,12 @@ char	*ft_crop_str(char *str, int len, int crop)
 	char	*tmp;
 
 	tmp = 0;
-/*	if (len > crop)
+	if (len > crop)
 	{
 		tmp = ft_strnew(crop);
 		tmp = ft_strncpy(tmp, str, crop);
 	}
 	str = tmp;
-*/	if (len > crop && (tmp = ft_strnew(crop)))
-		str = ft_strncpy(tmp, str, crop);
 	return (str);
 }
 
@@ -84,8 +83,6 @@ char	*ft_print_s(var *s)
 		else if (s->flag == '-')
 			s->data = ft_end_whitespaces(s, wdth, len);
 	}
-	str = ft_strjoin_right(str, s->data);
-	if (ft_strlen(s->data) > 1)
-		free((void *)s->data);
+	str = ft_strjoin(str, s->data);
 	return (str);
 }
