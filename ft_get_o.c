@@ -39,6 +39,7 @@ char	*ft_get_o(char *str1, var *tmp, va_list str)
 	}
 	if (nb == 0)
 	{
+		
 		if (tmp->precision == 0 && tmp->precision_flag == 1)
 			return ("");
 		if (tmp->flag == '0' && tmp->flag2 == '#' && tmp->flag_1 == '?')
@@ -57,10 +58,7 @@ char	*ft_get_o(char *str1, var *tmp, va_list str)
 			if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '0')
 				return ("");
 		}
-		
-		return ("");
 	}
-
 	str1 = ft_itoa_base(nb, 8, tmp->type);
 	return (str1);
 }

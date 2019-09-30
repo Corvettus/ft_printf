@@ -24,8 +24,8 @@ char	*ft_print_p(var *tmp)
 	{
 		if (tmp->data[0] != '0' && !tmp->precision_flag && slen < tmp->width)
 			tmp->data = ft_strjoin_left("7fff", tmp->data);
-		else if (ft_strlen(tmp->data) >= 6)
-			tmp->data = ft_strjoin_left("10", tmp->data);
+	//	else if (ft_strlen(tmp->data) >= 6)
+	//		tmp->data = ft_strjoin_left("10", tmp->data);
 		else
 			while (prec-- > slen)
 				tmp->data = ft_strjoin_left("0", tmp->data);
@@ -40,3 +40,21 @@ char	*ft_print_p(var *tmp)
 		ft_fil_whitespaces(tmp, w - tmp->precision, slen);
 	return (tmp->data);
 }
+
+/*
+char	*ft_print_p(var *tmp)
+{
+	int w;
+	int slen;
+
+	tmp->data = ft_strjoin("0x", tmp->data);
+	tmp->flag = tmp->flag == '-' ? tmp->flag : '?';
+	slen = ft_strlen(tmp->data);
+	w = tmp->width > slen ? tmp->width : slen;
+	if (tmp->flag == '-')
+		ft_end_whitespaces(tmp, w, slen);
+	else
+		ft_fil_whitespaces(tmp, w, slen);
+	return (tmp->data);
+}
+*/

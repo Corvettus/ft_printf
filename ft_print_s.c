@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
 char	*ft_fil_whitespaces(var *s, int wdth, int len)

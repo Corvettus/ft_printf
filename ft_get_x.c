@@ -34,7 +34,7 @@ char	*ft_get_x(char *str1, var *tmp, va_list str)
 		if (!nb && !tmp->precision && tmp->flag == '?' && tmp->precision_flag)
 			return ("");
 	}
-	if (nb == 0)
+	if (nb == 0 && tmp->type != 'p')
 		return ("");
 	str1 = ft_uitoa_base(nb, 16, tmp->type);
 	return (str1);

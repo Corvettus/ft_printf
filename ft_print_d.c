@@ -192,6 +192,8 @@ void	ft_if_pstv_rgsgn(var *tmp)
 		}
 		if (tmp->flag == '0')
 		{
+			if (tmp->flag2 == '+' && tmp->flag_1 == '0')
+				tmp->width--;
 			if (tmp->flag2 == '+' && tmp->flag_1 == '?')
 			{
 				if (tmp->width > (int)ft_strlen(tmp->data))
@@ -304,7 +306,6 @@ char	*ft_print_d(var *tmp)
 	*/
 	if (tmp->arg_sign == 1 && tmp->precision == (int)ft_strlen(tmp->data))
 	{
-
 		if (tmp->flag == '+')
 		{
 			if (tmp->flag2 == '?')
@@ -381,6 +382,8 @@ char	*ft_print_d(var *tmp)
 		{
 
 			if (tmp->flag2 == '+' && tmp->flag_1 == '?' && tmp->width == (int)ft_strlen(tmp->data))
+				tmp->data = ft_strjoin_left("+", tmp->data);
+			if (tmp->flag2 == '+' && tmp->flag_1 == '0'&& tmp->width == (int)ft_strlen(tmp->data))
 				tmp->data = ft_strjoin_left("+", tmp->data);
 			if (tmp->flag2 == ' ')
 			{

@@ -72,7 +72,7 @@ float_struct	ft_create_double(long double n, int precision, var *var_struct)
 	ft_putchar('|');
 */
 	tmp.num = n;
-	if (n < 0)
+	if (var_struct->arg_sign == -1)
 	{
 		tmp.base *= -1;
 		tmp.mantisa *= -1;
@@ -88,22 +88,10 @@ char			*ft_start_double(long double n, var *var_struct)
 	long double		num;
 
 	len = 0;
+	//ft_putnbr(n);
 	var_struct->arg_sign = (n < 0) ? -1 : 1;
-	n = (n < 0) ? -n : n;
+	n = (n >= 0) ? n : n * (-1);
 	num = n;
-	/*while (num > (long int)num)
-	{
-		num *= 10.0;
-		ft_putchar('|');
-		ft_putnbr((long int)num);
-		ft_putchar('|');
-		len++;
-	}
-	ft_putchar('|');
-	ft_putnbr(len);
-	ft_putchar('|');
-*/
-//	n += 0.0000005;
 	precision = 0;
 	if (!(var_struct->precision == 0 && var_struct->precision_flag == 1))
 		precision = (var_struct->precision == 0) ? 6 : var_struct->precision;
@@ -112,13 +100,8 @@ char			*ft_start_double(long double n, var *var_struct)
 	ft_putnbr(precision);
 	ft_putchar('|');
 */
-	//if (var_struct->precision_flag == 1)
-	//printf("%.21Lf\n", n);
 	n += 0.5 * ft_power(0.1, precision);
-	/*printf("|%.21Lf|\n", n);
-	printf("%.21Lf\n", 0.5 * ft_power(0.1, precision));*/
 	tmp = ft_create_double(n, precision, var_struct);
-	//tmp.res = ft_strjoin(tmp.res, ft_itoa((int)tmp.num));
 	tmp.res = ft_itoa((int)tmp.num);
 	if (!(var_struct->precision == 0 && var_struct->precision_flag == 1))
 	{
@@ -129,9 +112,6 @@ char			*ft_start_double(long double n, var *var_struct)
 			tmp.res = ft_strjoin(tmp.res, "0");
 			tmp.mantisa_len--;
 		}
-		//if (tmp.mantisa > 0)
-		//	tmp.mantisa += 0.5 * ft_power(0.1, precision);
-		//ft_putstr(ft_ullitoa((long long int)tmp.mantisa, var_struct));
 		if ((long long int)tmp.mantisa > 0)
 			tmp.res = ft_strjoin(tmp.res, ft_ullitoa((uintmax_t)tmp.mantisa, var_struct));
 	}

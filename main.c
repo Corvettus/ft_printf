@@ -4,6 +4,8 @@
 
 int	main(void)
 {
+	int		*n;
+	char	*c;
 //	size_t	i;
 	// STRING
 //	printf("   5s|%5s|\n", "this is a test");
@@ -368,8 +370,20 @@ int	main(void)
 	//printf("%.19f\n",  0.999999999999999999999);
 	//ft_printf("%.19f\n",  0.999999999999999999999);
 
-	printf("%.0o\n", 0);
-	ft_printf("%.0o", 0);
+	//printf("%p\n", 0x5627939);
+	//ft_printf("%p\n", 0x5627939);
+
+	//printf("%7p\n", 0x56279395);
+	//ft_printf("%7p\n", 0x56279395);
+
+	//printf("%5");
+	//ft_printf("%5");
+
+	printf("%f\n", (double)INT_MAX + 1);
+	ft_printf("%f", (double)INT_MAX + 1);
+
+	//printf("%LLf\n", 42.5);
+	//ft_printf("%LLf", 42.5);
 
 	return (0);
 }
