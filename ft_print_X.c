@@ -15,7 +15,7 @@
 
 void	ft_ox(var *tmp)
 {
-	if (tmp->type == 'x')
+	if (tmp->type == 'x' || tmp->type == 'p')
 		tmp->data = ft_strjoin_left("0x", tmp->data);
 	if (tmp->type == 'X')
 		tmp->data = ft_strjoin_left("0X", tmp->data);
@@ -24,7 +24,13 @@ void	ft_ox(var *tmp)
 char	*ft_print_x(var *tmp)
 {
 	int	flag_zero;
-
+/*
+	ft_putchar('|');
+	ft_putchar(tmp->flag);
+	ft_putchar(tmp->flag_1);
+	ft_putchar(tmp->flag2);
+	ft_putchar('|');
+	*/
 	flag_zero = 0;
 	if ((int)ft_strlen(tmp->data) == 0)
 		flag_zero = 1;

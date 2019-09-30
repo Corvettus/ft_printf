@@ -27,11 +27,6 @@ char	*ft_get_f(char *str1, var *tmp, va_list str)
 	else if (tmp->size1 == 'L')
 		str1 = ft_start_double(va_arg(str, long double), tmp);
 	else
-	{
-		n = va_arg(str, double);
-		if (n < 0.0)
-			n = -n;
-		str1 = ft_start_double(n, tmp);
-	}
+		str1 = ft_start_double(va_arg(str, double), tmp);
 	return (str1);
 }

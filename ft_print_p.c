@@ -18,7 +18,7 @@ char	*ft_print_p(var *tmp)
 	int     slen;
 	int     prec;
 	char    *temp;
-
+	/*
 	prec = tmp->precision;
 	if (tmp->data)
 	{
@@ -38,6 +38,11 @@ char	*ft_print_p(var *tmp)
 		ft_end_whitespaces(tmp, w - tmp->precision, slen);
 	else
 		ft_fil_whitespaces(tmp, w - tmp->precision, slen);
+	*/
+	//if (tmp->flag == '-')
+	//	tmp->data = ft_strjoin_left("0x", tmp->data);
+	tmp->flag2 = '#';
+	tmp->data = ft_print_x(tmp);
 	return (tmp->data);
 }
 

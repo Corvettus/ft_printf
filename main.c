@@ -379,8 +379,11 @@ int	main(void)
 	//printf("%5");
 	//ft_printf("%5");
 
-	printf("%#2.1zo\n", 0);
-	ft_printf("%#2.1zo", 0);
+	printf("%-2p\n", 0x0);
+	ft_printf("%-2p\n", 0x0);
+
+	printf("%#x\n", 0x0);
+	ft_printf("%#x\n", 0x0);
 
 	//printf("%LLf\n", 42.5);
 	//ft_printf("%LLf", 42.5);

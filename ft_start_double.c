@@ -72,7 +72,7 @@ float_struct	ft_create_double(long double n, int precision, var *var_struct)
 	ft_putchar('|');
 */
 	tmp.num = n;
-	if (var_struct->arg_sign == -1)
+	if (n < 0)
 	{
 		tmp.base *= -1;
 		tmp.mantisa *= -1;
@@ -90,7 +90,7 @@ char			*ft_start_double(long double n, var *var_struct)
 	len = 0;
 	//ft_putnbr(n);
 	var_struct->arg_sign = (n < 0) ? -1 : 1;
-	n = (n >= 0) ? n : n * (-1);
+	n = (n >= 0) ? n : -n;
 	num = n;
 	precision = 0;
 	if (!(var_struct->precision == 0 && var_struct->precision_flag == 1))
