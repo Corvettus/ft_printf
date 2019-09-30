@@ -50,12 +50,16 @@ char	*ft_get_o(char *str1, var *tmp, va_list str)
 				return ("");
 			if (tmp->flag == '-' && tmp->flag2 == '#' && tmp->flag_1 == '?')
 				return ("");
+			if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '0')
+				return ("");
 		}
 		if (tmp->precision_flag == 1)
 		{
 			if (tmp->flag == '-' && tmp->flag2 == '#' && tmp->flag_1 == '?')
 				return ("");
 			if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '0')
+				return ("");
+			if (tmp->flag == '?' && tmp->flag2 == '#' && tmp->flag_1 == '?')
 				return ("");
 		}
 	}
