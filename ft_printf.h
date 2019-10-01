@@ -6,7 +6,7 @@
 /*   By: rpoetess <rpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 22:47:02 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/10/01 22:59:29 by rpoetess         ###   ########.fr       */
+/*   Updated: 2019/10/01 23:23:58 by rpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ char				*ft_get_o(char *str1, var *tmp, va_list str);
 char				*ft_get_p(char *str1, var *tmp, va_list str);
 char				*ft_itoa_base(intmax_t value, int base, var *tmp);
 char				*ft_uitoa_base(uintmax_t value, int base, char type);
+int					ft_create_list_var(const char *mas, int i, va_list str);
 
 #endif

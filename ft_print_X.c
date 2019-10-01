@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_X.c                                       :+:      :+:    :+:   */
+/*   ft_print_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpoetess <rpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 18:17:29 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/10/01 23:17:33 by rpoetess         ###   ########.fr       */
+/*   Updated: 2019/10/01 23:29:45 by rpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	ft_ox(var *tmp)
 {
@@ -62,7 +61,7 @@ void	ft_flag_zero_prcs_one(var *tmp)
 	}
 }
 
-void	ft_flag_zero(var *tmp, int flag_zero)
+void	ft_flag_zero3(var *tmp, int flag_zero)
 {
 	if (flag_zero == 0)
 	{
@@ -86,7 +85,7 @@ char	*ft_print_x(var *tmp)
 	flag_zero = 0;
 	if ((int)ft_strlen(tmp->data) == 0)
 		flag_zero = 1;
-	ft_flag_zero(tmp, flag_zero);
+	ft_flag_zero3(tmp, flag_zero);
 	if (tmp->precision_flag == 0 && (int)ft_strlen(tmp->data) == 0)
 	{
 		tmp->data = "0";

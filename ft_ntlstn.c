@@ -6,12 +6,11 @@
 /*   By: rpoetess <rpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 17:10:33 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/10/01 19:46:19 by rpoetess         ###   ########.fr       */
+/*   Updated: 2019/10/01 23:42:54 by rpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 var				*ft_ntlstn_var(var *tmp)
 {
@@ -26,56 +25,6 @@ var				*ft_ntlstn_var(var *tmp)
 	tmp->size1 = '0';
 	tmp->size2 = '0';
 	return (tmp);
-}
-
-int				ft_create_list_var(const char *mas, int i,
-					va_list str)
-{
-	char	*str1;
-	var		*tmp;
-	int		nul;
-
-	nul = 1;
-	str1 = 0;
-	tmp = (var*)malloc(sizeof(var));
-	tmp = ft_srchflgs(tmp, &i, mas);
-	if (!ft_check_type(mas[(i)]) || mas[i] == '\0')
-		exit(0);
-	tmp->type = mas[i];
-	if (mas[i] == '%')
-	{
-		tmp->data = ft_strnew(0);
-		if (tmp->data)
-			tmp->data = ft_strjoin_char(tmp->data, mas[i]);
-		return (ft_controller(tmp));
-	}
-	str1 = ft_create_arg_string(str1, tmp, str);
-	if (str1 == 0 && tmp->type == 'c')
-	{
-		if (tmp->flag != '-')
-		{
-			while (tmp->width-- > 1)
-			{
-				ft_putchar(' ');
-				nul++;
-			}
-		}
-		write(1, &str1, 1);
-		if (tmp->flag == '-')
-		{
-			while (tmp->width-- > 1)
-			{
-				ft_putchar(' ');
-				nul++;
-			}
-		}
-		return (nul);
-	}
-	if (!str)
-		str1 = 0;
-	if (!(tmp->data))
-		tmp->data = str1;
-	return (ft_controller(tmp));
 }
 
 var				*ft_ifseedot(var *tmp, int *i, const char *mas)
@@ -101,11 +50,8 @@ var				*ft_ifseedot(var *tmp, int *i, const char *mas)
 	return (tmp);
 }
 
-var				*ft_srchflgs(var *tmp, int *i, const char *mas)
+void			ft_srchflgs2(var *tmp, int *i, const char *mas)
 {
-	tmp = ft_ntlstn_var(tmp);
-	while (mas[*i] == ' ')
-		tmp->flag = mas[(*i)++];
 	if (mas[*i] == '-' || mas[*i] == '+' || mas[*i] == ' '
 		|| mas[*i] == '0')
 	{
@@ -131,6 +77,14 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 			tmp->flag2 = '-';
 		tmp->flag = mas[(*i)++];
 	}
+}
+
+var				*ft_srchflgs(var *tmp, int *i, const char *mas)
+{
+	tmp = ft_ntlstn_var(tmp);
+	while (mas[*i] == ' ')
+		tmp->flag = mas[(*i)++];
+	ft_srchflgs2(tmp, i, mas);
 	if (mas[*i] == '0')
 		tmp->flag_1 = mas[(*i)++];
 	if (mas[*i] == '-' && tmp->flag_1 == '0')

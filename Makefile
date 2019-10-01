@@ -15,6 +15,7 @@ SRC = ft_printf.c \
 		ft_print_f.c \
 		ft_print_pc.c \
 		ft_controller.c \
+		ft_create_list_var.c \
 		ft_llitoa.c \
 		ft_ullitoa.c \
 		ft_itoa_base.c \
