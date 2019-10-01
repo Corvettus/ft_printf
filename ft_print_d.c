@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpoetess <rpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 16:43:57 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/09/28 19:33:32 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/01 19:47:10 by rpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,13 +297,6 @@ char	*ft_print_d(var *tmp)
 	if ((int)ft_strlen(tmp->data) < tmp->precision && tmp->precision_flag == 1)
 		while (((int)ft_strlen(tmp->data) < tmp->precision && tmp->precision <= tmp->width))
 			tmp->data = ft_strjoin_left("0", tmp->data);
-/*
-	ft_putchar('|');
-	ft_putchar(tmp->flag);
-	ft_putchar(tmp->flag_1);
-	ft_putchar(tmp->flag2);
-	ft_putchar('|');
-	*/
 	if (tmp->arg_sign == 1 && tmp->precision == (int)ft_strlen(tmp->data))
 	{
 		if (tmp->flag == '+')

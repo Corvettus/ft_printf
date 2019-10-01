@@ -26,7 +26,7 @@ SRC = ft_printf.c \
 		ft_get_u.c \
 		ft_get_o.c \
 		ft_get_x.c \
-		ft_convert16.c \
+		ft_get_p.c \
 		main.c \
 
 FLS = -Wall -Werror -Wextra

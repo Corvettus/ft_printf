@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ntlstn.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpoetess <rpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 17:10:33 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/09/28 21:51:57 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/01 19:46:19 by rpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int				ft_create_list_var(const char *mas, int i,
 				nul++;
 			}
 		}
-		write (1, &str1, 1);
+		write(1, &str1, 1);
 		if (tmp->flag == '-')
 		{
 			while (tmp->width-- > 1)
@@ -119,7 +119,8 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 		(*i)++;
 	if (mas[*i] == '-')
 	{
-		if ((tmp->flag == '+' || tmp->flag == '-' || tmp->flag == ' ') && tmp->flag2 == '#')
+		if ((tmp->flag == '+' || tmp->flag == '-'
+			|| tmp->flag == ' ') && tmp->flag2 == '#')
 		{
 			tmp->flag2 = tmp->flag;
 			tmp->flag_1 = '#';
@@ -141,10 +142,12 @@ var				*ft_srchflgs(var *tmp, int *i, const char *mas)
 		tmp->width = mas[*i++];
 	if (mas[*i] == '.')
 		tmp = ft_ifseedot(tmp, i, mas);
-	if (mas[*i] == 'h' || mas[*i] == 'l' || mas[(*i)] == 'L' || mas[*i] == 'j' || mas[*i] == 'z')
+	if (mas[*i] == 'h' || mas[*i] == 'l' || mas[(*i)] == 'L'
+		|| mas[*i] == 'j' || mas[*i] == 'z')
 	{
 		tmp->size1 = mas[(*i)++];
-		if ((mas[*i] == 'h' || mas[*i] == 'l') && tmp->size1 != 'L' && tmp->size1 != 'j' && tmp->size1 != 'z')
+		if ((mas[*i] == 'h' || mas[*i] == 'l') && tmp->size1 != 'L'
+			&& tmp->size1 != 'j' && tmp->size1 != 'z')
 			tmp->size2 = mas[(*i)++];
 	}
 	return (tmp);
