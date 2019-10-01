@@ -6,7 +6,7 @@
 /*   By: rpoetess <rpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 16:43:57 by rpoetess          #+#    #+#             */
-/*   Updated: 2019/10/01 19:47:10 by rpoetess         ###   ########.fr       */
+/*   Updated: 2019/10/01 20:07:25 by rpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 		if (tmp->flag == '0')
 		{
 			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
-			{
 				if (tmp->width > (int)ft_strlen(tmp->data))
 					tmp->width--;
-			}
 			if (tmp->flag2 == '?')
 			{
 				if (tmp->width <= (int)ft_strlen(tmp->data))
@@ -56,23 +54,21 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 	if (tmp->precision_flag == 1)
 	{
 		if (tmp->flag == '?')
-		{	
+		{
 			if (tmp->precision < (int)ft_strlen(tmp->data))
 				tmp->data = ft_strjoin_left("-", tmp->data);
 			if (tmp->precision >= (int)ft_strlen(tmp->data))
 			{
-				if (tmp->width)
+				if (tmp->width > 0)
 				{
 					if (tmp->width <= (int)ft_strlen(tmp->data) && tmp->precision < tmp->width)
 						tmp->data = ft_strjoin_left("-", tmp->data);
 					if (tmp->precision > tmp->width && tmp->precision > (int)ft_strlen(tmp->data))
 						tmp->flag = '0';
 				}
-				else if (tmp->width == 0)
-				{
+				if (tmp->width == 0)
 					if (tmp->precision <= (int)ft_strlen(tmp->data))
 						tmp->data = ft_strjoin_left("-", tmp->data);
-				}
 			}
 		}
 		if (tmp->flag == '-')
@@ -127,20 +123,12 @@ void	ft_if_ngtv_rgsgn(var *tmp)
 		}
 		if (tmp->flag == '+')
 		{
-			if (tmp->flag2 == '?')
-			{
-				if (tmp->flag_1 == '?')
-					if (tmp->precision < (int)ft_strlen(tmp->data))
-						tmp->data = ft_strjoin_left("-", tmp->data);
-				if (tmp->flag_1 == '0')
-					if (tmp->precision < (int)ft_strlen(tmp->data))
-						tmp->data = ft_strjoin_left("-", tmp->data);
-			}
-			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
-			{
+			if (tmp->flag2 == '?' && (tmp->flag_1 == '?' || tmp->flag_1 == '0'))
 				if (tmp->precision < (int)ft_strlen(tmp->data))
 					tmp->data = ft_strjoin_left("-", tmp->data);
-			}
+			if (tmp->flag2 == ' ' && tmp->flag_1 == '?')
+				if (tmp->precision < (int)ft_strlen(tmp->data))
+					tmp->data = ft_strjoin_left("-", tmp->data);
 		}
 	}
 }
@@ -149,13 +137,11 @@ void	ft_if_pstv_rgsgn(var *tmp)
 {
 	if (tmp->precision_flag == 0)
 	{
-		if (tmp->flag == ' ')
+		if (tmp->flag == ' ') 
 		{
 			if (tmp->flag2 == '?')
-			{
 				if (tmp->width <= (int)ft_strlen(tmp->data))
 					tmp->data = ft_strjoin_left(" ", tmp->data);
-			}
 		}
 		if (tmp->flag == '+')
 		{
