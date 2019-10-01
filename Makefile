@@ -5,6 +5,10 @@ SRC = ft_printf.c \
 		ft_print_s.c \
 		ft_print_p.c \
 		ft_print_d.c \
+		ft_print_d_ngtv_rgsgn_prcsn_z.c \
+		ft_print_d_ngtv_rgsgn_prcsn_1.c \
+		ft_print_d_pstv_rgsgn_prcsn_z.c \
+		ft_print_d_pstv_rgsgn_prcsn_1.c \
 		ft_print_o.c \
 		ft_print_u.c \
 		ft_print_x.c \
